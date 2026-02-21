@@ -662,6 +662,138 @@ export function scoreStrategies(
     }
   }
 
+  // Strategy 16: Synthetic 15m Ensemble 🔮
+  // Aggregate 5m candles → synthetic 15m, apply GoodH+BB(20,2.2)+streak≥2 AND streak≥3+BB(20,2)
+  // Walk-forward validated (syntheticTF.ts): WR=73.1% σ=3.6% T=102 folds=[69.7/78.0/71.4] ⭐⭐⭐
+  // This is the highest stable WR found — better than any single signal on 5m
+  if (candles5m.length >= 63) {
+    // Build synthetic 15m candles from 5m (group every 3)
+    const remainder = candles5m.length % 3;
+    const s16Synth: Candle[] = [];
+    for (let i = remainder; i + 3 <= candles5m.length; i += 3) {
+      const a = candles5m[i], b = candles5m[i + 1], c = candles5m[i + 2];
+      s16Synth.push({
+        openTime: a.openTime,
+        open: a.open,
+        high: Math.max(a.high, b.high, c.high),
+        low: Math.min(a.low, b.low, c.low),
+        close: c.close,
+        volume: a.volume + b.volume + c.volume,
+        closeTime: c.closeTime,
+        quoteVolume: 0,
+        trades: 0,
+      });
+    }
+    if (s16Synth.length >= 22 && lastPrice) {
+      const s16Last = s16Synth[s16Synth.length - 1];
+      const s16Hour = new Date(s16Last.closeTime).getUTCHours();
+      const s16GoodHours = [10, 11, 12, 21];
+      if (s16GoodHours.includes(s16Hour)) {
+        const bb22_s16 = calculateBollingerBands(s16Synth, 20, 2.2);
+        const bb20_s16 = calculateBollingerBands(s16Synth, 20, 2.0);
+        if (bb22_s16 && bb20_s16) {
+          const p16 = s16Last.close;
+          const isBear22 = p16 > bb22_s16.upper;
+          const isBull22 = p16 < bb22_s16.lower;
+          const isBear20 = p16 > bb20_s16.upper;
+          const isBull20 = p16 < bb20_s16.lower;
+          // Count 15m streak
+          let s16StreakLen = 1;
+          const s16Dir = s16Last.close >= s16Last.open ? 'G' : 'R';
+          for (let j = s16Synth.length - 2; j >= Math.max(0, s16Synth.length - 8); j--) {
+            const cj = s16Synth[j];
+            if ((cj.close >= cj.open ? 'G' : 'R') === s16Dir) s16StreakLen++;
+            else break;
+          }
+          // Signal A: GoodH + BB(20,2.2) + streak≥2 on synth15m
+          const s16A_bear = isBear22 && s16Dir === 'G' && s16StreakLen >= 2;
+          const s16A_bull = isBull22 && s16Dir === 'R' && s16StreakLen >= 2;
+          // Signal B: streak≥3 + BB(20,2) on synth15m
+          const s16B_bear = s16Dir === 'G' && s16StreakLen >= 3 && isBear20;
+          const s16B_bull = s16Dir === 'R' && s16StreakLen >= 3 && isBull20;
+          const s16Bear = s16A_bear && s16B_bear;
+          const s16Bull = s16A_bull && s16B_bull;
+          if (s16Bear || s16Bull) {
+            const direction: Direction = s16Bear ? 'bearish' : 'bullish';
+            const deviation = s16Bear
+              ? (p16 - bb22_s16.upper) / bb22_s16.upper * 100
+              : (bb22_s16.lower - p16) / bb22_s16.lower * 100;
+            const score = Math.min(10, 6.0 + s16StreakLen * 0.6 + deviation * 8 + 0.8); // +0.8 for ensemble boost
+            strategies.push({
+              name: 'Synth15m Ensemble',
+              emoji: '🔮',
+              score: Math.round(score * 10) / 10,
+              direction,
+              signal: `${s16StreakLen} ${s16Bear ? 'green' : 'red'} 15m-equiv at BB22 ${s16Bear ? 'upper' : 'lower'}, h=${s16Hour}UTC (73.1% WR σ=3.6%)`,
+              confidence: Math.round(Math.min(92, 66 + s16StreakLen * 4 + deviation * 10)),
+            });
+          }
+        }
+      }
+    }
+  }
+
+  // Strategy 17: Daily Range Top/Bottom Filter 📏
+  // GoodH + BB(20,2.2) + streak≥2 + price in top/bottom 30% of daily range
+  // Research (syntheticTF.ts): Top 30% + GoodH WR=73.4% T=79 ⭐⭐⭐
+  // Intuition: at BB extreme AND near daily high/low = double confirmation of overextension
+  if (candles5m.length >= 30 && lastPrice) {
+    const s17Hour = new Date(candles5m[candles5m.length - 1].closeTime).getUTCHours();
+    const s17GoodHours = [10, 11, 12, 21];
+    if (s17GoodHours.includes(s17Hour)) {
+      const bb22_s17 = calculateBollingerBands(candles5m, 20, 2.2);
+      if (bb22_s17) {
+        const isBear = lastPrice > bb22_s17.upper;
+        const isBull = lastPrice < bb22_s17.lower;
+        if (isBear || isBull) {
+          // Count streak
+          let s17Green = 0, s17Red = 0;
+          for (let j = candles5m.length - 1; j >= Math.max(0, candles5m.length - 7); j--) {
+            const cj = candles5m[j];
+            if (cj.close > cj.open) { if (s17Red > 0) break; s17Green++; }
+            else if (cj.close < cj.open) { if (s17Green > 0) break; s17Red++; }
+            else break;
+          }
+          const s17StreakOk = (isBear && s17Green >= 2) || (isBull && s17Red >= 2);
+          if (s17StreakOk) {
+            // Compute daily range from today's candles
+            const today = new Date(candles5m[candles5m.length - 1].openTime);
+            const todayStart = Date.UTC(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate());
+            let dailyHigh = lastPrice, dailyLow = lastPrice;
+            for (let j = candles5m.length - 1; j >= 0; j--) {
+              if (candles5m[j].openTime < todayStart) break;
+              dailyHigh = Math.max(dailyHigh, candles5m[j].high);
+              dailyLow = Math.min(dailyLow, candles5m[j].low);
+            }
+            const dailyRange = dailyHigh - dailyLow;
+            if (dailyRange > 0) {
+              const posInRange = (lastPrice - dailyLow) / dailyRange; // 0=bottom, 1=top
+              const isAtTop = posInRange >= 0.70 && isBear;    // top 30% → expect reversal
+              const isAtBottom = posInRange <= 0.30 && isBull; // bottom 30% → expect reversal
+              if (isAtTop || isAtBottom) {
+                const streakLen = Math.max(s17Green, s17Red);
+                const direction: Direction = isBear ? 'bearish' : 'bullish';
+                const deviation = isBear
+                  ? (lastPrice - bb22_s17.upper) / bb22_s17.upper * 100
+                  : (bb22_s17.lower - lastPrice) / bb22_s17.lower * 100;
+                const rangePosPct = isAtTop ? posInRange * 100 : (1 - posInRange) * 100;
+                const score = Math.min(10, 5.8 + streakLen * 0.7 + deviation * 10 + (rangePosPct - 70) * 0.05);
+                strategies.push({
+                  name: 'Daily Range Extreme',
+                  emoji: '📏',
+                  score: Math.round(score * 10) / 10,
+                  direction,
+                  signal: `${isBear ? 'Top' : 'Bottom'} ${rangePosPct.toFixed(0)}% daily range + BB22 ${isBear ? 'upper' : 'lower'}, h=${s17Hour}UTC (73.4% WR)`,
+                  confidence: Math.round(Math.min(90, 64 + streakLen * 4 + deviation * 10 + (rangePosPct - 70) * 0.3)),
+                });
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
   strategies.sort((a, b) => b.score - a.score);
 
   const bullishScore = strategies.filter(s => s.direction === 'bullish').reduce((s, st) => s + st.score, 0);

@@ -1,9 +1,9 @@
 ---
 active: true
-iteration: 15
-max_iterations: 0
-completion_promise: null
-started_at: "2026-02-21T10:47:19Z"
+iteration: 5
+max_iterations: 15
+completion_promise: "TASK_COMPLETE"
+started_at: "2026-02-21T17:16:51Z"
 ---
 
-do up to 500 backtest with different setting on eth 5 min binary - make sure to use all relevant timeframes - multipile timeframes, make sure to do the backtesting as real as possible - meaning - u dont know the future candle - u try to guess it from past candles. do as many test as possible and get it to be proffitable ! do deep researches on the best tactics / indicators / whatever. save all learned data - and try to improve it .look for machine learning moodule we can apply to that. we are just trying to guess if the next candle is green or red ! it cant be that hard .
+Continue deep backtesting research for ETH 5m binary candle prediction. 15 strategies in server/indicators.ts, 25 research scripts in server/research/. Best WR so far: 79.2% sniper, 69.8% stable. Run scripts with: npx ts-node -P tsconfig.server.json server/research/NAME.ts. DB symbols ETH/BTC/SOL/XRP, columns open_time/open/high/low/close/volume. Good hours UTC: 10,11,12,21. Mean-reverting market, bet against streaks plus BB extremes. Test: RGGG combo with GoodH plus BB, multi-indicator ensemble from validated signals only, and any untested combos above 65% WR with 50 plus trades. Add winners to indicators.ts, update RESEARCH-SUMMARY-V4.md and MEMORY.md.

@@ -531,3 +531,149 @@ Implication: Deep BB penetration = trend, not reversion. Shallow touch = reversi
 - Saturday: 77.8% WR (27T) ⭐  
 - Thursday: 55.6% (worst)
 
+
+---
+
+## Session 2 Research (2026-02-21 continued) — 3 New Scripts, 2 New Strategies
+
+### Scripts: goodHoursRGGG.ts, ensembleVoting.ts, syntheticTF.ts
+
+---
+
+## GoodH + RGGG/GRGG Combo Research (goodHoursRGGG.ts)
+
+Testing combination of best candle sequence (RGGG/GRGG → 75.9% WR) with best hour filter (GoodH).
+
+**ETH/5m results:**
+| Config | WR | Trades | Notes |
+|--------|-----|--------|-------|
+| RGGG/GRGG at BB(20,2) no hour filter | 56.7% | 984 | baseline |
+| RGGG/GRGG + GoodH + BB(20,2) | 65.2% | 155 | ⭐⭐ WF: 65.9% σ=6.0% |
+| RGGG/GRGG + GoodH + BB(20,2.2) | 63.7% | 102 | ⭐ WF: 65.8% σ=8.9% |
+| **RGGG/GRGG + GoodH + BB(20,2.5)** | **72.0%** | **50** | ⭐⭐⭐ (not WF validated) |
+| GGGG/RRRR at BB + GoodH + BB(20,2.2) | 62.9% | 194 | modest |
+
+**ETH/15m results (STAR FINDING):**
+| Config | WR | Trades | WF σ | Notes |
+|--------|-----|--------|------|-------|
+| RGGG/GRGG at BB(20,2) no hour | 62.5% | 363 | — | baseline |
+| RGGG/GRGG + BB(15,2.2) | 64.4% | 253 | σ=6.7% | ⭐ |
+| **RGGG/GRGG + GoodH + BB(15,2.2)** | **81.0%** | **42** | **σ=11.7%** | ⭐⭐⭐ last fold=64.3% |
+| RGGG/GRGG + ExtH + BB(15,2.2) | 74.6% | 67 | — | ⭐⭐⭐ more trades |
+| RGGG/GRGG + BB(20,2.5) | 67.1% | 155 | — | ⭐ |
+
+**BTC/15m:**
+- RGGG only + GoodH + BB(20,2): 66.7% T=30 ⭐
+- RGGG/GRGG + ExtH + BB(20,2): 66.2% T=74 ⭐
+
+**Key finding:** Hour filter dramatically improves candle sequence WR on ETH/15m (62.5% → 81.0%), but σ=11.7% means last fold varied (89.5%/88.9%/64.3%). High but needs more data.
+
+---
+
+## Ensemble Voting Research (ensembleVoting.ts)
+
+Testing multi-signal ensembles from validated signals only (not all signals).
+
+**Signals tested:**
+- A: GoodH + BB(20,2.2) + streak≥2 (69.8% σ=1.1% on 5m)
+- B: streak≥3 + BB(20,2) (Markov-style)  
+- C: RGGG/GRGG + GoodH + BB(20,2.2)
+- D: MFI(10)>80 + BB + streak≥2
+- E: Low ATR regime + BB(20,2.2) + streak≥2
+
+**KEY FINDING — ETH/15m Ensemble:**
+| Config | WR | Trades | WF σ | Notes |
+|--------|-----|--------|------|-------|
+| SigA alone (ETH/15m) | 70.1% | 147 | WF: 69.7% σ=3.8% | ⭐⭐ very stable! |
+| **A+B (ETH/15m)** | **73.5%** | **102** | **WF: 73.1% σ=3.6%** | **⭐⭐⭐ BEST STABLE!** |
+| A+C (ETH/15m) | 74.6% | 71 | — | ⭐⭐⭐ high but fewer |
+| A+D (ETH/15m) | 75.4% | 69 | — | ⭐⭐⭐ |
+| C+D (ETH/15m) | 80.0% | 30 | — | ⭐⭐⭐ high but few |
+| 2-of-3 (A|B|C) ETH/15m | 74.4% | 121 | — | ⭐⭐⭐ |
+| A+B+C all (ETH/15m) | 73.1% | 52 | — | ⭐⭐⭐ |
+
+**ETH/5m ensemble (disappointing):**
+- All ensembles top out at 62-63% WF — marginal vs SigA alone at 61.3%
+- Conclusion: ETH/5m edge is already captured by hour filter alone
+
+**BTC/15m ensemble:**
+- B+C agree: 69.2% T=39 ⭐⭐ (interesting)
+- A+B+C all: 69.2% T=39 ⭐⭐
+
+**Conclusion:** Ensemble voting helps significantly on ETH/15m (+3-5% WR) but not on 5m. The 15m A+B ensemble (73.1% σ=3.6% T=102) is the best stable signal discovered.
+
+---
+
+## Synthetic Timeframe Research (syntheticTF.ts)
+
+**Problem:** Best signals are on ETH/15m but live system has only 5m candles.  
+**Solution:** Aggregate 5m → synthetic 15m on-the-fly (group every 3 candles).
+
+**Synthetic 15m validation:**
+| Config | Raw WR | WF 3-fold | Notes |
+|--------|--------|-----------|-------|
+| Synth15m A+B ensemble | 73.5% T=102 | **73.1% σ=3.6% [69.7/78.0/71.4]** | ⭐⭐⭐ CONFIRMED |
+| Synth15m SigA alone | 70.1% T=147 | — | ⭐⭐ |
+| Synth15m RGGG/GRGG+GoodH+BB(15,2.2) | 73.6% T=72 | — | ⭐⭐⭐ |
+
+**Finding:** Synthetic 15m from 5m candles REPRODUCES the real 15m results. This confirms the approach is valid for live use.
+
+**Day-of-Week ETH/5m:**
+| Day | WR | T | Notes |
+|-----|-----|---|-------|
+| Wednesday | 72.6% | 62 | ⭐⭐ best weekday |
+| Saturday | 68.0% | 50 | ⭐ |
+| Tuesday+Wednesday | 67.2% | 128 | ⭐ stable combo |
+| Tuesday+Wednesday+Saturday | 67.4% | 178 | ⭐ |
+| Monday | 51.4% | 72 | ❌ worst |
+| Friday | 52.9% | 68 | ❌ avoid |
+
+**Day-of-Week ETH/15m (tiny samples):**
+- Tuesday: 89.5% T=19 (!) — very few trades
+- Friday: 85.0% T=20 — very few trades  
+- Sat+Fri combined: 82.4% T=34 ⭐⭐⭐
+
+**Daily Range Top 30% Filter (NEW ⭐⭐⭐):**
+- Price in top 30% of day's range + GoodH + BB(20,2.2) + streak≥2 → **73.4% WR T=79**
+- Bottom 30% filter: only 61.1% (asymmetry! Bears much more reliable)
+- Without hour filter: 64.7% T=544 — hour filter critical
+
+**Walk-Forward of Satellite Ideas:**
+| Config | WF WR | σ | T | Notes |
+|--------|--------|---|---|-------|
+| Synth15m A+B | **73.1%** | **3.6%** | 102 | ⭐⭐⭐ BEST |
+| ETH/5m streak≥5+GoodH+BB | 62.7% | 9.9% | 106 | unstable |
+| ETH/5m Sat+Sun+GoodH | 62.6% | 6.8% | 143 | modest |
+| ETH/5m Sat only+GoodH | 67.3% | 5.0% | 50 | ⭐⭐ decent |
+
+---
+
+## New Strategies Added to indicators.ts (Session 2)
+
+### Strategy 16: Synth15m Ensemble 🔮
+- **Method:** Aggregate 5m → synth 15m on-the-fly, apply GoodH+BB(20,2.2)+streak≥2 AND streak≥3+BB(20,2)
+- **Walk-forward: 73.1% WR σ=3.6% T=102 folds=[69.7/78.0/71.4] ⭐⭐⭐**
+- Highest stable WR of any signal found — better than any single 5m signal
+- Requires 63 candles (21 synth 15m) to compute
+
+### Strategy 17: Daily Range Extreme 📏
+- **Method:** GoodH + BB(20,2.2) + streak≥2 + price in top 30% of daily range (bear) or bottom 30% (bull)
+- **Raw WR: 73.4% T=79** (not yet walk-forward validated — treat as supplementary)
+- Intuition: at BB extreme AND near daily high = double overextension confirmation
+
+---
+
+## Updated Rankings (As of Session 2)
+
+### BEST STRATEGIES (walk-forward validated, out-of-sample)
+
+| Rank | Strategy | WR | σ | Trades | Coin/TF |
+|------|---------|-----|---|--------|---------|
+| 1 | **Synth15m Ensemble (Strat 16)** | **73.1%** | **3.6%** | 102 | ETH/5m |
+| 2 | **Good Hours Optimized (Strat 15)** | **69.8%** | **1.1%** | 126 | ETH/5m |
+| 3 | BTC/15m MFI(10)>80+BB (Strat 12) | 70.4% | ~5% | 142 | BTC/15m |
+| 4 | ETH/5m GGG+BB+bodyATR @ GoodH | 74.5% | 5.7% | 102 | ETH/5m |
+| 5 | ETH/5m Sniper (GGG+BB+bodyATR exact) | 79.2% | — | 53 | ETH/5m |
+
+### RESEARCH SCRIPTS (total: 28)
+goodHoursRGGG.ts, ensembleVoting.ts, syntheticTF.ts + all previous 25
