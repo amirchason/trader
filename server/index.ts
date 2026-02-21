@@ -8,7 +8,7 @@ import type { SSEPayload, BinaryMarket, BtcData, StrategyResult } from './types'
 import { getDb, getDbStatus } from './db';
 import { downloadAllHistoricalData, download1sAndAggregate } from './historical';
 import { createJob, getJob, listJobs, deleteJob, resumePendingJobs, setBroadcast } from './jobQueue';
-import { openTrade, closeTrade, getOpenPositions, getAllTrades, getPnlSummary, initPaperTradingDb } from './paper-trading';
+import { openTrade, closeTrade, getOpenPositions, getAllTrades, getPnlSummary, initPaperTradingDb, clearAllTrades } from './paper-trading';
 import { agentChat } from './agent';
 import type { ChatMessage } from './agent';
 
@@ -319,6 +319,15 @@ app.get('/api/pnl', (_req: Request, res: Response) => {
   catch (err) { res.status(500).json({ error: String(err) }); }
 });
 
+app.delete('/api/paper/reset', (_req: Request, res: Response) => {
+  try {
+    clearAllTrades();
+    const summary = getPnlSummary();
+    broadcast({ type: 'paper_update', data: { positions: [], pnl: summary }, timestamp: Date.now() });
+    res.json({ ok: true, message: 'All paper trades cleared. Balance reset to $1000.' });
+  } catch (err) { res.status(500).json({ error: String(err) }); }
+});
+
 // ─────────────────── Polling Loops ───────────────────
 
 async function pollMarkets() {
@@ -369,9 +378,20 @@ getDb(); // Initialize SQLite on startup
 initPaperTradingDb(); // Create paper_trades table if not exists
 resumePendingJobs(); // Resume any pending jobs from before restart
 
+function pollPaperTrading() {
+  try {
+    const positions = getOpenPositions();
+    const pnl = getPnlSummary();
+    broadcast({ type: 'paper_update', data: { positions, pnl }, timestamp: Date.now() });
+  } catch (err) {
+    console.error('[Paper] Poll error:', err);
+  }
+}
+
 // Polling intervals
-setInterval(pollMarkets, 10_000);   // Markets every 10s
-setInterval(pollBtcData, 5_000);    // BTC data + signals every 5s
+setInterval(pollMarkets, 10_000);      // Markets every 10s
+setInterval(pollBtcData, 5_000);       // BTC data + signals every 5s
+setInterval(pollPaperTrading, 10_000); // Paper trading every 10s
 
 app.listen(PORT, () => {
   console.log(`[Server] Trader API running on http://localhost:${PORT}`);

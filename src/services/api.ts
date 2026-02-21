@@ -84,6 +84,14 @@ export function connectSSE() {
           addNotification(`✓ Backtest complete — Win Rate: ${wr} | P&L: ${pnl}`, 'success');
           break;
         }
+
+        case 'paper_update': {
+          const { positions, pnl } = payload.data as any;
+          const { setPaperPositions, setPaperPnl } = useStore.getState();
+          if (positions) setPaperPositions(positions);
+          if (pnl) setPaperPnl(pnl);
+          break;
+        }
         }
       } catch (err) {
         console.warn('[SSE] Parse error:', err);
@@ -163,5 +171,39 @@ export async function fetchBacktestJob(id: string) {
 
 export async function deleteBacktestJob(id: string) {
   const res = await fetch(`/api/backtest/jobs/${id}`, { method: 'DELETE' });
+  return res.json();
+}
+
+// ─── Paper Trading API helpers ───
+
+export async function fetchPaperPositions() {
+  const res = await fetch('/api/positions');
+  if (!res.ok) throw new Error('Failed to fetch positions');
+  return res.json();
+}
+
+export async function fetchPaperPnl() {
+  const res = await fetch('/api/pnl');
+  if (!res.ok) throw new Error('Failed to fetch PnL');
+  return res.json();
+}
+
+export async function fetchPaperTrades() {
+  const res = await fetch('/api/trades');
+  if (!res.ok) throw new Error('Failed to fetch trades');
+  return res.json();
+}
+
+export async function closePaperTrade(id: string, exitPrice: number) {
+  const res = await fetch(`/api/trade/paper/${id}/close`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ exitPrice }),
+  });
+  return res.json();
+}
+
+export async function resetPaperTrading() {
+  const res = await fetch('/api/paper/reset', { method: 'DELETE' });
   return res.json();
 }

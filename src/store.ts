@@ -130,6 +130,39 @@ export interface BacktestDbStatus {
   };
 }
 
+// ─── Paper Trading Types ───
+export interface PaperTrade {
+  id: string;
+  market_id: string;
+  market_q: string;
+  asset: string;
+  direction: 'YES' | 'NO';
+  entry_price: number;
+  size: number;
+  status: 'OPEN' | 'CLOSED' | 'EXPIRED';
+  exit_price: number | null;
+  pnl: number | null;
+  reason: string | null;
+  strategy: string | null;
+  confidence: number | null;
+  created_at: string;
+  closed_at: string | null;
+}
+
+export interface PnlSummary {
+  totalTrades: number;
+  openCount: number;
+  closedCount: number;
+  realizedPnl: number;
+  unrealizedPnl: number;
+  balance: number;
+  equity: number;
+  startingBalance: number;
+  winRate: number;
+  wins: number;
+  losses: number;
+}
+
 export interface ToastNotification {
   id: string;
   message: string;
@@ -152,6 +185,12 @@ interface Store {
   setRtdsPrice: (asset: string, price: number) => void;
   setConnected: (connected: boolean) => void;
   setSelectedMarket: (market: BinaryMarket | null) => void;
+
+  // Paper trading state
+  paperPositions: PaperTrade[];
+  paperPnl: PnlSummary | null;
+  setPaperPositions: (positions: PaperTrade[]) => void;
+  setPaperPnl: (pnl: PnlSummary) => void;
 
   // Backtest state
   backtestJobs: BacktestJobSummary[];
@@ -191,6 +230,12 @@ export const useStore = create<Store>((set) => ({
     set((state) => ({ rtdsPrices: { ...state.rtdsPrices, [asset]: price } })),
   setConnected: (connected) => set({ connected }),
   setSelectedMarket: (selectedMarket) => set({ selectedMarket }),
+
+  // Paper trading initial state
+  paperPositions: [],
+  paperPnl: null,
+  setPaperPositions: (paperPositions) => set({ paperPositions }),
+  setPaperPnl: (paperPnl) => set({ paperPnl }),
 
   // Backtest initial state
   backtestJobs: [],

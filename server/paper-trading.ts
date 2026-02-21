@@ -3,6 +3,8 @@ import { randomUUID } from 'crypto';
 
 // ─────────────────── Schema ───────────────────
 
+const STARTING_BALANCE = 1000;
+
 const CREATE_TABLE = `
   CREATE TABLE IF NOT EXISTS paper_trades (
     id          TEXT    PRIMARY KEY,
@@ -65,6 +67,10 @@ export interface PnlSummary {
   openCount: number;
   closedCount: number;
   realizedPnl: number;
+  unrealizedPnl: number;
+  balance: number;         // starting balance + realized PnL
+  equity: number;          // balance + unrealized PnL
+  startingBalance: number;
   winRate: number;
   wins: number;
   losses: number;
@@ -148,21 +154,35 @@ export function getAllTrades(): PaperTrade[] {
 
 export function getPnlSummary(): PnlSummary {
   initPaperTradingDb();
-  const db = getDb();
 
   const trades = getAllTrades();
   const closed = trades.filter(t => t.status === 'CLOSED');
   const open = trades.filter(t => t.status === 'OPEN');
   const wins = closed.filter(t => (t.pnl ?? 0) > 0);
   const realizedPnl = closed.reduce((sum, t) => sum + (t.pnl ?? 0), 0);
+  // Unrealized: sum of (currentPrice - entryPrice) * size for open trades
+  // We don't have live prices here so use entry_price as proxy (0 unrealized until closed)
+  const unrealizedPnl = 0;
+  const balance = STARTING_BALANCE + realizedPnl;
+  const equity = balance + unrealizedPnl;
 
   return {
     totalTrades: trades.length,
     openCount: open.length,
     closedCount: closed.length,
     realizedPnl: Math.round(realizedPnl * 100) / 100,
+    unrealizedPnl: Math.round(unrealizedPnl * 100) / 100,
+    balance: Math.round(balance * 100) / 100,
+    equity: Math.round(equity * 100) / 100,
+    startingBalance: STARTING_BALANCE,
     winRate: closed.length > 0 ? Math.round((wins.length / closed.length) * 100) : 0,
     wins: wins.length,
     losses: closed.length - wins.length,
   };
+}
+
+export function clearAllTrades(): void {
+  initPaperTradingDb();
+  const db = getDb();
+  db.prepare('DELETE FROM paper_trades').run();
 }

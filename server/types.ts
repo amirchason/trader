@@ -122,7 +122,8 @@ export interface StrategyResult {
 export interface SSEPayload {
   type: 'markets' | 'btc' | 'signals' | 'book' | 'rtds'
       | 'backtest_job_update' | 'backtest_progress' | 'backtest_candle'
-      | 'backtest_trade' | 'backtest_complete';
+      | 'backtest_trade' | 'backtest_complete'
+      | 'paper_update';
   data: any;
   timestamp: number;
 }

@@ -1,15 +1,16 @@
 import { useState, useEffect } from 'react';
-import { Activity, BarChart2, Terminal } from 'lucide-react';
+import { Activity, BarChart2, Terminal, DollarSign } from 'lucide-react';
 import { PriceBar } from './components/PriceBar';
 import { MarketGrid } from './components/MarketGrid';
 import { CandleChart } from './components/CandleChart';
 import { SignalPanel } from './components/SignalPanel';
 import { BacktestTab } from './components/BacktestTab';
+import { PaperTradingPanel } from './components/PaperTradingPanel';
 import { NotificationCenter } from './components/Notification';
 import { AgentConsole } from './components/AgentConsole';
 import { connectSSE } from './services/api';
 
-type Tab = 'trading' | 'backtest';
+type Tab = 'trading' | 'paper' | 'backtest';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState<Tab>('trading');
@@ -29,6 +30,7 @@ export default function App() {
         {(
           [
             { id: 'trading' as Tab, icon: Activity, label: 'Live Trading' },
+            { id: 'paper' as Tab, icon: DollarSign, label: 'Paper Trading' },
             { id: 'backtest' as Tab, icon: BarChart2, label: 'Backtesting' },
           ] as const
         ).map((tab) => (
@@ -64,7 +66,7 @@ export default function App() {
       </div>
 
       <main className="flex-1 overflow-y-auto">
-        {activeTab === 'trading' ? (
+        {activeTab === 'trading' && (
           <>
             <div className="grid grid-cols-2 gap-4 p-4">
               <CandleChart />
@@ -74,9 +76,9 @@ export default function App() {
               <MarketGrid />
             </div>
           </>
-        ) : (
-          <BacktestTab />
         )}
+        {activeTab === 'paper' && <PaperTradingPanel />}
+        {activeTab === 'backtest' && <BacktestTab />}
       </main>
 
       <NotificationCenter />
