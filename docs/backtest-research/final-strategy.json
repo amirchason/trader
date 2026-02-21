@@ -1,0 +1,229 @@
+{
+  "timestamp": 1771679655581,
+  "eth5m": [
+    {
+      "name": "BB+RSI65+skip14",
+      "trades": 594,
+      "wins": 357,
+      "wr": 0.601010101010101,
+      "pnl": 1200
+    },
+    {
+      "name": "BB(20,2) + RSI65",
+      "trades": 648,
+      "wins": 385,
+      "wr": 0.5941358024691358,
+      "pnl": 1220
+    },
+    {
+      "name": "Streak+BB+RSI55+skip14",
+      "trades": 776,
+      "wins": 461,
+      "wr": 0.5940721649484536,
+      "pnl": 1460
+    },
+    {
+      "name": "BB(20,2) + skip14",
+      "trades": 782,
+      "wins": 462,
+      "wr": 0.5907928388746803,
+      "pnl": 1420
+    },
+    {
+      "name": "Streak+BB+skip14",
+      "trades": 782,
+      "wins": 462,
+      "wr": 0.5907928388746803,
+      "pnl": 1420
+    },
+    {
+      "name": "Streak+BB+RSI55",
+      "trades": 842,
+      "wins": 497,
+      "wr": 0.5902612826603325,
+      "pnl": 1520
+    },
+    {
+      "name": "Streak+BB+Body+RSI+noEuro",
+      "trades": 217,
+      "wins": 128,
+      "wr": 0.5898617511520737,
+      "pnl": 390
+    },
+    {
+      "name": "Streak+BB+RSI55+noEuro",
+      "trades": 528,
+      "wins": 311,
+      "wr": 0.5890151515151515,
+      "pnl": 940
+    },
+    {
+      "name": "BB(20,2) — baseline",
+      "trades": 849,
+      "wins": 499,
+      "wr": 0.5877502944640753,
+      "pnl": 1490
+    },
+    {
+      "name": "Streak+BB(20,2)",
+      "trades": 849,
+      "wins": 499,
+      "wr": 0.5877502944640753,
+      "pnl": 1490
+    },
+    {
+      "name": "Streak+Big+BB+RSI55+noEuro",
+      "trades": 598,
+      "wins": 351,
+      "wr": 0.5869565217391305,
+      "pnl": 1040
+    },
+    {
+      "name": "BB(20,2) + noEuro",
+      "trades": 534,
+      "wins": 312,
+      "wr": 0.5842696629213483,
+      "pnl": 900
+    },
+    {
+      "name": "BigCandle+BB(20,2)",
+      "trades": 991,
+      "wins": 579,
+      "wr": 0.5842583249243188,
+      "pnl": 1670
+    },
+    {
+      "name": "Streak+Big+BB",
+      "trades": 991,
+      "wins": 579,
+      "wr": 0.5842583249243188,
+      "pnl": 1670
+    },
+    {
+      "name": "Streak+BB(20,1.5)",
+      "trades": 1454,
+      "wins": 841,
+      "wr": 0.578404401650619,
+      "pnl": 2280
+    },
+    {
+      "name": "Streak+BB+Body+RSI55",
+      "trades": 382,
+      "wins": 220,
+      "wr": 0.5759162303664922,
+      "pnl": 580
+    },
+    {
+      "name": "Streak+BB+BodyATR0.9",
+      "trades": 386,
+      "wins": 221,
+      "wr": 0.572538860103627,
+      "pnl": 560
+    },
+    {
+      "name": "Streak + RSI55",
+      "trades": 2031,
+      "wins": 1154,
+      "wr": 0.568193008370261,
+      "pnl": 2770
+    },
+    {
+      "name": "Streak(3) — baseline",
+      "trades": 3618,
+      "wins": 2011,
+      "wr": 0.5558319513543394,
+      "pnl": 4040
+    },
+    {
+      "name": "Streak + skip14",
+      "trades": 3465,
+      "wins": 1924,
+      "wr": 0.5552669552669552,
+      "pnl": 3830
+    },
+    {
+      "name": "Streak + BodyATR0.9",
+      "trades": 681,
+      "wins": 378,
+      "wr": 0.5550660792951542,
+      "pnl": 750
+    },
+    {
+      "name": "Streak + noEuro",
+      "trades": 2462,
+      "wins": 1357,
+      "wr": 0.5511779041429732,
+      "pnl": 2520
+    }
+  ],
+  "eth15m": [
+    {
+      "name": "BB(20,2.5)+RSI70+topHours",
+      "trades": 27,
+      "wins": 21,
+      "wr": 0.7777777777777778,
+      "pnl": 150
+    },
+    {
+      "name": "Streak+BB+Body+RSI55+topHours",
+      "trades": 44,
+      "wins": 34,
+      "wr": 0.7727272727272727,
+      "pnl": 240
+    },
+    {
+      "name": "Streak+BB+Body+topHours",
+      "trades": 44,
+      "wins": 34,
+      "wr": 0.7727272727272727,
+      "pnl": 240
+    },
+    {
+      "name": "BB(20,2.5)",
+      "trades": 118,
+      "wins": 81,
+      "wr": 0.6864406779661016,
+      "pnl": 440
+    },
+    {
+      "name": "Streak+BB(20,2)+BodyATR",
+      "trades": 121,
+      "wins": 79,
+      "wr": 0.6528925619834711,
+      "pnl": 370
+    },
+    {
+      "name": "BB(20,2)+RSI65+skip14",
+      "trades": 162,
+      "wins": 105,
+      "wr": 0.6481481481481481,
+      "pnl": 480
+    },
+    {
+      "name": "BB(20,2) — baseline",
+      "trades": 253,
+      "wins": 161,
+      "wr": 0.6363636363636364,
+      "pnl": 690
+    },
+    {
+      "name": "Streak+BB(20,2)",
+      "trades": 253,
+      "wins": 161,
+      "wr": 0.6363636363636364,
+      "pnl": 690
+    },
+    {
+      "name": "Streak(3) — baseline",
+      "trades": 1074,
+      "wins": 634,
+      "wr": 0.590316573556797,
+      "pnl": 1940
+    }
+  ],
+  "portfolio": {
+    "wr": 0.6219512195121951,
+    "trades": 492,
+    "pnl": 1200
+  }
+}

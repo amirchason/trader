@@ -1,0 +1,377 @@
+{
+  "timestamp": 1771680666793,
+  "markovPatterns": [
+    {
+      "pattern": "RRRR",
+      "bet": "BULL",
+      "coin": "ETH",
+      "tf": "5m",
+      "trainWR": 0.543728135932034,
+      "testWR": 0.5655339805825242,
+      "testT": 824,
+      "pnl": 1080
+    },
+    {
+      "pattern": "GGGG",
+      "bet": "BEAR",
+      "coin": "ETH",
+      "tf": "5m",
+      "trainWR": 0.5443288756810302,
+      "testWR": 0.5707196029776674,
+      "testT": 806,
+      "pnl": 1140
+    },
+    {
+      "pattern": "RRR",
+      "bet": "BULL",
+      "coin": "ETH",
+      "tf": "5m",
+      "trainWR": 0.5311621368322399,
+      "testWR": 0.5507088331515813,
+      "testT": 1834,
+      "pnl": 1860
+    },
+    {
+      "pattern": "GGG",
+      "bet": "BEAR",
+      "coin": "ETH",
+      "tf": "5m",
+      "trainWR": 0.5333949618673446,
+      "testWR": 0.5583561643835616,
+      "testT": 1825,
+      "pnl": 2130
+    },
+    {
+      "pattern": "RRRR",
+      "bet": "BULL",
+      "coin": "ETH",
+      "tf": "15m",
+      "trainWR": 0.5646853146853147,
+      "testWR": 0.569620253164557,
+      "testT": 237,
+      "pnl": 330
+    },
+    {
+      "pattern": "GGGG",
+      "bet": "BEAR",
+      "coin": "ETH",
+      "tf": "15m",
+      "trainWR": 0.5666666666666667,
+      "testWR": 0.5953488372093023,
+      "testT": 215,
+      "pnl": 410
+    },
+    {
+      "pattern": "GRRRR",
+      "bet": "BULL",
+      "coin": "ETH",
+      "tf": "15m",
+      "trainWR": 0.5572755417956656,
+      "testWR": 0.5555555555555556,
+      "testT": 135,
+      "pnl": 150
+    },
+    {
+      "pattern": "GGGGG",
+      "bet": "BEAR",
+      "coin": "ETH",
+      "tf": "15m",
+      "trainWR": 0.5587044534412956,
+      "testWR": 0.6436781609195402,
+      "testT": 87,
+      "pnl": 250
+    },
+    {
+      "pattern": "RRRRR",
+      "bet": "BULL",
+      "coin": "ETH",
+      "tf": "15m",
+      "trainWR": 0.5742971887550201,
+      "testWR": 0.5882352941176471,
+      "testT": 102,
+      "pnl": 180
+    },
+    {
+      "pattern": "RRR",
+      "bet": "BULL",
+      "coin": "ETH",
+      "tf": "15m",
+      "trainWR": 0.559322033898305,
+      "testWR": 0.5675182481751825,
+      "testT": 548,
+      "pnl": 740
+    },
+    {
+      "pattern": "GGG",
+      "bet": "BEAR",
+      "coin": "ETH",
+      "tf": "15m",
+      "trainWR": 0.5701357466063348,
+      "testWR": 0.601113172541744,
+      "testT": 539,
+      "pnl": 1090
+    },
+    {
+      "pattern": "GGRGG",
+      "bet": "BEAR",
+      "coin": "ETH",
+      "tf": "15m",
+      "trainWR": 0.48936170212765956,
+      "testWR": 0.5370370370370371,
+      "testT": 162,
+      "pnl": 120
+    },
+    {
+      "pattern": "RGGRG",
+      "bet": "BULL",
+      "coin": "ETH",
+      "tf": "15m",
+      "trainWR": 0.4235294117647059,
+      "testWR": 0.4444444444444444,
+      "testT": 180,
+      "pnl": -200
+    },
+    {
+      "pattern": "RRRR",
+      "bet": "BULL",
+      "coin": "BTC",
+      "tf": "15m",
+      "trainWR": 0.5429447852760736,
+      "testWR": 0.5473251028806584,
+      "testT": 243,
+      "pnl": 230
+    },
+    {
+      "pattern": "GGGG",
+      "bet": "BEAR",
+      "coin": "BTC",
+      "tf": "15m",
+      "trainWR": 0.5495356037151703,
+      "testWR": 0.5674418604651162,
+      "testT": 215,
+      "pnl": 290
+    },
+    {
+      "pattern": "GRRRR",
+      "bet": "BULL",
+      "coin": "BTC",
+      "tf": "15m",
+      "trainWR": 0.5819209039548022,
+      "testWR": 0.48872180451127817,
+      "testT": 133,
+      "pnl": -30
+    },
+    {
+      "pattern": "GGGGG",
+      "bet": "BEAR",
+      "coin": "BTC",
+      "tf": "15m",
+      "trainWR": 0.6048109965635738,
+      "testWR": 0.5483870967741935,
+      "testT": 93,
+      "pnl": 90
+    },
+    {
+      "pattern": "RRRRR",
+      "bet": "BULL",
+      "coin": "BTC",
+      "tf": "15m",
+      "trainWR": 0.4966442953020134,
+      "testWR": 0.6181818181818182,
+      "testT": 110,
+      "pnl": 260
+    },
+    {
+      "pattern": "RRR",
+      "bet": "BULL",
+      "coin": "BTC",
+      "tf": "15m",
+      "trainWR": 0.5369318181818182,
+      "testWR": 0.5645161290322581,
+      "testT": 558,
+      "pnl": 720
+    },
+    {
+      "pattern": "GGG",
+      "bet": "BEAR",
+      "coin": "BTC",
+      "tf": "15m",
+      "trainWR": 0.538241601143674,
+      "testWR": 0.5996275605214153,
+      "testT": 537,
+      "pnl": 1070
+    },
+    {
+      "pattern": "GGRGG",
+      "bet": "BEAR",
+      "coin": "BTC",
+      "tf": "15m",
+      "trainWR": 0.4755043227665706,
+      "testWR": 0.5121951219512195,
+      "testT": 164,
+      "pnl": 40
+    },
+    {
+      "pattern": "RGGRG",
+      "bet": "BULL",
+      "coin": "BTC",
+      "tf": "15m",
+      "trainWR": 0.47368421052631576,
+      "testWR": 0.489247311827957,
+      "testT": 186,
+      "pnl": -40
+    },
+    {
+      "pattern": "RRRR",
+      "bet": "BULL",
+      "coin": "SOL",
+      "tf": "15m",
+      "trainWR": 0.5194401244167963,
+      "testWR": 0.5525423728813559,
+      "testT": 295,
+      "pnl": 310
+    },
+    {
+      "pattern": "GGGG",
+      "bet": "BEAR",
+      "coin": "SOL",
+      "tf": "15m",
+      "trainWR": 0.5582137161084529,
+      "testWR": 0.5564853556485355,
+      "testT": 239,
+      "pnl": 270
+    },
+    {
+      "pattern": "GRRRR",
+      "bet": "BULL",
+      "coin": "SOL",
+      "tf": "15m",
+      "trainWR": 0.5299401197604791,
+      "testWR": 0.49693251533742333,
+      "testT": 163,
+      "pnl": -10
+    },
+    {
+      "pattern": "GGGGG",
+      "bet": "BEAR",
+      "coin": "SOL",
+      "tf": "15m",
+      "trainWR": 0.5523465703971119,
+      "testWR": 0.6132075471698113,
+      "testT": 106,
+      "pnl": 240
+    },
+    {
+      "pattern": "RRRRR",
+      "bet": "BULL",
+      "coin": "SOL",
+      "tf": "15m",
+      "trainWR": 0.5080906148867314,
+      "testWR": 0.6212121212121212,
+      "testT": 132,
+      "pnl": 320
+    },
+    {
+      "pattern": "RRR",
+      "bet": "BULL",
+      "coin": "SOL",
+      "tf": "15m",
+      "trainWR": 0.533042846768337,
+      "testWR": 0.5272435897435898,
+      "testT": 624,
+      "pnl": 340
+    },
+    {
+      "pattern": "GGG",
+      "bet": "BEAR",
+      "coin": "SOL",
+      "tf": "15m",
+      "trainWR": 0.547945205479452,
+      "testWR": 0.5716845878136201,
+      "testT": 558,
+      "pnl": 800
+    },
+    {
+      "pattern": "GGRGG",
+      "bet": "BEAR",
+      "coin": "SOL",
+      "tf": "15m",
+      "trainWR": 0.5083333333333333,
+      "testWR": 0.48484848484848486,
+      "testT": 165,
+      "pnl": -50
+    },
+    {
+      "pattern": "RGGRG",
+      "bet": "BULL",
+      "coin": "SOL",
+      "tf": "15m",
+      "trainWR": 0.43950617283950616,
+      "testWR": 0.5,
+      "testT": 172,
+      "pnl": 0
+    }
+  ],
+  "gbdtFilter": [
+    {
+      "coin": "ETH",
+      "tf": "5m",
+      "streakLen": 3,
+      "bbMult": 2,
+      "rawWR": 0.5594360086767896,
+      "rawT": 4610,
+      "gbdtWR": 0.5846456692913385,
+      "gbdtT": 1016,
+      "gbdtPnl": 1720,
+      "thr": 0.55
+    },
+    {
+      "coin": "ETH",
+      "tf": "5m",
+      "streakLen": 3,
+      "bbMult": 1.5,
+      "rawWR": 0.5568787214039486,
+      "rawT": 6382,
+      "gbdtWR": 0.606508875739645,
+      "gbdtT": 338,
+      "gbdtPnl": 720,
+      "thr": 0.56
+    },
+    {
+      "coin": "ETH",
+      "tf": "15m",
+      "streakLen": 3,
+      "bbMult": 2,
+      "rawWR": 0.5843706777316736,
+      "rawT": 1446,
+      "gbdtWR": 0.5857142857142857,
+      "gbdtT": 980,
+      "gbdtPnl": 1680,
+      "thr": 0.54
+    },
+    {
+      "coin": "BTC",
+      "tf": "15m",
+      "streakLen": 3,
+      "bbMult": 2,
+      "rawWR": 0.5819327731092437,
+      "rawT": 1428,
+      "gbdtWR": 0.5819327731092437,
+      "gbdtT": 1428,
+      "gbdtPnl": 2340,
+      "thr": 0.5
+    },
+    {
+      "coin": "SOL",
+      "tf": "15m",
+      "streakLen": 3,
+      "bbMult": 2,
+      "rawWR": 0.5491913746630728,
+      "rawT": 1484,
+      "gbdtWR": 0.5562336530078466,
+      "gbdtT": 1147,
+      "gbdtPnl": 1290,
+      "thr": 0.52
+    }
+  ]
+}

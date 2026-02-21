@@ -1,0 +1,415 @@
+{
+  "tfResults": [
+    {
+      "coin": "BTC",
+      "tf": "15m",
+      "streakBest": {
+        "len": 6,
+        "trades": 83,
+        "wr": 0.5903614457831325,
+        "pnl": 150
+      },
+      "bigBest": {
+        "pct": 0.7,
+        "trades": 86,
+        "wr": 0.6395348837209303,
+        "pnl": 240
+      },
+      "totalCandles": 17664,
+      "testCandles": 5300
+    },
+    {
+      "coin": "XRP",
+      "tf": "15m",
+      "streakBest": {
+        "len": 5,
+        "trades": 232,
+        "wr": 0.5517241379310345,
+        "pnl": 240
+      },
+      "bigBest": {
+        "pct": 1.5,
+        "trades": 22,
+        "wr": 0.6363636363636364,
+        "pnl": 60
+      },
+      "totalCandles": 17664,
+      "testCandles": 5300
+    },
+    {
+      "coin": "SOL",
+      "tf": "30m",
+      "streakBest": {
+        "len": 6,
+        "trades": 54,
+        "wr": 0.6296296296296297,
+        "pnl": 140
+      },
+      "bigBest": {
+        "pct": 0.3,
+        "trades": 915,
+        "wr": 0.49836065573770494,
+        "pnl": -30
+      },
+      "totalCandles": 8832,
+      "testCandles": 2650
+    },
+    {
+      "coin": "ETH",
+      "tf": "15m",
+      "streakBest": {
+        "len": 5,
+        "trades": 181,
+        "wr": 0.6243093922651933,
+        "pnl": 450
+      },
+      "bigBest": {
+        "pct": 0.7,
+        "trades": 205,
+        "wr": 0.6048780487804878,
+        "pnl": 430
+      },
+      "totalCandles": 17664,
+      "testCandles": 5300
+    },
+    {
+      "coin": "SOL",
+      "tf": "15m",
+      "streakBest": {
+        "len": 5,
+        "trades": 215,
+        "wr": 0.6232558139534884,
+        "pnl": 530
+      },
+      "bigBest": {
+        "pct": 0.5,
+        "trades": 502,
+        "wr": 0.5537848605577689,
+        "pnl": 540
+      },
+      "totalCandles": 17664,
+      "testCandles": 5300
+    },
+    {
+      "coin": "ETH",
+      "tf": "30m",
+      "streakBest": {
+        "len": 6,
+        "trades": 45,
+        "wr": 0.6222222222222222,
+        "pnl": 110
+      },
+      "bigBest": {
+        "pct": 0.7,
+        "trades": 193,
+        "wr": 0.5647668393782384,
+        "pnl": 250
+      },
+      "totalCandles": 8832,
+      "testCandles": 2650
+    },
+    {
+      "coin": "XRP",
+      "tf": "30m",
+      "streakBest": {
+        "len": 6,
+        "trades": 47,
+        "wr": 0.6170212765957447,
+        "pnl": 110
+      },
+      "bigBest": {
+        "pct": 0.7,
+        "trades": 229,
+        "wr": 0.5502183406113537,
+        "pnl": 230
+      },
+      "totalCandles": 8832,
+      "testCandles": 2650
+    },
+    {
+      "coin": "SOL",
+      "tf": "5m",
+      "streakBest": {
+        "len": 3,
+        "trades": 3353,
+        "wr": 0.5293766776021473,
+        "pnl": 1970
+      },
+      "bigBest": {
+        "pct": 0.7,
+        "trades": 164,
+        "wr": 0.5975609756097561,
+        "pnl": 320
+      },
+      "totalCandles": 52992,
+      "testCandles": 15898
+    },
+    {
+      "coin": "BTC",
+      "tf": "1h",
+      "streakBest": {
+        "len": 6,
+        "trades": 27,
+        "wr": 0.5925925925925926,
+        "pnl": 50
+      },
+      "bigBest": {
+        "pct": 0.7,
+        "trades": 99,
+        "wr": 0.5050505050505051,
+        "pnl": 10
+      },
+      "totalCandles": 4416,
+      "testCandles": 1325
+    },
+    {
+      "coin": "XRP",
+      "tf": "1h",
+      "streakBest": {
+        "len": 2,
+        "trades": 651,
+        "wr": 0.5268817204301075,
+        "pnl": 350
+      },
+      "bigBest": {
+        "pct": 1.5,
+        "trades": 51,
+        "wr": 0.5882352941176471,
+        "pnl": 90
+      },
+      "totalCandles": 4416,
+      "testCandles": 1325
+    },
+    {
+      "coin": "ETH",
+      "tf": "5m",
+      "streakBest": {
+        "len": 5,
+        "trades": 693,
+        "wr": 0.5829725829725829,
+        "pnl": 1150
+      },
+      "bigBest": {
+        "pct": 0.7,
+        "trades": 133,
+        "wr": 0.556390977443609,
+        "pnl": 150
+      },
+      "totalCandles": 52992,
+      "testCandles": 15898
+    },
+    {
+      "coin": "BTC",
+      "tf": "5m",
+      "streakBest": {
+        "len": 4,
+        "trades": 1672,
+        "wr": 0.5436602870813397,
+        "pnl": 1460
+      },
+      "bigBest": {
+        "pct": 0.5,
+        "trades": 126,
+        "wr": 0.5793650793650794,
+        "pnl": 200
+      },
+      "totalCandles": 52992,
+      "testCandles": 15898
+    },
+    {
+      "coin": "SOL",
+      "tf": "1h",
+      "streakBest": {
+        "len": 5,
+        "trades": 59,
+        "wr": 0.576271186440678,
+        "pnl": 90
+      },
+      "bigBest": {
+        "pct": 0.3,
+        "trades": 632,
+        "wr": 0.5110759493670886,
+        "pnl": 140
+      },
+      "totalCandles": 4416,
+      "testCandles": 1325
+    },
+    {
+      "coin": "BTC",
+      "tf": "30m",
+      "streakBest": {
+        "len": 5,
+        "trades": 113,
+        "wr": 0.5663716814159292,
+        "pnl": 150
+      },
+      "bigBest": {
+        "pct": 0.3,
+        "trades": 486,
+        "wr": 0.5390946502057613,
+        "pnl": 380
+      },
+      "totalCandles": 8832,
+      "testCandles": 2650
+    },
+    {
+      "coin": "XRP",
+      "tf": "5m",
+      "streakBest": {
+        "len": 6,
+        "trades": 355,
+        "wr": 0.5549295774647888,
+        "pnl": 390
+      },
+      "bigBest": {
+        "pct": 0.7,
+        "trades": 115,
+        "wr": 0.5304347826086957,
+        "pnl": 70
+      },
+      "totalCandles": 52992,
+      "testCandles": 15898
+    },
+    {
+      "coin": "ETH",
+      "tf": "1h",
+      "streakBest": {
+        "len": 5,
+        "trades": 76,
+        "wr": 0.5526315789473685,
+        "pnl": 80
+      },
+      "bigBest": {
+        "pct": 1.5,
+        "trades": 38,
+        "wr": 0.5263157894736842,
+        "pnl": 20
+      },
+      "totalCandles": 4416,
+      "testCandles": 1325
+    }
+  ],
+  "hourResults": [
+    {
+      "hour": 16,
+      "wr": 0.7209302325581395,
+      "total": 43
+    },
+    {
+      "hour": 5,
+      "wr": 0.6944444444444444,
+      "total": 36
+    },
+    {
+      "hour": 22,
+      "wr": 0.6666666666666666,
+      "total": 36
+    },
+    {
+      "hour": 7,
+      "wr": 0.6590909090909091,
+      "total": 44
+    },
+    {
+      "hour": 17,
+      "wr": 0.6571428571428571,
+      "total": 35
+    },
+    {
+      "hour": 3,
+      "wr": 0.6538461538461539,
+      "total": 52
+    },
+    {
+      "hour": 0,
+      "wr": 0.6451612903225806,
+      "total": 31
+    },
+    {
+      "hour": 23,
+      "wr": 0.6304347826086957,
+      "total": 46
+    },
+    {
+      "hour": 20,
+      "wr": 0.6190476190476191,
+      "total": 42
+    },
+    {
+      "hour": 13,
+      "wr": 0.6097560975609756,
+      "total": 41
+    },
+    {
+      "hour": 1,
+      "wr": 0.6,
+      "total": 55
+    },
+    {
+      "hour": 15,
+      "wr": 0.5909090909090909,
+      "total": 44
+    },
+    {
+      "hour": 18,
+      "wr": 0.5882352941176471,
+      "total": 51
+    },
+    {
+      "hour": 2,
+      "wr": 0.575,
+      "total": 40
+    },
+    {
+      "hour": 6,
+      "wr": 0.5581395348837209,
+      "total": 43
+    },
+    {
+      "hour": 8,
+      "wr": 0.5581395348837209,
+      "total": 43
+    },
+    {
+      "hour": 19,
+      "wr": 0.5555555555555556,
+      "total": 45
+    },
+    {
+      "hour": 11,
+      "wr": 0.5517241379310345,
+      "total": 58
+    },
+    {
+      "hour": 10,
+      "wr": 0.5510204081632653,
+      "total": 49
+    },
+    {
+      "hour": 21,
+      "wr": 0.543859649122807,
+      "total": 57
+    },
+    {
+      "hour": 12,
+      "wr": 0.5384615384615384,
+      "total": 39
+    },
+    {
+      "hour": 9,
+      "wr": 0.5333333333333333,
+      "total": 45
+    },
+    {
+      "hour": 4,
+      "wr": 0.5,
+      "total": 50
+    },
+    {
+      "hour": 14,
+      "wr": 0.4444444444444444,
+      "total": 54
+    }
+  ],
+  "timestamp": 1771676117221
+}

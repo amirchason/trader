@@ -1,0 +1,709 @@
+{
+  "timestamp": 1771679541245,
+  "allResults": [
+    {
+      "coin": "ETH",
+      "tf": "5m",
+      "strategy": "BB(20,2) reversion",
+      "wr": 0.579607415485278,
+      "trades": 1834,
+      "pnl": 2920
+    },
+    {
+      "coin": "ETH",
+      "tf": "5m",
+      "strategy": "BB(20,1.5) reversion",
+      "wr": 0.5647533206831119,
+      "trades": 4216,
+      "pnl": 5460
+    },
+    {
+      "coin": "ETH",
+      "tf": "5m",
+      "strategy": "BB(10,2) reversion",
+      "wr": 0.5623648161499639,
+      "trades": 1387,
+      "pnl": 1730
+    },
+    {
+      "coin": "ETH",
+      "tf": "5m",
+      "strategy": "BB(20,2.5) reversion",
+      "wr": 0.5722983257229832,
+      "trades": 657,
+      "pnl": 950
+    },
+    {
+      "coin": "ETH",
+      "tf": "5m",
+      "strategy": "BB(20,2)+RSI65",
+      "wr": 0.5862584017923824,
+      "trades": 1339,
+      "pnl": 2310
+    },
+    {
+      "coin": "ETH",
+      "tf": "5m",
+      "strategy": "BB(20,1.5)+RSI60",
+      "wr": 0.568760611205433,
+      "trades": 3534,
+      "pnl": 4860
+    },
+    {
+      "coin": "ETH",
+      "tf": "5m",
+      "strategy": "BB(20,2)+RSI70",
+      "wr": 0.5734341252699784,
+      "trades": 926,
+      "pnl": 1360
+    },
+    {
+      "coin": "ETH",
+      "tf": "5m",
+      "strategy": "BB%B>1.1 reversion",
+      "wr": 0.5956151035322778,
+      "trades": 821,
+      "pnl": 1570
+    },
+    {
+      "coin": "ETH",
+      "tf": "5m",
+      "strategy": "BB%B>1.0 reversion",
+      "wr": 0.579607415485278,
+      "trades": 1834,
+      "pnl": 2920
+    },
+    {
+      "coin": "ETH",
+      "tf": "5m",
+      "strategy": "Wick(50%,30%) pattern",
+      "wr": 0.4880066170388751,
+      "trades": 3627,
+      "pnl": -870
+    },
+    {
+      "coin": "ETH",
+      "tf": "5m",
+      "strategy": "Wick(60%,25%) pattern",
+      "wr": 0.48938934603724554,
+      "trades": 2309,
+      "pnl": -490
+    },
+    {
+      "coin": "ETH",
+      "tf": "5m",
+      "strategy": "Wick(65%,20%) pattern",
+      "wr": 0.4905897114178168,
+      "trades": 1594,
+      "pnl": -300
+    },
+    {
+      "coin": "ETH",
+      "tf": "5m",
+      "strategy": "Wick(70%,25%) pattern",
+      "wr": 0.49054142204827134,
+      "trades": 1533,
+      "pnl": -290
+    },
+    {
+      "coin": "ETH",
+      "tf": "5m",
+      "strategy": "Doji(<0.05%) reversion",
+      "wr": 0.5201436602123672,
+      "trades": 6404,
+      "pnl": 2580
+    },
+    {
+      "coin": "ETH",
+      "tf": "5m",
+      "strategy": "Doji(<0.1%) reversion",
+      "wr": 0.5190471598032597,
+      "trades": 10369,
+      "pnl": 3950
+    },
+    {
+      "coin": "ETH",
+      "tf": "5m",
+      "strategy": "Doji(<0.15%) reversion",
+      "wr": 0.5207462206497266,
+      "trades": 12436,
+      "pnl": 5160
+    },
+    {
+      "coin": "ETH",
+      "tf": "5m",
+      "strategy": "Engulfing reversion",
+      "wr": 0.5173913043478261,
+      "trades": 920,
+      "pnl": 320
+    },
+    {
+      "coin": "ETH",
+      "tf": "5m",
+      "strategy": "Streak(3)+BB(20,1.5)",
+      "wr": 0.578404401650619,
+      "trades": 1454,
+      "pnl": 2280
+    },
+    {
+      "coin": "ETH",
+      "tf": "5m",
+      "strategy": "Streak(3)+BB(20,2)",
+      "wr": 0.5877502944640753,
+      "trades": 849,
+      "pnl": 1490
+    },
+    {
+      "coin": "ETH",
+      "tf": "5m",
+      "strategy": "Streak(2)+BB(20,1.5)",
+      "wr": 0.5647512864493996,
+      "trades": 2332,
+      "pnl": 3020
+    },
+    {
+      "coin": "ETH",
+      "tf": "5m",
+      "strategy": "BB(20,2)+maxWidth5%",
+      "wr": 0.5794701986754967,
+      "trades": 1812,
+      "pnl": 2880
+    },
+    {
+      "coin": "ETH",
+      "tf": "5m",
+      "strategy": "BB(20,2)+maxWidth3%",
+      "wr": 0.5849377123442808,
+      "trades": 1766,
+      "pnl": 3000
+    },
+    {
+      "coin": "ETH",
+      "tf": "15m",
+      "strategy": "BB(20,2) reversion",
+      "wr": 0.598705501618123,
+      "trades": 618,
+      "pnl": 1220
+    },
+    {
+      "coin": "ETH",
+      "tf": "15m",
+      "strategy": "BB(20,1.5) reversion",
+      "wr": 0.5696296296296296,
+      "trades": 1350,
+      "pnl": 1880
+    },
+    {
+      "coin": "ETH",
+      "tf": "15m",
+      "strategy": "BB(10,2) reversion",
+      "wr": 0.5983086680761099,
+      "trades": 473,
+      "pnl": 930
+    },
+    {
+      "coin": "ETH",
+      "tf": "15m",
+      "strategy": "BB(20,2.5) reversion",
+      "wr": 0.6396761133603239,
+      "trades": 247,
+      "pnl": 690
+    },
+    {
+      "coin": "ETH",
+      "tf": "15m",
+      "strategy": "BB(20,2)+RSI65",
+      "wr": 0.594847775175644,
+      "trades": 427,
+      "pnl": 810
+    },
+    {
+      "coin": "ETH",
+      "tf": "15m",
+      "strategy": "BB(20,1.5)+RSI60",
+      "wr": 0.5728689275893676,
+      "trades": 1091,
+      "pnl": 1590
+    },
+    {
+      "coin": "ETH",
+      "tf": "15m",
+      "strategy": "BB(20,2)+RSI70",
+      "wr": 0.5972696245733788,
+      "trades": 293,
+      "pnl": 570
+    },
+    {
+      "coin": "ETH",
+      "tf": "15m",
+      "strategy": "BB%B>1.1 reversion",
+      "wr": 0.6351351351351351,
+      "trades": 296,
+      "pnl": 800
+    },
+    {
+      "coin": "ETH",
+      "tf": "15m",
+      "strategy": "BB%B>1.0 reversion",
+      "wr": 0.598705501618123,
+      "trades": 618,
+      "pnl": 1220
+    },
+    {
+      "coin": "ETH",
+      "tf": "15m",
+      "strategy": "Wick(50%,30%) pattern",
+      "wr": 0.5173228346456693,
+      "trades": 1270,
+      "pnl": 440
+    },
+    {
+      "coin": "ETH",
+      "tf": "15m",
+      "strategy": "Wick(60%,25%) pattern",
+      "wr": 0.5211864406779662,
+      "trades": 708,
+      "pnl": 300
+    },
+    {
+      "coin": "ETH",
+      "tf": "15m",
+      "strategy": "Wick(65%,20%) pattern",
+      "wr": 0.5126582278481012,
+      "trades": 474,
+      "pnl": 120
+    },
+    {
+      "coin": "ETH",
+      "tf": "15m",
+      "strategy": "Wick(70%,25%) pattern",
+      "wr": 0.5208845208845209,
+      "trades": 407,
+      "pnl": 170
+    },
+    {
+      "coin": "ETH",
+      "tf": "15m",
+      "strategy": "Doji(<0.05%) reversion",
+      "wr": 0.5032414910858996,
+      "trades": 1234,
+      "pnl": 80
+    },
+    {
+      "coin": "ETH",
+      "tf": "15m",
+      "strategy": "Doji(<0.1%) reversion",
+      "wr": 0.5146198830409356,
+      "trades": 2394,
+      "pnl": 700
+    },
+    {
+      "coin": "ETH",
+      "tf": "15m",
+      "strategy": "Doji(<0.15%) reversion",
+      "wr": 0.5073876139578749,
+      "trades": 3181,
+      "pnl": 470
+    },
+    {
+      "coin": "ETH",
+      "tf": "15m",
+      "strategy": "Engulfing reversion",
+      "wr": 0.5855263157894737,
+      "trades": 304,
+      "pnl": 520
+    },
+    {
+      "coin": "ETH",
+      "tf": "15m",
+      "strategy": "Streak(3)+BB(20,1.5)",
+      "wr": 0.611764705882353,
+      "trades": 425,
+      "pnl": 950
+    },
+    {
+      "coin": "ETH",
+      "tf": "15m",
+      "strategy": "Streak(3)+BB(20,2)",
+      "wr": 0.6363636363636364,
+      "trades": 253,
+      "pnl": 690
+    },
+    {
+      "coin": "ETH",
+      "tf": "15m",
+      "strategy": "Streak(2)+BB(20,1.5)",
+      "wr": 0.5947441217150761,
+      "trades": 723,
+      "pnl": 1370
+    },
+    {
+      "coin": "ETH",
+      "tf": "15m",
+      "strategy": "BB(20,2)+maxWidth5%",
+      "wr": 0.5966386554621849,
+      "trades": 595,
+      "pnl": 1150
+    },
+    {
+      "coin": "ETH",
+      "tf": "15m",
+      "strategy": "BB(20,2)+maxWidth3%",
+      "wr": 0.604735883424408,
+      "trades": 549,
+      "pnl": 1150
+    },
+    {
+      "coin": "BTC",
+      "tf": "15m",
+      "strategy": "BB(20,2) reversion",
+      "wr": 0.5990180032733224,
+      "trades": 611,
+      "pnl": 1210
+    },
+    {
+      "coin": "BTC",
+      "tf": "15m",
+      "strategy": "BB(20,1.5) reversion",
+      "wr": 0.5647226173541963,
+      "trades": 1406,
+      "pnl": 1820
+    },
+    {
+      "coin": "BTC",
+      "tf": "15m",
+      "strategy": "BB(10,2) reversion",
+      "wr": 0.5826271186440678,
+      "trades": 472,
+      "pnl": 780
+    },
+    {
+      "coin": "BTC",
+      "tf": "15m",
+      "strategy": "BB(20,2.5) reversion",
+      "wr": 0.5877551020408164,
+      "trades": 245,
+      "pnl": 430
+    },
+    {
+      "coin": "BTC",
+      "tf": "15m",
+      "strategy": "BB(20,2)+RSI65",
+      "wr": 0.6109839816933639,
+      "trades": 437,
+      "pnl": 970
+    },
+    {
+      "coin": "BTC",
+      "tf": "15m",
+      "strategy": "BB(20,1.5)+RSI60",
+      "wr": 0.5662020905923345,
+      "trades": 1148,
+      "pnl": 1520
+    },
+    {
+      "coin": "BTC",
+      "tf": "15m",
+      "strategy": "BB(20,2)+RSI70",
+      "wr": 0.631578947368421,
+      "trades": 285,
+      "pnl": 750
+    },
+    {
+      "coin": "BTC",
+      "tf": "15m",
+      "strategy": "BB%B>1.1 reversion",
+      "wr": 0.5967741935483871,
+      "trades": 310,
+      "pnl": 600
+    },
+    {
+      "coin": "BTC",
+      "tf": "15m",
+      "strategy": "BB%B>1.0 reversion",
+      "wr": 0.5990180032733224,
+      "trades": 611,
+      "pnl": 1210
+    },
+    {
+      "coin": "BTC",
+      "tf": "15m",
+      "strategy": "Wick(50%,30%) pattern",
+      "wr": 0.49575551782682514,
+      "trades": 1178,
+      "pnl": -100
+    },
+    {
+      "coin": "BTC",
+      "tf": "15m",
+      "strategy": "Wick(60%,25%) pattern",
+      "wr": 0.5052473763118441,
+      "trades": 667,
+      "pnl": 70
+    },
+    {
+      "coin": "BTC",
+      "tf": "15m",
+      "strategy": "Wick(65%,20%) pattern",
+      "wr": 0.5081967213114754,
+      "trades": 427,
+      "pnl": 70
+    },
+    {
+      "coin": "BTC",
+      "tf": "15m",
+      "strategy": "Wick(70%,25%) pattern",
+      "wr": 0.48346055979643765,
+      "trades": 393,
+      "pnl": -130
+    },
+    {
+      "coin": "BTC",
+      "tf": "15m",
+      "strategy": "Doji(<0.05%) reversion",
+      "wr": 0.5053191489361702,
+      "trades": 1692,
+      "pnl": 180
+    },
+    {
+      "coin": "BTC",
+      "tf": "15m",
+      "strategy": "Doji(<0.1%) reversion",
+      "wr": 0.512186865267434,
+      "trades": 2954,
+      "pnl": 720
+    },
+    {
+      "coin": "BTC",
+      "tf": "15m",
+      "strategy": "Doji(<0.15%) reversion",
+      "wr": 0.5121163166397416,
+      "trades": 3714,
+      "pnl": 900
+    },
+    {
+      "coin": "BTC",
+      "tf": "15m",
+      "strategy": "Engulfing reversion",
+      "wr": 0.5076923076923077,
+      "trades": 325,
+      "pnl": 50
+    },
+    {
+      "coin": "BTC",
+      "tf": "15m",
+      "strategy": "Streak(3)+BB(20,1.5)",
+      "wr": 0.6108597285067874,
+      "trades": 442,
+      "pnl": 980
+    },
+    {
+      "coin": "BTC",
+      "tf": "15m",
+      "strategy": "Streak(3)+BB(20,2)",
+      "wr": 0.6204379562043796,
+      "trades": 274,
+      "pnl": 660
+    },
+    {
+      "coin": "BTC",
+      "tf": "15m",
+      "strategy": "Streak(2)+BB(20,1.5)",
+      "wr": 0.5828804347826086,
+      "trades": 736,
+      "pnl": 1220
+    },
+    {
+      "coin": "BTC",
+      "tf": "15m",
+      "strategy": "BB(20,2)+maxWidth5%",
+      "wr": 0.6,
+      "trades": 605,
+      "pnl": 1210
+    },
+    {
+      "coin": "BTC",
+      "tf": "15m",
+      "strategy": "BB(20,2)+maxWidth3%",
+      "wr": 0.5975609756097561,
+      "trades": 574,
+      "pnl": 1120
+    },
+    {
+      "coin": "SOL",
+      "tf": "15m",
+      "strategy": "BB(20,2) reversion",
+      "wr": 0.5510835913312694,
+      "trades": 646,
+      "pnl": 660
+    },
+    {
+      "coin": "SOL",
+      "tf": "15m",
+      "strategy": "BB(20,1.5) reversion",
+      "wr": 0.5494350282485876,
+      "trades": 1416,
+      "pnl": 1400
+    },
+    {
+      "coin": "SOL",
+      "tf": "15m",
+      "strategy": "BB(10,2) reversion",
+      "wr": 0.5618448637316562,
+      "trades": 477,
+      "pnl": 590
+    },
+    {
+      "coin": "SOL",
+      "tf": "15m",
+      "strategy": "BB(20,2.5) reversion",
+      "wr": 0.5307692307692308,
+      "trades": 260,
+      "pnl": 160
+    },
+    {
+      "coin": "SOL",
+      "tf": "15m",
+      "strategy": "BB(20,2)+RSI65",
+      "wr": 0.5386313465783664,
+      "trades": 453,
+      "pnl": 350
+    },
+    {
+      "coin": "SOL",
+      "tf": "15m",
+      "strategy": "BB(20,1.5)+RSI60",
+      "wr": 0.5426561125769569,
+      "trades": 1137,
+      "pnl": 970
+    },
+    {
+      "coin": "SOL",
+      "tf": "15m",
+      "strategy": "BB(20,2)+RSI70",
+      "wr": 0.5377049180327869,
+      "trades": 305,
+      "pnl": 230
+    },
+    {
+      "coin": "SOL",
+      "tf": "15m",
+      "strategy": "BB%B>1.1 reversion",
+      "wr": 0.5305466237942122,
+      "trades": 311,
+      "pnl": 190
+    },
+    {
+      "coin": "SOL",
+      "tf": "15m",
+      "strategy": "BB%B>1.0 reversion",
+      "wr": 0.5510835913312694,
+      "trades": 646,
+      "pnl": 660
+    },
+    {
+      "coin": "SOL",
+      "tf": "15m",
+      "strategy": "Wick(50%,30%) pattern",
+      "wr": 0.48874061718098416,
+      "trades": 1199,
+      "pnl": -270
+    },
+    {
+      "coin": "SOL",
+      "tf": "15m",
+      "strategy": "Wick(60%,25%) pattern",
+      "wr": 0.5030864197530864,
+      "trades": 648,
+      "pnl": 40
+    },
+    {
+      "coin": "SOL",
+      "tf": "15m",
+      "strategy": "Wick(65%,20%) pattern",
+      "wr": 0.5071428571428571,
+      "trades": 420,
+      "pnl": 60
+    },
+    {
+      "coin": "SOL",
+      "tf": "15m",
+      "strategy": "Wick(70%,25%) pattern",
+      "wr": 0.494475138121547,
+      "trades": 362,
+      "pnl": -40
+    },
+    {
+      "coin": "SOL",
+      "tf": "15m",
+      "strategy": "Doji(<0.05%) reversion",
+      "wr": 0.522279792746114,
+      "trades": 965,
+      "pnl": 430
+    },
+    {
+      "coin": "SOL",
+      "tf": "15m",
+      "strategy": "Doji(<0.1%) reversion",
+      "wr": 0.5137092602172788,
+      "trades": 1933,
+      "pnl": 530
+    },
+    {
+      "coin": "SOL",
+      "tf": "15m",
+      "strategy": "Doji(<0.15%) reversion",
+      "wr": 0.5110294117647058,
+      "trades": 2720,
+      "pnl": 600
+    },
+    {
+      "coin": "SOL",
+      "tf": "15m",
+      "strategy": "Engulfing reversion",
+      "wr": 0.5104895104895105,
+      "trades": 286,
+      "pnl": 60
+    },
+    {
+      "coin": "SOL",
+      "tf": "15m",
+      "strategy": "Streak(3)+BB(20,1.5)",
+      "wr": 0.5634743875278396,
+      "trades": 449,
+      "pnl": 570
+    },
+    {
+      "coin": "SOL",
+      "tf": "15m",
+      "strategy": "Streak(3)+BB(20,2)",
+      "wr": 0.5563139931740614,
+      "trades": 293,
+      "pnl": 330
+    },
+    {
+      "coin": "SOL",
+      "tf": "15m",
+      "strategy": "Streak(2)+BB(20,1.5)",
+      "wr": 0.5508021390374331,
+      "trades": 748,
+      "pnl": 760
+    },
+    {
+      "coin": "SOL",
+      "tf": "15m",
+      "strategy": "BB(20,2)+maxWidth5%",
+      "wr": 0.5494327390599676,
+      "trades": 617,
+      "pnl": 610
+    },
+    {
+      "coin": "SOL",
+      "tf": "15m",
+      "strategy": "BB(20,2)+maxWidth3%",
+      "wr": 0.539568345323741,
+      "trades": 556,
+      "pnl": 440
+    }
+  ]
+}

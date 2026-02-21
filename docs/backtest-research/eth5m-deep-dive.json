@@ -1,0 +1,267 @@
+{
+  "timestamp": 1771682823070,
+  "topByWR": [
+    {
+      "name": "atr=7 h=1021 str≥3 bb=2 ba=true",
+      "wr": 0.8888888888888888,
+      "total": 18,
+      "pnl": 140
+    },
+    {
+      "name": "atr=any h=1021 str≥3 bb=2 ba=true",
+      "wr": 0.8695652173913043,
+      "total": 23,
+      "pnl": 170
+    },
+    {
+      "name": "atr=7 h=1021 str≥3 bb=2 ba=true",
+      "wr": 0.8666666666666667,
+      "total": 15,
+      "pnl": 110
+    },
+    {
+      "name": "atr=7 h=1021 str≥3 bb=1.5 ba=true",
+      "wr": 0.85,
+      "total": 20,
+      "pnl": 140
+    },
+    {
+      "name": "atr=any h=1021 str≥3 bb=1.5 ba=true",
+      "wr": 0.84,
+      "total": 25,
+      "pnl": 170
+    },
+    {
+      "name": "atr=7 h=1021 str≥3 bb=1.5 ba=true",
+      "wr": 0.8235294117647058,
+      "total": 17,
+      "pnl": 110
+    },
+    {
+      "name": "atr=7 h=10111221 str≥3 bb=2 ba=true",
+      "wr": 0.8043478260869565,
+      "total": 46,
+      "pnl": 280
+    },
+    {
+      "name": "atr=any h=10111221 str≥3 bb=2 ba=true",
+      "wr": 0.7924528301886793,
+      "total": 53,
+      "pnl": 310
+    },
+    {
+      "name": "atr=7 h=10111221 str≥3 bb=2 ba=true",
+      "wr": 0.7857142857142857,
+      "total": 42,
+      "pnl": 240
+    },
+    {
+      "name": "atr=7 h=1021 str≥3 bb=2 ba=false",
+      "wr": 0.7837837837837838,
+      "total": 37,
+      "pnl": 210
+    },
+    {
+      "name": "atr=7 h=10111221 str≥3 bb=1.5 ba=true",
+      "wr": 0.7719298245614035,
+      "total": 57,
+      "pnl": 310
+    },
+    {
+      "name": "atr=7 h=101112212223 str≥3 bb=2 ba=true",
+      "wr": 0.7681159420289855,
+      "total": 69,
+      "pnl": 370
+    },
+    {
+      "name": "atr=7 h=10111221 str≥3 bb=2 ba=false",
+      "wr": 0.7674418604651163,
+      "total": 86,
+      "pnl": 460
+    },
+    {
+      "name": "atr=any h=10111221 str≥3 bb=1.5 ba=true",
+      "wr": 0.765625,
+      "total": 64,
+      "pnl": 340
+    },
+    {
+      "name": "atr=7 h=101112212223 str≥3 bb=2 ba=true",
+      "wr": 0.7619047619047619,
+      "total": 63,
+      "pnl": 330
+    },
+    {
+      "name": "atr=7 h=1021 str≥3 bb=2 ba=false",
+      "wr": 0.7575757575757576,
+      "total": 33,
+      "pnl": 170
+    },
+    {
+      "name": "atr=any h=1021 str≥3 bb=2 ba=false",
+      "wr": 0.7551020408163265,
+      "total": 49,
+      "pnl": 250
+    },
+    {
+      "name": "atr=any h=10111221 str≥3 bb=2 ba=false",
+      "wr": 0.7549019607843137,
+      "total": 102,
+      "pnl": 520
+    },
+    {
+      "name": "atr=7 h=101112212223 str≥3 bb=1.5 ba=true",
+      "wr": 0.7528089887640449,
+      "total": 89,
+      "pnl": 450
+    },
+    {
+      "name": "atr=any h=101112212223 str≥3 bb=2 ba=true",
+      "wr": 0.75,
+      "total": 84,
+      "pnl": 420
+    }
+  ],
+  "topByScore": [
+    {
+      "name": "atr=any h=any str≥2 bb=1.5 ba=false",
+      "wr": 0.5820499203398831,
+      "total": 1883,
+      "pnl": 3090,
+      "score": 25.25721110282194
+    },
+    {
+      "name": "atr=7 h=any str≥2 bb=1.5 ba=false",
+      "wr": 0.5964523281596452,
+      "total": 1353,
+      "pnl": 2610,
+      "score": 21.939394449820934
+    },
+    {
+      "name": "atr=7 h=any str≥2 bb=1.5 ba=false",
+      "wr": 0.5928286852589641,
+      "total": 1255,
+      "pnl": 2330,
+      "score": 21.001536654080084
+    },
+    {
+      "name": "atr=any h=any str≥3 bb=1.5 ba=false",
+      "wr": 0.5960502692998204,
+      "total": 1114,
+      "pnl": 2140,
+      "score": 19.894154388037727
+    },
+    {
+      "name": "atr=any h=any str≥2 bb=2 ba=false",
+      "wr": 0.5972660357518401,
+      "total": 951,
+      "pnl": 1850,
+      "score": 18.41866195756481
+    },
+    {
+      "name": "atr=7 h=any str≥3 bb=1.5 ba=false",
+      "wr": 0.6175349428208387,
+      "total": 787,
+      "pnl": 1850,
+      "score": 17.324029040928313
+    },
+    {
+      "name": "atr=7 h=any str≥3 bb=1.5 ba=false",
+      "wr": 0.607192254495159,
+      "total": 723,
+      "pnl": 1550,
+      "score": 16.326585672557957
+    },
+    {
+      "name": "atr=7 h=any str≥2 bb=2 ba=false",
+      "wr": 0.6065573770491803,
+      "total": 671,
+      "pnl": 1430,
+      "score": 15.712060732412423
+    },
+    {
+      "name": "atr=any h=any str≥3 bb=2 ba=false",
+      "wr": 0.6073131955484896,
+      "total": 629,
+      "pnl": 1350,
+      "score": 15.231337456031989
+    },
+    {
+      "name": "atr=any h=any str≥2 bb=1.5 ba=true",
+      "wr": 0.6009463722397477,
+      "total": 634,
+      "pnl": 1280,
+      "score": 15.131443018540693
+    },
+    {
+      "name": "atr=7 h=any str≥2 bb=2 ba=false",
+      "wr": 0.5990415335463258,
+      "total": 626,
+      "pnl": 1240,
+      "score": 14.98801438082684
+    },
+    {
+      "name": "atr=any h=101112212223 str≥2 bb=1.5 ba=false",
+      "wr": 0.6308243727598566,
+      "total": 558,
+      "pnl": 1460,
+      "score": 14.901348234689017
+    },
+    {
+      "name": "atr=7 h=101112212223 str≥2 bb=1.5 ba=false",
+      "wr": 0.6369426751592356,
+      "total": 471,
+      "pnl": 1290,
+      "score": 13.823270327522742
+    },
+    {
+      "name": "atr=any h=any str≥2 bb=2 ba=true",
+      "wr": 0.6149068322981367,
+      "total": 483,
+      "pnl": 1110,
+      "score": 13.513967929240717
+    },
+    {
+      "name": "atr=7 h=101112212223 str≥2 bb=1.5 ba=false",
+      "wr": 0.6294642857142857,
+      "total": 448,
+      "pnl": 1160,
+      "score": 13.32324767357526
+    },
+    {
+      "name": "atr=7 h=any str≥2 bb=1.5 ba=true",
+      "wr": 0.6272321428571429,
+      "total": 448,
+      "pnl": 1140,
+      "score": 13.276002114449108
+    },
+    {
+      "name": "atr=7 h=any str≥3 bb=2 ba=false",
+      "wr": 0.6241457858769932,
+      "total": 439,
+      "pnl": 1090,
+      "score": 13.077306501351728
+    },
+    {
+      "name": "atr=7 h=any str≥2 bb=1.5 ba=true",
+      "wr": 0.6259168704156479,
+      "total": 409,
+      "pnl": 1030,
+      "score": 12.658385316714208
+    },
+    {
+      "name": "atr=7 h=any str≥3 bb=2 ba=false",
+      "wr": 0.6121951219512195,
+      "total": 410,
+      "pnl": 920,
+      "score": 12.39600643795235
+    },
+    {
+      "name": "atr=any h=10111221 str≥2 bb=1.5 ba=false",
+      "wr": 0.6456043956043956,
+      "total": 364,
+      "pnl": 1060,
+      "score": 12.31734683148254
+    }
+  ]
+}

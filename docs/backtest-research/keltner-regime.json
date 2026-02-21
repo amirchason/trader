@@ -1,0 +1,653 @@
+{
+  "timestamp": 1771681494227,
+  "results": [
+    {
+      "name": "Keltner+Streak(3) [baseline]",
+      "coin": "ETH",
+      "tf": "15m",
+      "wins": 110,
+      "total": 171,
+      "wr": 0.6432748538011696,
+      "pnl": 490
+    },
+    {
+      "name": "Markov+BB(2) [baseline]",
+      "coin": "ETH",
+      "tf": "15m",
+      "wins": 161,
+      "total": 253,
+      "wr": 0.6363636363636364,
+      "pnl": 690
+    },
+    {
+      "name": "Keltner+skip14",
+      "coin": "ETH",
+      "tf": "15m",
+      "wins": 105,
+      "total": 158,
+      "wr": 0.6645569620253164,
+      "pnl": 520
+    },
+    {
+      "name": "Keltner+bodyATR(0.8)",
+      "coin": "ETH",
+      "tf": "15m",
+      "wins": 68,
+      "total": 105,
+      "wr": 0.6476190476190476,
+      "pnl": 310
+    },
+    {
+      "name": "Keltner+bodyATR(0.9)",
+      "coin": "ETH",
+      "tf": "15m",
+      "wins": 60,
+      "total": 94,
+      "wr": 0.6382978723404256,
+      "pnl": 260
+    },
+    {
+      "name": "Keltner+RSI65",
+      "coin": "ETH",
+      "tf": "15m",
+      "wins": 101,
+      "total": 160,
+      "wr": 0.63125,
+      "pnl": 420
+    },
+    {
+      "name": "Keltner+highATR(75th)",
+      "coin": "ETH",
+      "tf": "15m",
+      "wins": 44,
+      "total": 73,
+      "wr": 0.6027397260273972,
+      "pnl": 150
+    },
+    {
+      "name": "Keltner+lowATR(25th)",
+      "coin": "ETH",
+      "tf": "15m",
+      "wins": 16,
+      "total": 23,
+      "wr": 0.6956521739130435,
+      "pnl": 90
+    },
+    {
+      "name": "Keltner+highVol(>1.5x)",
+      "coin": "ETH",
+      "tf": "15m",
+      "wins": 79,
+      "total": 118,
+      "wr": 0.6694915254237288,
+      "pnl": 400
+    },
+    {
+      "name": "Keltner+ALL(ATR+RSI+skip14)",
+      "coin": "ETH",
+      "tf": "15m",
+      "wins": 57,
+      "total": 85,
+      "wr": 0.6705882352941176,
+      "pnl": 290
+    },
+    {
+      "name": "Keltner(1.5x)",
+      "coin": "ETH",
+      "tf": "15m",
+      "wins": 178,
+      "total": 293,
+      "wr": 0.6075085324232082,
+      "pnl": 630
+    },
+    {
+      "name": "Keltner(2.5x)",
+      "coin": "ETH",
+      "tf": "15m",
+      "wins": 72,
+      "total": 117,
+      "wr": 0.6153846153846154,
+      "pnl": 270
+    },
+    {
+      "name": "Keltner(4)+Streak(4)",
+      "coin": "ETH",
+      "tf": "15m",
+      "wins": 62,
+      "total": 96,
+      "wr": 0.6458333333333334,
+      "pnl": 280
+    },
+    {
+      "name": "Keltner+ALL (BEAR only)",
+      "coin": "ETH",
+      "tf": "15m",
+      "wins": 25,
+      "total": 36,
+      "wr": 0.6944444444444444,
+      "pnl": 140
+    },
+    {
+      "name": "Keltner+GGG(bear)+bodyATR",
+      "coin": "ETH",
+      "tf": "15m",
+      "wins": 28,
+      "total": 39,
+      "wr": 0.717948717948718,
+      "pnl": 170
+    },
+    {
+      "name": "Keltner AND BB agree",
+      "coin": "ETH",
+      "tf": "15m",
+      "wins": 86,
+      "total": 132,
+      "wr": 0.6515151515151515,
+      "pnl": 400
+    },
+    {
+      "name": "Keltner AND BB agree+filters",
+      "coin": "ETH",
+      "tf": "15m",
+      "wins": 59,
+      "total": 84,
+      "wr": 0.7023809523809523,
+      "pnl": 340
+    },
+    {
+      "name": "Keltner+Streak(3) [baseline]",
+      "coin": "BTC",
+      "tf": "15m",
+      "wins": 135,
+      "total": 225,
+      "wr": 0.6,
+      "pnl": 450
+    },
+    {
+      "name": "Markov+BB(2) [baseline]",
+      "coin": "BTC",
+      "tf": "15m",
+      "wins": 170,
+      "total": 274,
+      "wr": 0.6204379562043796,
+      "pnl": 660
+    },
+    {
+      "name": "Keltner+skip14",
+      "coin": "BTC",
+      "tf": "15m",
+      "wins": 127,
+      "total": 211,
+      "wr": 0.6018957345971564,
+      "pnl": 430
+    },
+    {
+      "name": "Keltner+bodyATR(0.8)",
+      "coin": "BTC",
+      "tf": "15m",
+      "wins": 74,
+      "total": 124,
+      "wr": 0.5967741935483871,
+      "pnl": 240
+    },
+    {
+      "name": "Keltner+bodyATR(0.9)",
+      "coin": "BTC",
+      "tf": "15m",
+      "wins": 69,
+      "total": 114,
+      "wr": 0.6052631578947368,
+      "pnl": 240
+    },
+    {
+      "name": "Keltner+RSI65",
+      "coin": "BTC",
+      "tf": "15m",
+      "wins": 122,
+      "total": 206,
+      "wr": 0.5922330097087378,
+      "pnl": 380
+    },
+    {
+      "name": "Keltner+highATR(75th)",
+      "coin": "BTC",
+      "tf": "15m",
+      "wins": 57,
+      "total": 104,
+      "wr": 0.5480769230769231,
+      "pnl": 100
+    },
+    {
+      "name": "Keltner+lowATR(25th)",
+      "coin": "BTC",
+      "tf": "15m",
+      "wins": 26,
+      "total": 39,
+      "wr": 0.6666666666666666,
+      "pnl": 130
+    },
+    {
+      "name": "Keltner+lowVol(<0.8x)",
+      "coin": "BTC",
+      "tf": "15m",
+      "wins": 11,
+      "total": 21,
+      "wr": 0.5238095238095238,
+      "pnl": 10
+    },
+    {
+      "name": "Keltner+highVol(>1.5x)",
+      "coin": "BTC",
+      "tf": "15m",
+      "wins": 98,
+      "total": 159,
+      "wr": 0.6163522012578616,
+      "pnl": 370
+    },
+    {
+      "name": "Keltner+ALL(ATR+RSI+skip14)",
+      "coin": "BTC",
+      "tf": "15m",
+      "wins": 59,
+      "total": 99,
+      "wr": 0.5959595959595959,
+      "pnl": 190
+    },
+    {
+      "name": "Keltner(1.5x)",
+      "coin": "BTC",
+      "tf": "15m",
+      "wins": 215,
+      "total": 357,
+      "wr": 0.6022408963585434,
+      "pnl": 730
+    },
+    {
+      "name": "Keltner(2.5x)",
+      "coin": "BTC",
+      "tf": "15m",
+      "wins": 80,
+      "total": 130,
+      "wr": 0.6153846153846154,
+      "pnl": 300
+    },
+    {
+      "name": "Keltner(4)+Streak(4)",
+      "coin": "BTC",
+      "tf": "15m",
+      "wins": 80,
+      "total": 134,
+      "wr": 0.5970149253731343,
+      "pnl": 260
+    },
+    {
+      "name": "Keltner+ALL (BEAR only)",
+      "coin": "BTC",
+      "tf": "15m",
+      "wins": 28,
+      "total": 45,
+      "wr": 0.6222222222222222,
+      "pnl": 110
+    },
+    {
+      "name": "Keltner+GGG(bear)+bodyATR",
+      "coin": "BTC",
+      "tf": "15m",
+      "wins": 35,
+      "total": 54,
+      "wr": 0.6481481481481481,
+      "pnl": 160
+    },
+    {
+      "name": "Keltner AND BB agree",
+      "coin": "BTC",
+      "tf": "15m",
+      "wins": 110,
+      "total": 180,
+      "wr": 0.6111111111111112,
+      "pnl": 400
+    },
+    {
+      "name": "Keltner AND BB agree+filters",
+      "coin": "BTC",
+      "tf": "15m",
+      "wins": 62,
+      "total": 104,
+      "wr": 0.5961538461538461,
+      "pnl": 200
+    },
+    {
+      "name": "Keltner+Streak(3) [baseline]",
+      "coin": "SOL",
+      "tf": "15m",
+      "wins": 127,
+      "total": 220,
+      "wr": 0.5772727272727273,
+      "pnl": 340
+    },
+    {
+      "name": "Markov+BB(2) [baseline]",
+      "coin": "SOL",
+      "tf": "15m",
+      "wins": 163,
+      "total": 293,
+      "wr": 0.5563139931740614,
+      "pnl": 330
+    },
+    {
+      "name": "Keltner+skip14",
+      "coin": "SOL",
+      "tf": "15m",
+      "wins": 121,
+      "total": 206,
+      "wr": 0.587378640776699,
+      "pnl": 360
+    },
+    {
+      "name": "Keltner+bodyATR(0.8)",
+      "coin": "SOL",
+      "tf": "15m",
+      "wins": 73,
+      "total": 117,
+      "wr": 0.6239316239316239,
+      "pnl": 290
+    },
+    {
+      "name": "Keltner+bodyATR(0.9)",
+      "coin": "SOL",
+      "tf": "15m",
+      "wins": 58,
+      "total": 99,
+      "wr": 0.5858585858585859,
+      "pnl": 170
+    },
+    {
+      "name": "Keltner+RSI65",
+      "coin": "SOL",
+      "tf": "15m",
+      "wins": 113,
+      "total": 199,
+      "wr": 0.5678391959798995,
+      "pnl": 270
+    },
+    {
+      "name": "Keltner+highATR(75th)",
+      "coin": "SOL",
+      "tf": "15m",
+      "wins": 54,
+      "total": 100,
+      "wr": 0.54,
+      "pnl": 80
+    },
+    {
+      "name": "Keltner+lowATR(25th)",
+      "coin": "SOL",
+      "tf": "15m",
+      "wins": 18,
+      "total": 36,
+      "wr": 0.5,
+      "pnl": 0
+    },
+    {
+      "name": "Keltner+lowVol(<0.8x)",
+      "coin": "SOL",
+      "tf": "15m",
+      "wins": 14,
+      "total": 25,
+      "wr": 0.56,
+      "pnl": 30
+    },
+    {
+      "name": "Keltner+highVol(>1.5x)",
+      "coin": "SOL",
+      "tf": "15m",
+      "wins": 84,
+      "total": 144,
+      "wr": 0.5833333333333334,
+      "pnl": 240
+    },
+    {
+      "name": "Keltner+ALL(ATR+RSI+skip14)",
+      "coin": "SOL",
+      "tf": "15m",
+      "wins": 62,
+      "total": 97,
+      "wr": 0.6391752577319587,
+      "pnl": 270
+    },
+    {
+      "name": "Keltner(1.5x)",
+      "coin": "SOL",
+      "tf": "15m",
+      "wins": 205,
+      "total": 367,
+      "wr": 0.55858310626703,
+      "pnl": 430
+    },
+    {
+      "name": "Keltner(2.5x)",
+      "coin": "SOL",
+      "tf": "15m",
+      "wins": 80,
+      "total": 133,
+      "wr": 0.6015037593984962,
+      "pnl": 270
+    },
+    {
+      "name": "Keltner(4)+Streak(4)",
+      "coin": "SOL",
+      "tf": "15m",
+      "wins": 75,
+      "total": 134,
+      "wr": 0.5597014925373134,
+      "pnl": 160
+    },
+    {
+      "name": "Keltner+ALL (BEAR only)",
+      "coin": "SOL",
+      "tf": "15m",
+      "wins": 30,
+      "total": 46,
+      "wr": 0.6521739130434783,
+      "pnl": 140
+    },
+    {
+      "name": "Keltner+GGG(bear)+bodyATR",
+      "coin": "SOL",
+      "tf": "15m",
+      "wins": 24,
+      "total": 44,
+      "wr": 0.5454545454545454,
+      "pnl": 40
+    },
+    {
+      "name": "Keltner AND BB agree",
+      "coin": "SOL",
+      "tf": "15m",
+      "wins": 105,
+      "total": 177,
+      "wr": 0.5932203389830508,
+      "pnl": 330
+    },
+    {
+      "name": "Keltner AND BB agree+filters",
+      "coin": "SOL",
+      "tf": "15m",
+      "wins": 63,
+      "total": 98,
+      "wr": 0.6428571428571429,
+      "pnl": 280
+    },
+    {
+      "name": "Keltner+Streak(3) [baseline]",
+      "coin": "ETH",
+      "tf": "5m",
+      "wins": 430,
+      "total": 735,
+      "wr": 0.5850340136054422,
+      "pnl": 1250
+    },
+    {
+      "name": "Markov+BB(2) [baseline]",
+      "coin": "ETH",
+      "tf": "5m",
+      "wins": 498,
+      "total": 847,
+      "wr": 0.5879574970484062,
+      "pnl": 1490
+    },
+    {
+      "name": "Keltner+skip14",
+      "coin": "ETH",
+      "tf": "5m",
+      "wins": 405,
+      "total": 686,
+      "wr": 0.5903790087463557,
+      "pnl": 1240
+    },
+    {
+      "name": "Keltner+bodyATR(0.8)",
+      "coin": "ETH",
+      "tf": "5m",
+      "wins": 209,
+      "total": 382,
+      "wr": 0.5471204188481675,
+      "pnl": 360
+    },
+    {
+      "name": "Keltner+bodyATR(0.9)",
+      "coin": "ETH",
+      "tf": "5m",
+      "wins": 193,
+      "total": 352,
+      "wr": 0.5482954545454546,
+      "pnl": 340
+    },
+    {
+      "name": "Keltner+RSI65",
+      "coin": "ETH",
+      "tf": "5m",
+      "wins": 383,
+      "total": 661,
+      "wr": 0.5794251134644478,
+      "pnl": 1050
+    },
+    {
+      "name": "Keltner+highATR(75th)",
+      "coin": "ETH",
+      "tf": "5m",
+      "wins": 146,
+      "total": 272,
+      "wr": 0.5367647058823529,
+      "pnl": 200
+    },
+    {
+      "name": "Keltner+lowATR(25th)",
+      "coin": "ETH",
+      "tf": "5m",
+      "wins": 104,
+      "total": 158,
+      "wr": 0.6582278481012658,
+      "pnl": 500
+    },
+    {
+      "name": "Keltner+lowVol(<0.8x)",
+      "coin": "ETH",
+      "tf": "5m",
+      "wins": 40,
+      "total": 65,
+      "wr": 0.6153846153846154,
+      "pnl": 150
+    },
+    {
+      "name": "Keltner+highVol(>1.5x)",
+      "coin": "ETH",
+      "tf": "5m",
+      "wins": 274,
+      "total": 490,
+      "wr": 0.5591836734693878,
+      "pnl": 580
+    },
+    {
+      "name": "Keltner+ALL(ATR+RSI+skip14)",
+      "coin": "ETH",
+      "tf": "5m",
+      "wins": 172,
+      "total": 309,
+      "wr": 0.5566343042071198,
+      "pnl": 350
+    },
+    {
+      "name": "Keltner+ALL+lowVol",
+      "coin": "ETH",
+      "tf": "5m",
+      "wins": 15,
+      "total": 20,
+      "wr": 0.75,
+      "pnl": 100
+    },
+    {
+      "name": "Keltner(1.5x)",
+      "coin": "ETH",
+      "tf": "5m",
+      "wins": 686,
+      "total": 1168,
+      "wr": 0.5873287671232876,
+      "pnl": 2040
+    },
+    {
+      "name": "Keltner(2.5x)",
+      "coin": "ETH",
+      "tf": "5m",
+      "wins": 262,
+      "total": 450,
+      "wr": 0.5822222222222222,
+      "pnl": 740
+    },
+    {
+      "name": "Keltner(4)+Streak(4)",
+      "coin": "ETH",
+      "tf": "5m",
+      "wins": 269,
+      "total": 452,
+      "wr": 0.5951327433628318,
+      "pnl": 860
+    },
+    {
+      "name": "Keltner+ALL (BEAR only)",
+      "coin": "ETH",
+      "tf": "5m",
+      "wins": 77,
+      "total": 142,
+      "wr": 0.5422535211267606,
+      "pnl": 120
+    },
+    {
+      "name": "Keltner+GGG(bear)+bodyATR",
+      "coin": "ETH",
+      "tf": "5m",
+      "wins": 83,
+      "total": 161,
+      "wr": 0.515527950310559,
+      "pnl": 50
+    },
+    {
+      "name": "Keltner AND BB agree",
+      "coin": "ETH",
+      "tf": "5m",
+      "wins": 343,
+      "total": 582,
+      "wr": 0.5893470790378007,
+      "pnl": 1040
+    },
+    {
+      "name": "Keltner AND BB agree+filters",
+      "coin": "ETH",
+      "tf": "5m",
+      "wins": 181,
+      "total": 316,
+      "wr": 0.5727848101265823,
+      "pnl": 460
+    }
+  ]
+}

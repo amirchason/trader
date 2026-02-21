@@ -1,0 +1,630 @@
+{
+  "generatedAt": "2026-02-21T11:03:38.695Z",
+  "baseRates": {
+    "train": 49.93260365557772,
+    "test": 50.19499308089068
+  },
+  "trainResults": [
+    {
+      "name": "2 green → green",
+      "description": "After 2 consecutive green candles, next is green",
+      "n": 9005,
+      "winRate": 48.05,
+      "edge": -1.95,
+      "betDir": "bear"
+    },
+    {
+      "name": "2 red → red",
+      "description": "After 2 consecutive red candles, next is red",
+      "n": 9016,
+      "winRate": 47.17,
+      "edge": -2.83,
+      "betDir": "bear"
+    },
+    {
+      "name": "2 green → reversion",
+      "description": "After 2 green, expect red (mean reversion)",
+      "n": 9005,
+      "winRate": 51.95,
+      "edge": 1.95,
+      "betDir": "bull"
+    },
+    {
+      "name": "2 red → reversion",
+      "description": "After 2 red, expect green",
+      "n": 9016,
+      "winRate": 52.83,
+      "edge": 2.83,
+      "betDir": "bull"
+    },
+    {
+      "name": "3 green → reversion",
+      "description": "3 green → expect red",
+      "n": 4327,
+      "winRate": 53.34,
+      "edge": 3.34,
+      "betDir": "bull"
+    },
+    {
+      "name": "3 red → reversion",
+      "description": "3 red → expect green",
+      "n": 4243,
+      "winRate": 53.1,
+      "edge": 3.1,
+      "betDir": "bull"
+    },
+    {
+      "name": "4+ green → reversion",
+      "description": "4 green streak → expect red",
+      "n": 2019,
+      "winRate": 54.43,
+      "edge": 4.43,
+      "betDir": "bull"
+    },
+    {
+      "name": "4+ red → reversion",
+      "description": "4 red streak → expect green",
+      "n": 1987,
+      "winRate": 54.25,
+      "edge": 4.25,
+      "betDir": "bull"
+    },
+    {
+      "name": "Prev green → green (momentum)",
+      "description": "Simple momentum: green follows green",
+      "n": 18522,
+      "winRate": 48.62,
+      "edge": -1.38,
+      "betDir": "bear"
+    },
+    {
+      "name": "Prev red → red (momentum)",
+      "description": "Simple momentum: red follows red",
+      "n": 18524,
+      "winRate": 48.76,
+      "edge": -1.24,
+      "betDir": "bear"
+    },
+    {
+      "name": "Big candle → reversion",
+      "description": "Candle body > 2.5x avg → next is opposite",
+      "n": 3687,
+      "winRate": 51.15,
+      "edge": 1.15,
+      "betDir": "bull"
+    },
+    {
+      "name": "Big GREEN candle → red",
+      "description": "Large green spike → red reversion",
+      "n": 1842,
+      "winRate": 54.89,
+      "edge": 4.89,
+      "betDir": "bull"
+    },
+    {
+      "name": "Big RED candle → green",
+      "description": "Large red spike → green reversion",
+      "n": 1845,
+      "winRate": 52.57,
+      "edge": 2.57,
+      "betDir": "bull"
+    },
+    {
+      "name": "Tiny candle (doji) → follow trend",
+      "description": "Tiny body doji → continue prior direction",
+      "n": 7211,
+      "winRate": 49.6,
+      "edge": -0.4,
+      "betDir": "bear"
+    },
+    {
+      "name": "Doji (wick dominant) → bull",
+      "description": "When wicks >> body → bullish",
+      "n": 6540,
+      "winRate": 49.4,
+      "edge": -0.6,
+      "betDir": "bear"
+    },
+    {
+      "name": "Strong green (+0.5%) → red",
+      "description": "Big green candle (>0.5%) → red next",
+      "n": 564,
+      "winRate": 58.33,
+      "edge": 8.33,
+      "betDir": "bull"
+    },
+    {
+      "name": "Strong red (-0.5%) → green",
+      "description": "Big red candle (>0.5%) → green next",
+      "n": 554,
+      "winRate": 54.15,
+      "edge": 4.15,
+      "betDir": "bull"
+    },
+    {
+      "name": "Very strong green (>1%) → red",
+      "description": "Very large up move → reversal",
+      "n": 86,
+      "winRate": 55.81,
+      "edge": 5.81,
+      "betDir": "bull"
+    },
+    {
+      "name": "Very strong red (>1%) → green",
+      "description": "Very large down move → bounce",
+      "n": 54,
+      "winRate": 57.41,
+      "edge": 7.41,
+      "betDir": "bull"
+    },
+    {
+      "name": "Volume spike (3x) → follow direction",
+      "description": "High volume confirms direction",
+      "n": 1577,
+      "winRate": 45.28,
+      "edge": -4.72,
+      "betDir": "bear"
+    },
+    {
+      "name": "Very low volume → expect move up",
+      "description": "Quiet period → breakout bullish?",
+      "n": 1804,
+      "winRate": 51.83,
+      "edge": 1.83,
+      "betDir": "bull"
+    },
+    {
+      "name": "Europe open (8-10 UTC) → bull",
+      "description": "European session open tends bullish",
+      "n": 3096,
+      "winRate": 50.29,
+      "edge": 0.29,
+      "betDir": "bull"
+    },
+    {
+      "name": "US open (13-15 UTC) → bull",
+      "description": "NY session open tends bullish",
+      "n": 3096,
+      "winRate": 49.29,
+      "edge": -0.71,
+      "betDir": "bear"
+    },
+    {
+      "name": "Asian dead zone (0-4 UTC) → bear",
+      "description": "Low activity session tends bearish",
+      "n": 6191,
+      "winRate": 49.69,
+      "edge": -0.31,
+      "betDir": "bear"
+    },
+    {
+      "name": "NY power hour (14-16 UTC) → bull",
+      "description": "Peak US liquidity = bullish",
+      "n": 3096,
+      "winRate": 48.19,
+      "edge": -1.81,
+      "betDir": "bear"
+    },
+    {
+      "name": "Monday candle → bull",
+      "description": "Monday tends to be bullish",
+      "n": 5184,
+      "winRate": 49.29,
+      "edge": -0.71,
+      "betDir": "bear"
+    },
+    {
+      "name": "Friday candle → bear",
+      "description": "Friday tends to have profit taking",
+      "n": 5471,
+      "winRate": 50.34,
+      "edge": 0.34,
+      "betDir": "bull"
+    },
+    {
+      "name": "Engulfing green (after red) → red",
+      "description": "Bearish engulfing → red",
+      "n": 1419,
+      "winRate": 53.49,
+      "edge": 3.49,
+      "betDir": "bull"
+    },
+    {
+      "name": "Engulfing red (after green) → green",
+      "description": "Bullish engulfing → green",
+      "n": 1444,
+      "winRate": 50.28,
+      "edge": 0.28,
+      "betDir": "bull"
+    },
+    {
+      "name": "Morning star pattern → bull",
+      "description": "Green-Red-Larger Green = strong bull signal",
+      "n": 1498,
+      "winRate": 46.8,
+      "edge": -3.2,
+      "betDir": "bear"
+    },
+    {
+      "name": "Evening star pattern → bear",
+      "description": "Red-Green-Larger Red = strong bear signal",
+      "n": 1602,
+      "winRate": 48.88,
+      "edge": -1.12,
+      "betDir": "bear"
+    }
+  ],
+  "testResults": [
+    {
+      "name": "2 green → green",
+      "description": "",
+      "n": 3904,
+      "winRate": 46.75,
+      "edge": -3.25,
+      "betDir": "bear"
+    },
+    {
+      "name": "2 red → red",
+      "description": "",
+      "n": 3792,
+      "winRate": 47.47,
+      "edge": -2.53,
+      "betDir": "bear"
+    },
+    {
+      "name": "2 green → reversion",
+      "description": "",
+      "n": 3904,
+      "winRate": 53.25,
+      "edge": 3.25,
+      "betDir": "bull"
+    },
+    {
+      "name": "2 red → reversion",
+      "description": "",
+      "n": 3792,
+      "winRate": 52.53,
+      "edge": 2.53,
+      "betDir": "bull"
+    },
+    {
+      "name": "3 green → reversion",
+      "description": "",
+      "n": 1825,
+      "winRate": 55.84,
+      "edge": 5.84,
+      "betDir": "bull"
+    },
+    {
+      "name": "3 red → reversion",
+      "description": "",
+      "n": 1797,
+      "winRate": 55.37,
+      "edge": 5.37,
+      "betDir": "bull"
+    },
+    {
+      "name": "4+ green → reversion",
+      "description": "",
+      "n": 806,
+      "winRate": 57.07,
+      "edge": 7.07,
+      "betDir": "bull"
+    },
+    {
+      "name": "4+ red → reversion",
+      "description": "",
+      "n": 801,
+      "winRate": 56.68,
+      "edge": 6.68,
+      "betDir": "bull"
+    },
+    {
+      "name": "Prev green → green (momentum)",
+      "description": "",
+      "n": 7978,
+      "winRate": 48.95,
+      "edge": -1.05,
+      "betDir": "bear"
+    },
+    {
+      "name": "Prev red → red (momentum)",
+      "description": "",
+      "n": 7870,
+      "winRate": 48.44,
+      "edge": -1.56,
+      "betDir": "bear"
+    },
+    {
+      "name": "Big candle → reversion",
+      "description": "",
+      "n": 1723,
+      "winRate": 50.44,
+      "edge": 0.44,
+      "betDir": "bull"
+    },
+    {
+      "name": "Big GREEN candle → red",
+      "description": "",
+      "n": 836,
+      "winRate": 56.34,
+      "edge": 6.34,
+      "betDir": "bull"
+    },
+    {
+      "name": "Big RED candle → green",
+      "description": "",
+      "n": 887,
+      "winRate": 55.13,
+      "edge": 5.13,
+      "betDir": "bull"
+    },
+    {
+      "name": "Tiny candle (doji) → follow trend",
+      "description": "",
+      "n": 3235,
+      "winRate": 48.53,
+      "edge": -1.47,
+      "betDir": "bear"
+    },
+    {
+      "name": "Strong green (+0.5%) → red",
+      "description": "",
+      "n": 171,
+      "winRate": 59.06,
+      "edge": 9.06,
+      "betDir": "bull"
+    },
+    {
+      "name": "Strong red (-0.5%) → green",
+      "description": "",
+      "n": 173,
+      "winRate": 50.87,
+      "edge": 0.87,
+      "betDir": "bull"
+    },
+    {
+      "name": "Very strong green (>1%) → red",
+      "description": "",
+      "n": 20,
+      "winRate": 65,
+      "edge": 15,
+      "betDir": "bull"
+    },
+    {
+      "name": "Very strong red (>1%) → green",
+      "description": "",
+      "n": 22,
+      "winRate": 40.91,
+      "edge": -9.09,
+      "betDir": "bear"
+    },
+    {
+      "name": "Volume spike (3x) → follow direction",
+      "description": "",
+      "n": 829,
+      "winRate": 47.04,
+      "edge": -2.96,
+      "betDir": "bear"
+    },
+    {
+      "name": "Europe open (8-10 UTC) → bull",
+      "description": "",
+      "n": 1320,
+      "winRate": 48.64,
+      "edge": -1.36,
+      "betDir": "bear"
+    },
+    {
+      "name": "US open (13-15 UTC) → bull",
+      "description": "",
+      "n": 1320,
+      "winRate": 48.79,
+      "edge": -1.21,
+      "betDir": "bear"
+    },
+    {
+      "name": "Asian dead zone (0-4 UTC) → bear",
+      "description": "",
+      "n": 2640,
+      "winRate": 49.96,
+      "edge": -0.04,
+      "betDir": "bear"
+    },
+    {
+      "name": "NY power hour (14-16 UTC) → bull",
+      "description": "",
+      "n": 1320,
+      "winRate": 50.91,
+      "edge": 0.91,
+      "betDir": "bull"
+    },
+    {
+      "name": "Monday candle → bull",
+      "description": "",
+      "n": 2304,
+      "winRate": 50.17,
+      "edge": 0.17,
+      "betDir": "bull"
+    },
+    {
+      "name": "Friday candle → bear",
+      "description": "",
+      "n": 2304,
+      "winRate": 49.83,
+      "edge": -0.17,
+      "betDir": "bear"
+    },
+    {
+      "name": "Engulfing green (after red) → red",
+      "description": "",
+      "n": 617,
+      "winRate": 50.89,
+      "edge": 0.89,
+      "betDir": "bull"
+    },
+    {
+      "name": "Engulfing red (after green) → green",
+      "description": "",
+      "n": 616,
+      "winRate": 51.95,
+      "edge": 1.95,
+      "betDir": "bull"
+    }
+  ],
+  "consistentPatterns": [
+    {
+      "name": "Strong green (+0.5%) → red",
+      "trainEdge": 8.33,
+      "testEdge": 9.06
+    },
+    {
+      "name": "4+ green → reversion",
+      "trainEdge": 4.43,
+      "testEdge": 7.07
+    },
+    {
+      "name": "4+ red → reversion",
+      "trainEdge": 4.25,
+      "testEdge": 6.68
+    },
+    {
+      "name": "Big GREEN candle → red",
+      "trainEdge": 4.89,
+      "testEdge": 6.34
+    },
+    {
+      "name": "3 green → reversion",
+      "trainEdge": 3.34,
+      "testEdge": 5.84
+    },
+    {
+      "name": "3 red → reversion",
+      "trainEdge": 3.1,
+      "testEdge": 5.37
+    },
+    {
+      "name": "Big RED candle → green",
+      "trainEdge": 2.57,
+      "testEdge": 5.13
+    },
+    {
+      "name": "2 green → reversion",
+      "trainEdge": 1.95,
+      "testEdge": 3.25
+    },
+    {
+      "name": "2 red → reversion",
+      "trainEdge": 2.83,
+      "testEdge": 2.53
+    },
+    {
+      "name": "Engulfing red (after green) → green",
+      "trainEdge": 0.28,
+      "testEdge": 1.95
+    },
+    {
+      "name": "Engulfing green (after red) → red",
+      "trainEdge": 3.49,
+      "testEdge": 0.89
+    },
+    {
+      "name": "Strong red (-0.5%) → green",
+      "trainEdge": 4.15,
+      "testEdge": 0.87
+    },
+    {
+      "name": "Prev green → green (momentum)",
+      "trainEdge": -1.38,
+      "testEdge": -1.05
+    },
+    {
+      "name": "US open (13-15 UTC) → bull",
+      "trainEdge": -0.71,
+      "testEdge": -1.21
+    },
+    {
+      "name": "Tiny candle (doji) → follow trend",
+      "trainEdge": -0.4,
+      "testEdge": -1.47
+    },
+    {
+      "name": "Prev red → red (momentum)",
+      "trainEdge": -1.24,
+      "testEdge": -1.56
+    },
+    {
+      "name": "2 red → red",
+      "trainEdge": -2.83,
+      "testEdge": -2.53
+    },
+    {
+      "name": "Volume spike (3x) → follow direction",
+      "trainEdge": -4.72,
+      "testEdge": -2.96
+    },
+    {
+      "name": "2 green → green",
+      "trainEdge": -1.95,
+      "testEdge": -3.25
+    }
+  ],
+  "candleSequenceMatrix": {
+    "RRG": {
+      "up": 3445,
+      "down": 3350,
+      "total": 6795,
+      "upPct": 50.7,
+      "edge": 0.7
+    },
+    "RGG": {
+      "up": 3327,
+      "down": 3430,
+      "total": 6757,
+      "upPct": 49.24,
+      "edge": -0.76
+    },
+    "GGR": {
+      "up": 3368,
+      "down": 3389,
+      "total": 6757,
+      "upPct": 49.84,
+      "edge": -0.16
+    },
+    "GRR": {
+      "up": 3517,
+      "down": 3277,
+      "total": 6794,
+      "upPct": 51.77,
+      "edge": 1.77
+    },
+    "RGR": {
+      "up": 3429,
+      "down": 3405,
+      "total": 6834,
+      "upPct": 50.18,
+      "edge": 0.18
+    },
+    "RRR": {
+      "up": 3277,
+      "down": 2825,
+      "total": 6102,
+      "upPct": 53.7,
+      "edge": 3.7
+    },
+    "GGG": {
+      "up": 2825,
+      "down": 3327,
+      "total": 6152,
+      "upPct": 45.92,
+      "edge": -4.08
+    },
+    "GRG": {
+      "up": 3313,
+      "down": 3484,
+      "total": 6797,
+      "upPct": 48.74,
+      "edge": -1.26
+    }
+  }
+}

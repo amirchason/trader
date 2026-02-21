@@ -1,0 +1,12 @@
+{
+  "portfolioMetrics": {
+    "label": "Portfolio (ETH+BTC+SOL+XRP 15m streak3+big0.4%)",
+    "trades": 6145,
+    "wins": 3482,
+    "winRate": 0.566639544344996,
+    "pnl": 8190,
+    "sharpe": 2.13,
+    "maxDD": 140
+  },
+  "timestamp": 1771675619696
+}

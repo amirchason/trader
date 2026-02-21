@@ -1,0 +1,240 @@
+{
+  "generatedAt": "2026-02-21T11:02:53.102Z",
+  "coin": "ETH",
+  "timeframe": "5m",
+  "trainPeriod": {
+    "fromMs": 1754006400000,
+    "toMs": 1765134510000
+  },
+  "testPeriod": {
+    "fromMs": 1765134510000,
+    "toMs": 1769903700000
+  },
+  "baseRates": {
+    "trainUpRate": 49.84728161270617,
+    "testUpRate": 50.23116438356164
+  },
+  "logisticRegression": {
+    "train": {
+      "accuracy": 0.5162203002925763,
+      "precision": 0.5156474696980072,
+      "recall": 0.4856811145510836,
+      "tp": 7530,
+      "fp": 7073,
+      "tn": 8526,
+      "fn": 7974,
+      "highConfidencyAccuracy": 0,
+      "highConfidenceCount": 0
+    },
+    "test": {
+      "accuracy": 0.5315924657534247,
+      "precision": 0.535181236673774,
+      "recall": 0.5133799215953639,
+      "tp": 3012,
+      "fp": 2616,
+      "tn": 3197,
+      "fn": 2855,
+      "highConfidencyAccuracy": 0,
+      "highConfidenceCount": 0
+    },
+    "weights": [
+      {
+        "name": "rsi7",
+        "weight": -0.0971961666367238
+      },
+      {
+        "name": "scoreDiff",
+        "weight": -0.07707684239832895
+      },
+      {
+        "name": "bias1",
+        "weight": 0.07443528373672191
+      },
+      {
+        "name": "rsiOverbought",
+        "weight": -0.04505583335688839
+      },
+      {
+        "name": "bearishScore",
+        "weight": 0.044289394819692275
+      },
+      {
+        "name": "bullishScore",
+        "weight": -0.036204396327007456
+      },
+      {
+        "name": "rsi14",
+        "weight": -0.032263623652083996
+      },
+      {
+        "name": "rsiOversold",
+        "weight": 0.024751783455170005
+      },
+      {
+        "name": "prevWin2",
+        "weight": -0.012890041696656357
+      },
+      {
+        "name": "macdBullish",
+        "weight": -0.011849442461876247
+      },
+      {
+        "name": "prevWin",
+        "weight": -0.00745539922072088
+      },
+      {
+        "name": "momentumStr",
+        "weight": -0.007094714947871899
+      }
+    ],
+    "finalWeights": [
+      -0.032263623652083996,
+      -0.0971961666367238,
+      -0.04505583335688839,
+      0.024751783455170005,
+      -0.011849442461876247,
+      -0.036204396327007456,
+      0.044289394819692275,
+      -0.07707684239832895,
+      -0.007094714947871899,
+      -0.00745539922072088,
+      -0.012890041696656357,
+      0.07443528373672191
+    ]
+  },
+  "naiveBayes": {
+    "train": {
+      "accuracy": 0.5171526862360544,
+      "highConfidencyAccuracy": 0.5376727596968346,
+      "highConfidenceCount": 8972
+    },
+    "test": {
+      "accuracy": 0.5326198630136987,
+      "highConfidencyAccuracy": 0.5588235294117647,
+      "highConfidenceCount": 2890
+    }
+  },
+  "mlTradingSimulation": [
+    {
+      "threshold": 0.52,
+      "lr": {
+        "totalTrades": 1650,
+        "wins": 947,
+        "winRate": 57.3939393939394,
+        "totalPnl": 1293.8448017199194,
+        "maxDrawdown": 9.336030755422401
+      },
+      "nb": {
+        "totalTrades": 10227,
+        "wins": 5508,
+        "winRate": 53.85743619829862,
+        "totalPnl": 5149.900637391968,
+        "maxDrawdown": 14.504556917462066
+      }
+    },
+    {
+      "threshold": 0.55,
+      "lr": {
+        "totalTrades": 13,
+        "wins": 8,
+        "winRate": 61.53846153846154,
+        "totalPnl": 16.65355877290733,
+        "maxDrawdown": 1.6193479130161643
+      },
+      "nb": {
+        "totalTrades": 7629,
+        "wins": 4195,
+        "winRate": 54.987547516057155,
+        "totalPnl": 4999.370392719877,
+        "maxDrawdown": 14.777832306357071
+      }
+    },
+    {
+      "threshold": 0.58,
+      "lr": {
+        "totalTrades": 0,
+        "wins": 0,
+        "winRate": 0,
+        "totalPnl": 0,
+        "maxDrawdown": 0
+      },
+      "nb": {
+        "totalTrades": 4668,
+        "wins": 2602,
+        "winRate": 55.741216795201375,
+        "totalPnl": 3723.4009446488417,
+        "maxDrawdown": 17.16499953093035
+      }
+    },
+    {
+      "threshold": 0.6,
+      "lr": {
+        "totalTrades": 0,
+        "wins": 0,
+        "winRate": 0,
+        "totalPnl": 0,
+        "maxDrawdown": 0
+      },
+      "nb": {
+        "totalTrades": 2890,
+        "wins": 1615,
+        "winRate": 55.88235294117647,
+        "totalPnl": 2564.10140385358,
+        "maxDrawdown": 21.114128791596684
+      }
+    },
+    {
+      "threshold": 0.62,
+      "lr": {
+        "totalTrades": 0,
+        "wins": 0,
+        "winRate": 0,
+        "totalPnl": 0,
+        "maxDrawdown": 0
+      },
+      "nb": {
+        "totalTrades": 1928,
+        "wins": 1079,
+        "winRate": 55.96473029045643,
+        "totalPnl": 1895.7872297251665,
+        "maxDrawdown": 20.60240410922602
+      }
+    },
+    {
+      "threshold": 0.65,
+      "lr": {
+        "totalTrades": 0,
+        "wins": 0,
+        "winRate": 0,
+        "totalPnl": 0,
+        "maxDrawdown": 0
+      },
+      "nb": {
+        "totalTrades": 1352,
+        "wins": 771,
+        "winRate": 57.02662721893491,
+        "totalPnl": 1641.0787573184225,
+        "maxDrawdown": 18.98142752350797
+      }
+    }
+  ],
+  "baseline": {
+    "trades": 11649,
+    "winRate": 46.870976049446305,
+    "totalPnl": -7290
+  },
+  "featureNames": [
+    "rsi14",
+    "rsi7",
+    "rsiOverbought",
+    "rsiOversold",
+    "macdBullish",
+    "bullishScore",
+    "bearishScore",
+    "scoreDiff",
+    "momentumStr",
+    "prevWin",
+    "prevWin2",
+    "bias1"
+  ]
+}

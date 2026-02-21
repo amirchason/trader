@@ -1,0 +1,379 @@
+{
+  "generatedAt": "2026-02-21T11:01:01.297Z",
+  "hypothesis": "MTF alignment improves 5m binary prediction",
+  "coin": "ETH",
+  "baseUpRateTrain": 49.9453760856503,
+  "baseUpRateTest": 50.19186009938982,
+  "testResults": [
+    {
+      "label": "Baseline: always bet BULL",
+      "total": 15897,
+      "selected": 15897,
+      "pct": 100,
+      "winRate": 50.19,
+      "edge": 0.19
+    },
+    {
+      "label": "1h BULLISH → bet BULL",
+      "total": 15897,
+      "selected": 7498,
+      "pct": 47.2,
+      "winRate": 49.88,
+      "edge": -0.12
+    },
+    {
+      "label": "1h BEARISH → bet BEAR",
+      "total": 15897,
+      "selected": 7331,
+      "pct": 46.1,
+      "winRate": 49.58,
+      "edge": -0.42
+    },
+    {
+      "label": "1h has direction → follow 1h",
+      "total": 15897,
+      "selected": 14829,
+      "pct": 93.3,
+      "winRate": 49.73,
+      "edge": -0.27
+    },
+    {
+      "label": "1h STRONG → follow 1h",
+      "total": 15897,
+      "selected": 10113,
+      "pct": 63.6,
+      "winRate": 49.65,
+      "edge": -0.35
+    },
+    {
+      "label": "4h BULLISH → bet BULL",
+      "total": 15897,
+      "selected": 7440,
+      "pct": 46.8,
+      "winRate": 50.11,
+      "edge": 0.11
+    },
+    {
+      "label": "4h BEARISH → bet BEAR",
+      "total": 15897,
+      "selected": 7641,
+      "pct": 48.1,
+      "winRate": 50.02,
+      "edge": 0.02
+    },
+    {
+      "label": "4h has direction → follow 4h",
+      "total": 15897,
+      "selected": 15081,
+      "pct": 94.9,
+      "winRate": 50.06,
+      "edge": 0.06
+    },
+    {
+      "label": "4h STRONG → follow 4h",
+      "total": 15897,
+      "selected": 10271,
+      "pct": 64.6,
+      "winRate": 50.19,
+      "edge": 0.19
+    },
+    {
+      "label": "1h+4h BOTH BULLISH → BULL",
+      "total": 15897,
+      "selected": 5412,
+      "pct": 34,
+      "winRate": 49.91,
+      "edge": -0.09
+    },
+    {
+      "label": "1h+4h BOTH BEARISH → BEAR",
+      "total": 15897,
+      "selected": 5471,
+      "pct": 34.4,
+      "winRate": 49.81,
+      "edge": -0.19
+    },
+    {
+      "label": "1h+4h agree (any) → follow",
+      "total": 15897,
+      "selected": 10883,
+      "pct": 68.5,
+      "winRate": 49.86,
+      "edge": -0.14
+    },
+    {
+      "label": "1h+4h BOTH STRONG → follow",
+      "total": 15897,
+      "selected": 6239,
+      "pct": 39.2,
+      "winRate": 49.9,
+      "edge": -0.1
+    },
+    {
+      "label": "RSI 1h>60 AND 4h>60 → BULL",
+      "total": 15897,
+      "selected": 1896,
+      "pct": 11.9,
+      "winRate": 50.79,
+      "edge": 0.79
+    },
+    {
+      "label": "RSI 1h<40 AND 4h<40 → BEAR",
+      "total": 15897,
+      "selected": 2039,
+      "pct": 12.8,
+      "winRate": 50.51,
+      "edge": 0.51
+    },
+    {
+      "label": "RSI both extreme same side",
+      "total": 15897,
+      "selected": 3935,
+      "pct": 24.8,
+      "winRate": 50.65,
+      "edge": 0.65
+    },
+    {
+      "label": "Downtrend + 5m RSI<30 → BULL (reversion)",
+      "total": 15897,
+      "selected": 297,
+      "pct": 1.9,
+      "winRate": 53.54,
+      "edge": 3.54
+    },
+    {
+      "label": "Uptrend + 5m RSI>70 → BEAR (reversion)",
+      "total": 15897,
+      "selected": 272,
+      "pct": 1.7,
+      "winRate": 58.82,
+      "edge": 8.82
+    },
+    {
+      "label": "Volume spike + 1h trend → follow",
+      "total": 15897,
+      "selected": 1597,
+      "pct": 10,
+      "winRate": 49.72,
+      "edge": -0.28
+    },
+    {
+      "label": "Prev green + 1h bull → BULL",
+      "total": 15897,
+      "selected": 3735,
+      "pct": 23.5,
+      "winRate": 49,
+      "edge": -1
+    },
+    {
+      "label": "Prev red + 1h bear → BEAR",
+      "total": 15897,
+      "selected": 3633,
+      "pct": 22.9,
+      "winRate": 48.03,
+      "edge": -1.97
+    }
+  ],
+  "trainResults": [
+    {
+      "label": "Baseline: always bet BULL",
+      "total": 36614,
+      "selected": 36614,
+      "pct": 100,
+      "winRate": 49.95,
+      "edge": -0.05
+    },
+    {
+      "label": "1h BULLISH → bet BULL",
+      "total": 36614,
+      "selected": 17102,
+      "pct": 46.7,
+      "winRate": 49.51,
+      "edge": -0.49
+    },
+    {
+      "label": "1h BEARISH → bet BEAR",
+      "total": 36614,
+      "selected": 16992,
+      "pct": 46.4,
+      "winRate": 49.83,
+      "edge": -0.17
+    },
+    {
+      "label": "1h has direction → follow 1h",
+      "total": 36614,
+      "selected": 34094,
+      "pct": 93.1,
+      "winRate": 49.67,
+      "edge": -0.33
+    },
+    {
+      "label": "1h STRONG → follow 1h",
+      "total": 36614,
+      "selected": 23054,
+      "pct": 63,
+      "winRate": 49.75,
+      "edge": -0.25
+    },
+    {
+      "label": "4h BULLISH → bet BULL",
+      "total": 36614,
+      "selected": 15456,
+      "pct": 42.2,
+      "winRate": 50.19,
+      "edge": 0.19
+    },
+    {
+      "label": "4h BEARISH → bet BEAR",
+      "total": 36614,
+      "selected": 18566,
+      "pct": 50.7,
+      "winRate": 50.25,
+      "edge": 0.25
+    },
+    {
+      "label": "4h has direction → follow 4h",
+      "total": 36614,
+      "selected": 34022,
+      "pct": 92.9,
+      "winRate": 50.22,
+      "edge": 0.22
+    },
+    {
+      "label": "4h STRONG → follow 4h",
+      "total": 36614,
+      "selected": 22848,
+      "pct": 62.4,
+      "winRate": 50.34,
+      "edge": 0.34
+    },
+    {
+      "label": "1h+4h BOTH BULLISH → BULL",
+      "total": 36614,
+      "selected": 11484,
+      "pct": 31.4,
+      "winRate": 49.63,
+      "edge": -0.37
+    },
+    {
+      "label": "1h+4h BOTH BEARISH → BEAR",
+      "total": 36614,
+      "selected": 12924,
+      "pct": 35.3,
+      "winRate": 50.16,
+      "edge": 0.16
+    },
+    {
+      "label": "1h+4h agree (any) → follow",
+      "total": 36614,
+      "selected": 24408,
+      "pct": 66.7,
+      "winRate": 49.91,
+      "edge": -0.09
+    },
+    {
+      "label": "1h+4h BOTH STRONG → follow",
+      "total": 36614,
+      "selected": 13860,
+      "pct": 37.9,
+      "winRate": 50.4,
+      "edge": 0.4
+    },
+    {
+      "label": "RSI 1h>60 AND 4h>60 → BULL",
+      "total": 36614,
+      "selected": 4932,
+      "pct": 13.5,
+      "winRate": 50.43,
+      "edge": 0.43
+    },
+    {
+      "label": "RSI 1h<40 AND 4h<40 → BEAR",
+      "total": 36614,
+      "selected": 4128,
+      "pct": 11.3,
+      "winRate": 51.07,
+      "edge": 1.07
+    },
+    {
+      "label": "RSI both extreme same side",
+      "total": 36614,
+      "selected": 9060,
+      "pct": 24.7,
+      "winRate": 50.72,
+      "edge": 0.72
+    },
+    {
+      "label": "Downtrend + 5m RSI<30 → BULL (reversion)",
+      "total": 36614,
+      "selected": 753,
+      "pct": 2.1,
+      "winRate": 51.53,
+      "edge": 1.53
+    },
+    {
+      "label": "Uptrend + 5m RSI>70 → BEAR (reversion)",
+      "total": 36614,
+      "selected": 677,
+      "pct": 1.8,
+      "winRate": 53.32,
+      "edge": 3.32
+    },
+    {
+      "label": "Volume spike + 1h trend → follow",
+      "total": 36614,
+      "selected": 3328,
+      "pct": 9.1,
+      "winRate": 49.55,
+      "edge": -0.45
+    },
+    {
+      "label": "Prev green + 1h bull → BULL",
+      "total": 36614,
+      "selected": 8463,
+      "pct": 23.1,
+      "winRate": 48.02,
+      "edge": -1.98
+    },
+    {
+      "label": "Prev red + 1h bear → BEAR",
+      "total": 36614,
+      "selected": 8456,
+      "pct": 23.1,
+      "winRate": 48.6,
+      "edge": -1.4
+    }
+  ],
+  "goodStrategies": [
+    {
+      "strategy": "Uptrend + 5m RSI>70 → BEAR (reversion)",
+      "edge": 8.82,
+      "winRate": 58.82,
+      "n": 272
+    },
+    {
+      "strategy": "Downtrend + 5m RSI<30 → BULL (reversion)",
+      "edge": 3.54,
+      "winRate": 53.54,
+      "n": 297
+    },
+    {
+      "strategy": "RSI 1h>60 AND 4h>60 → BULL",
+      "edge": 0.79,
+      "winRate": 50.79,
+      "n": 1896
+    },
+    {
+      "strategy": "RSI both extreme same side",
+      "edge": 0.65,
+      "winRate": 50.65,
+      "n": 3935
+    },
+    {
+      "strategy": "RSI 1h<40 AND 4h<40 → BEAR",
+      "edge": 0.51,
+      "winRate": 50.51,
+      "n": 2039
+    }
+  ]
+}

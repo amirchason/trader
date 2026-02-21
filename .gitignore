@@ -1,0 +1,14 @@
+node_modules/
+dist/
+.env
+*.log
+.DS_Store
+trader.db
+trader.db-shm
+trader.db-wal
+*.db
+*.db-shm
+*.db-wal
+agent_result.json
+agent_test_result.json
+server.log

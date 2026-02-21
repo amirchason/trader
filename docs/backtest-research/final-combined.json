@@ -1,0 +1,613 @@
+{
+  "timestamp": 1771680774777,
+  "results": [
+    {
+      "strategy": "GGG+BB(2) bear",
+      "coinTf": "ETH/5m",
+      "wins": 232,
+      "total": 406,
+      "pnl": 580,
+      "wr": 0.5714285714285714
+    },
+    {
+      "strategy": "RRR+BB(2) bull",
+      "coinTf": "ETH/5m",
+      "wins": 270,
+      "total": 448,
+      "pnl": 920,
+      "wr": 0.6026785714285714
+    },
+    {
+      "strategy": "RRR|GGG+BB(2)",
+      "coinTf": "ETH/5m",
+      "wins": 502,
+      "total": 854,
+      "pnl": 1500,
+      "wr": 0.5878220140515222
+    },
+    {
+      "strategy": "GGGG+BB(2) bear",
+      "coinTf": "ETH/5m",
+      "wins": 148,
+      "total": 256,
+      "pnl": 400,
+      "wr": 0.578125
+    },
+    {
+      "strategy": "RRRR+BB(2) bull",
+      "coinTf": "ETH/5m",
+      "wins": 151,
+      "total": 255,
+      "pnl": 470,
+      "wr": 0.592156862745098
+    },
+    {
+      "strategy": "Markov(3)+BB(2)",
+      "coinTf": "ETH/5m",
+      "wins": 499,
+      "total": 849,
+      "pnl": 1490,
+      "wr": 0.5877502944640753
+    },
+    {
+      "strategy": "Markov(4)+BB(2)",
+      "coinTf": "ETH/5m",
+      "wins": 297,
+      "total": 504,
+      "pnl": 900,
+      "wr": 0.5892857142857143
+    },
+    {
+      "strategy": "Markov(3)+BB(1.5)",
+      "coinTf": "ETH/5m",
+      "wins": 841,
+      "total": 1454,
+      "pnl": 2280,
+      "wr": 0.578404401650619
+    },
+    {
+      "strategy": "GGG+BB+bodyATR(0.9)",
+      "coinTf": "ETH/5m",
+      "wins": 95,
+      "total": 175,
+      "pnl": 150,
+      "wr": 0.5428571428571428
+    },
+    {
+      "strategy": "RRR+BB+bodyATR(0.9)",
+      "coinTf": "ETH/5m",
+      "wins": 130,
+      "total": 216,
+      "pnl": 440,
+      "wr": 0.6018518518518519
+    },
+    {
+      "strategy": "Markov(3)+BB+bodyATR",
+      "coinTf": "ETH/5m",
+      "wins": 223,
+      "total": 388,
+      "pnl": 580,
+      "wr": 0.5747422680412371
+    },
+    {
+      "strategy": "GGG+BB+RSI65",
+      "coinTf": "ETH/5m",
+      "wins": 177,
+      "total": 299,
+      "pnl": 550,
+      "wr": 0.5919732441471572
+    },
+    {
+      "strategy": "RRR+BB+RSI35",
+      "coinTf": "ETH/5m",
+      "wins": 197,
+      "total": 333,
+      "pnl": 610,
+      "wr": 0.5915915915915916
+    },
+    {
+      "strategy": "Markov(3)+BB+RSI65",
+      "coinTf": "ETH/5m",
+      "wins": 371,
+      "total": 627,
+      "pnl": 1150,
+      "wr": 0.5917065390749602
+    },
+    {
+      "strategy": "Markov(3)+BB+skip14",
+      "coinTf": "ETH/5m",
+      "wins": 462,
+      "total": 782,
+      "pnl": 1420,
+      "wr": 0.5907928388746803
+    },
+    {
+      "strategy": "GGG+BB+ALL_FILTERS",
+      "coinTf": "ETH/5m",
+      "wins": 78,
+      "total": 139,
+      "pnl": 170,
+      "wr": 0.5611510791366906
+    },
+    {
+      "strategy": "Markov(3)+BB+ALL",
+      "coinTf": "ETH/5m",
+      "wins": 179,
+      "total": 307,
+      "pnl": 510,
+      "wr": 0.5830618892508144
+    },
+    {
+      "strategy": "Markov(3)+BB(1.5)+ALL",
+      "coinTf": "ETH/5m",
+      "wins": 202,
+      "total": 355,
+      "pnl": 490,
+      "wr": 0.5690140845070423
+    },
+    {
+      "strategy": "Markov(4)+BB+ALL",
+      "coinTf": "ETH/5m",
+      "wins": 107,
+      "total": 176,
+      "pnl": 380,
+      "wr": 0.6079545454545454
+    },
+    {
+      "strategy": "GGG+BB(2) bear",
+      "coinTf": "ETH/15m",
+      "wins": 85,
+      "total": 128,
+      "pnl": 420,
+      "wr": 0.6640625
+    },
+    {
+      "strategy": "RRR+BB(2) bull",
+      "coinTf": "ETH/15m",
+      "wins": 76,
+      "total": 128,
+      "pnl": 240,
+      "wr": 0.59375
+    },
+    {
+      "strategy": "RRR|GGG+BB(2)",
+      "coinTf": "ETH/15m",
+      "wins": 161,
+      "total": 256,
+      "pnl": 660,
+      "wr": 0.62890625
+    },
+    {
+      "strategy": "GGGG+BB(2) bear",
+      "coinTf": "ETH/15m",
+      "wins": 36,
+      "total": 61,
+      "pnl": 110,
+      "wr": 0.5901639344262295
+    },
+    {
+      "strategy": "RRRR+BB(2) bull",
+      "coinTf": "ETH/15m",
+      "wins": 43,
+      "total": 73,
+      "pnl": 130,
+      "wr": 0.589041095890411
+    },
+    {
+      "strategy": "Markov(3)+BB(2)",
+      "coinTf": "ETH/15m",
+      "wins": 161,
+      "total": 253,
+      "pnl": 690,
+      "wr": 0.6363636363636364
+    },
+    {
+      "strategy": "Markov(4)+BB(2)",
+      "coinTf": "ETH/15m",
+      "wins": 79,
+      "total": 131,
+      "pnl": 270,
+      "wr": 0.6030534351145038
+    },
+    {
+      "strategy": "Markov(3)+BB(1.5)",
+      "coinTf": "ETH/15m",
+      "wins": 260,
+      "total": 425,
+      "pnl": 950,
+      "wr": 0.611764705882353
+    },
+    {
+      "strategy": "GGG+BB+bodyATR(0.9)",
+      "coinTf": "ETH/15m",
+      "wins": 41,
+      "total": 58,
+      "pnl": 240,
+      "wr": 0.7068965517241379
+    },
+    {
+      "strategy": "RRR+BB+bodyATR(0.9)",
+      "coinTf": "ETH/15m",
+      "wins": 38,
+      "total": 64,
+      "pnl": 120,
+      "wr": 0.59375
+    },
+    {
+      "strategy": "Markov(3)+BB+bodyATR",
+      "coinTf": "ETH/15m",
+      "wins": 79,
+      "total": 121,
+      "pnl": 370,
+      "wr": 0.6528925619834711
+    },
+    {
+      "strategy": "GGG+BB+RSI65",
+      "coinTf": "ETH/15m",
+      "wins": 51,
+      "total": 78,
+      "pnl": 240,
+      "wr": 0.6538461538461539
+    },
+    {
+      "strategy": "RRR+BB+RSI35",
+      "coinTf": "ETH/15m",
+      "wins": 53,
+      "total": 93,
+      "pnl": 130,
+      "wr": 0.5698924731182796
+    },
+    {
+      "strategy": "Markov(3)+BB+RSI65",
+      "coinTf": "ETH/15m",
+      "wins": 104,
+      "total": 168,
+      "pnl": 400,
+      "wr": 0.6190476190476191
+    },
+    {
+      "strategy": "Markov(3)+BB+skip14",
+      "coinTf": "ETH/15m",
+      "wins": 148,
+      "total": 226,
+      "pnl": 700,
+      "wr": 0.6548672566371682
+    },
+    {
+      "strategy": "GGG+BB+ALL_FILTERS",
+      "coinTf": "ETH/15m",
+      "wins": 28,
+      "total": 41,
+      "pnl": 150,
+      "wr": 0.6829268292682927
+    },
+    {
+      "strategy": "Markov(3)+BB+ALL",
+      "coinTf": "ETH/15m",
+      "wins": 59,
+      "total": 90,
+      "pnl": 280,
+      "wr": 0.6555555555555556
+    },
+    {
+      "strategy": "Markov(3)+BB(1.5)+ALL",
+      "coinTf": "ETH/15m",
+      "wins": 65,
+      "total": 101,
+      "pnl": 290,
+      "wr": 0.6435643564356436
+    },
+    {
+      "strategy": "Markov(4)+BB+ALL",
+      "coinTf": "ETH/15m",
+      "wins": 32,
+      "total": 47,
+      "pnl": 170,
+      "wr": 0.6808510638297872
+    },
+    {
+      "strategy": "GGG+BB(2) bear",
+      "coinTf": "BTC/15m",
+      "wins": 90,
+      "total": 140,
+      "pnl": 400,
+      "wr": 0.6428571428571429
+    },
+    {
+      "strategy": "RRR+BB(2) bull",
+      "coinTf": "BTC/15m",
+      "wins": 80,
+      "total": 134,
+      "pnl": 260,
+      "wr": 0.5970149253731343
+    },
+    {
+      "strategy": "RRR|GGG+BB(2)",
+      "coinTf": "BTC/15m",
+      "wins": 170,
+      "total": 274,
+      "pnl": 660,
+      "wr": 0.6204379562043796
+    },
+    {
+      "strategy": "GGGG+BB(2) bear",
+      "coinTf": "BTC/15m",
+      "wins": 44,
+      "total": 76,
+      "pnl": 120,
+      "wr": 0.5789473684210527
+    },
+    {
+      "strategy": "RRRR+BB(2) bull",
+      "coinTf": "BTC/15m",
+      "wins": 44,
+      "total": 77,
+      "pnl": 110,
+      "wr": 0.5714285714285714
+    },
+    {
+      "strategy": "Markov(3)+BB(2)",
+      "coinTf": "BTC/15m",
+      "wins": 170,
+      "total": 274,
+      "pnl": 660,
+      "wr": 0.6204379562043796
+    },
+    {
+      "strategy": "Markov(4)+BB(2)",
+      "coinTf": "BTC/15m",
+      "wins": 88,
+      "total": 153,
+      "pnl": 230,
+      "wr": 0.5751633986928104
+    },
+    {
+      "strategy": "Markov(3)+BB(1.5)",
+      "coinTf": "BTC/15m",
+      "wins": 271,
+      "total": 443,
+      "pnl": 990,
+      "wr": 0.6117381489841986
+    },
+    {
+      "strategy": "GGG+BB+bodyATR(0.9)",
+      "coinTf": "BTC/15m",
+      "wins": 50,
+      "total": 73,
+      "pnl": 270,
+      "wr": 0.684931506849315
+    },
+    {
+      "strategy": "RRR+BB+bodyATR(0.9)",
+      "coinTf": "BTC/15m",
+      "wins": 38,
+      "total": 66,
+      "pnl": 100,
+      "wr": 0.5757575757575758
+    },
+    {
+      "strategy": "Markov(3)+BB+bodyATR",
+      "coinTf": "BTC/15m",
+      "wins": 88,
+      "total": 139,
+      "pnl": 370,
+      "wr": 0.6330935251798561
+    },
+    {
+      "strategy": "GGG+BB+RSI65",
+      "coinTf": "BTC/15m",
+      "wins": 68,
+      "total": 105,
+      "pnl": 310,
+      "wr": 0.6476190476190476
+    },
+    {
+      "strategy": "RRR+BB+RSI35",
+      "coinTf": "BTC/15m",
+      "wins": 57,
+      "total": 99,
+      "pnl": 150,
+      "wr": 0.5757575757575758
+    },
+    {
+      "strategy": "Markov(3)+BB+RSI65",
+      "coinTf": "BTC/15m",
+      "wins": 125,
+      "total": 204,
+      "pnl": 460,
+      "wr": 0.6127450980392157
+    },
+    {
+      "strategy": "Markov(3)+BB+skip14",
+      "coinTf": "BTC/15m",
+      "wins": 155,
+      "total": 248,
+      "pnl": 620,
+      "wr": 0.625
+    },
+    {
+      "strategy": "GGG+BB+ALL_FILTERS",
+      "coinTf": "BTC/15m",
+      "wins": 35,
+      "total": 54,
+      "pnl": 160,
+      "wr": 0.6481481481481481
+    },
+    {
+      "strategy": "Markov(3)+BB+ALL",
+      "coinTf": "BTC/15m",
+      "wins": 65,
+      "total": 106,
+      "pnl": 240,
+      "wr": 0.6132075471698113
+    },
+    {
+      "strategy": "Markov(3)+BB(1.5)+ALL",
+      "coinTf": "BTC/15m",
+      "wins": 69,
+      "total": 112,
+      "pnl": 260,
+      "wr": 0.6160714285714286
+    },
+    {
+      "strategy": "Markov(4)+BB+ALL",
+      "coinTf": "BTC/15m",
+      "wins": 36,
+      "total": 59,
+      "pnl": 130,
+      "wr": 0.6101694915254238
+    },
+    {
+      "strategy": "GGG+BB(2) bear",
+      "coinTf": "SOL/15m",
+      "wins": 75,
+      "total": 145,
+      "pnl": 50,
+      "wr": 0.5172413793103449
+    },
+    {
+      "strategy": "RRR+BB(2) bull",
+      "coinTf": "SOL/15m",
+      "wins": 93,
+      "total": 154,
+      "pnl": 320,
+      "wr": 0.6038961038961039
+    },
+    {
+      "strategy": "RRR|GGG+BB(2)",
+      "coinTf": "SOL/15m",
+      "wins": 168,
+      "total": 299,
+      "pnl": 370,
+      "wr": 0.5618729096989966
+    },
+    {
+      "strategy": "GGGG+BB(2) bear",
+      "coinTf": "SOL/15m",
+      "wins": 41,
+      "total": 84,
+      "pnl": -20,
+      "wr": 0.4880952380952381
+    },
+    {
+      "strategy": "RRRR+BB(2) bull",
+      "coinTf": "SOL/15m",
+      "wins": 57,
+      "total": 93,
+      "pnl": 210,
+      "wr": 0.6129032258064516
+    },
+    {
+      "strategy": "Markov(3)+BB(2)",
+      "coinTf": "SOL/15m",
+      "wins": 163,
+      "total": 293,
+      "pnl": 330,
+      "wr": 0.5563139931740614
+    },
+    {
+      "strategy": "Markov(4)+BB(2)",
+      "coinTf": "SOL/15m",
+      "wins": 94,
+      "total": 171,
+      "pnl": 170,
+      "wr": 0.5497076023391813
+    },
+    {
+      "strategy": "Markov(3)+BB(1.5)",
+      "coinTf": "SOL/15m",
+      "wins": 253,
+      "total": 449,
+      "pnl": 570,
+      "wr": 0.5634743875278396
+    },
+    {
+      "strategy": "GGG+BB+bodyATR(0.9)",
+      "coinTf": "SOL/15m",
+      "wins": 28,
+      "total": 56,
+      "pnl": 0,
+      "wr": 0.5
+    },
+    {
+      "strategy": "RRR+BB+bodyATR(0.9)",
+      "coinTf": "SOL/15m",
+      "wins": 41,
+      "total": 69,
+      "pnl": 130,
+      "wr": 0.5942028985507246
+    },
+    {
+      "strategy": "Markov(3)+BB+bodyATR",
+      "coinTf": "SOL/15m",
+      "wins": 68,
+      "total": 124,
+      "pnl": 120,
+      "wr": 0.5483870967741935
+    },
+    {
+      "strategy": "GGG+BB+RSI65",
+      "coinTf": "SOL/15m",
+      "wins": 59,
+      "total": 111,
+      "pnl": 70,
+      "wr": 0.5315315315315315
+    },
+    {
+      "strategy": "RRR+BB+RSI35",
+      "coinTf": "SOL/15m",
+      "wins": 62,
+      "total": 109,
+      "pnl": 150,
+      "wr": 0.5688073394495413
+    },
+    {
+      "strategy": "Markov(3)+BB+RSI65",
+      "coinTf": "SOL/15m",
+      "wins": 117,
+      "total": 215,
+      "pnl": 190,
+      "wr": 0.5441860465116279
+    },
+    {
+      "strategy": "Markov(3)+BB+skip14",
+      "coinTf": "SOL/15m",
+      "wins": 156,
+      "total": 273,
+      "pnl": 390,
+      "wr": 0.5714285714285714
+    },
+    {
+      "strategy": "GGG+BB+ALL_FILTERS",
+      "coinTf": "SOL/15m",
+      "wins": 29,
+      "total": 50,
+      "pnl": 80,
+      "wr": 0.58
+    },
+    {
+      "strategy": "Markov(3)+BB+ALL",
+      "coinTf": "SOL/15m",
+      "wins": 61,
+      "total": 104,
+      "pnl": 180,
+      "wr": 0.5865384615384616
+    },
+    {
+      "strategy": "Markov(3)+BB(1.5)+ALL",
+      "coinTf": "SOL/15m",
+      "wins": 68,
+      "total": 117,
+      "pnl": 190,
+      "wr": 0.5811965811965812
+    },
+    {
+      "strategy": "Markov(4)+BB+ALL",
+      "coinTf": "SOL/15m",
+      "wins": 41,
+      "total": 66,
+      "pnl": 160,
+      "wr": 0.6212121212121212
+    }
+  ]
+}

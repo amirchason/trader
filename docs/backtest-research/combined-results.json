@@ -1,0 +1,519 @@
+{
+  "generatedAt": "2026-02-21T11:11:53.199Z",
+  "trainResults": [
+    {
+      "name": "MTF + RSI>65",
+      "winRate": 54.42861134395083,
+      "pnl": 18908.49897865834,
+      "sharpe": 19.338898329436482,
+      "trades": 3579
+    },
+    {
+      "name": "MTF + RSI>75",
+      "winRate": 54.48154657293497,
+      "pnl": 1619.8869208232609,
+      "sharpe": 18.634591803346254,
+      "trades": 1138
+    },
+    {
+      "name": "RSI extreme only",
+      "winRate": 54.563297350343476,
+      "pnl": 1408.6789753050066,
+      "sharpe": 18.468189720528677,
+      "trades": 1019
+    },
+    {
+      "name": "All + conf=70",
+      "winRate": 53.64041604754829,
+      "pnl": 37509.97172531386,
+      "sharpe": 14.90875277425052,
+      "trades": 5384
+    },
+    {
+      "name": "BigCandle only",
+      "winRate": 53.86292080406878,
+      "pnl": 18759.72976815535,
+      "sharpe": 13.943860593922368,
+      "trades": 4129
+    },
+    {
+      "name": "All + conf=80",
+      "winRate": 53.16941990011526,
+      "pnl": 3571.761116652323,
+      "sharpe": 13.829203451261865,
+      "trades": 2603
+    },
+    {
+      "name": "All + streak=4",
+      "winRate": 53.69259173782599,
+      "pnl": 389290.63506026583,
+      "sharpe": 12.251063518620853,
+      "trades": 8666
+    },
+    {
+      "name": "Streak only",
+      "winRate": 53.22429906542057,
+      "pnl": 161741.42794325194,
+      "sharpe": 11.95234364344879,
+      "trades": 8560
+    },
+    {
+      "name": "MTF + Streak",
+      "winRate": 52.8989333614954,
+      "pnl": 149913.87908154732,
+      "sharpe": 11.14760533024582,
+      "trades": 9469
+    },
+    {
+      "name": "MTF + BigCandle",
+      "winRate": 53.32194381169324,
+      "pnl": 24449.68848862737,
+      "sharpe": 10.73418809892228,
+      "trades": 5268
+    },
+    {
+      "name": "Streak + BigCandle",
+      "winRate": 53.23262839879154,
+      "pnl": 1002220.6133013542,
+      "sharpe": 9.917537321136546,
+      "trades": 11585
+    },
+    {
+      "name": "All + RSI>75",
+      "winRate": 53.25182967398536,
+      "pnl": 1364165.055792917,
+      "sharpe": 9.762220212502491,
+      "trades": 12024
+    },
+    {
+      "name": "All + agree required",
+      "winRate": 53.0625351208156,
+      "pnl": 1103748.740593727,
+      "sharpe": 9.650351929426938,
+      "trades": 12457
+    },
+    {
+      "name": "All combined",
+      "winRate": 53.03964757709251,
+      "pnl": 1058944.4717580932,
+      "sharpe": 9.59536703034599,
+      "trades": 12485
+    },
+    {
+      "name": "MTF only",
+      "winRate": 52.18579234972678,
+      "pnl": 762.6487941776895,
+      "sharpe": 8.689516097361489,
+      "trades": 1464
+    }
+  ],
+  "testResults": [
+    {
+      "name": "All + agree required",
+      "winRate": 55.27265817974539,
+      "pnl": 196753.60819440652,
+      "sharpe": 15.04741050635011,
+      "trades": 5263,
+      "byType": {
+        "streak_reversion": {
+          "trades": 3148,
+          "winRate": 55.30495552731893,
+          "pnl": 130356.70829241486
+        },
+        "big_candle": {
+          "trades": 1462,
+          "winRate": 55.335157318741444,
+          "pnl": 41951.917253808984
+        },
+        "rsi_extreme": {
+          "trades": 147,
+          "winRate": 53.06122448979592,
+          "pnl": 1436.3025650257784
+        },
+        "mtf_reversion": {
+          "trades": 506,
+          "winRate": 55.533596837944664,
+          "pnl": 23008.68008315681
+        }
+      }
+    },
+    {
+      "name": "All combined",
+      "winRate": 55.22274881516588,
+      "pnl": 188885.35386077213,
+      "sharpe": 14.729747902317637,
+      "trades": 5275,
+      "byType": {
+        "streak_reversion": {
+          "trades": 3148,
+          "winRate": 55.30495552731893,
+          "pnl": 127523.62538160998
+        },
+        "big_candle": {
+          "trades": 1462,
+          "winRate": 55.335157318741444,
+          "pnl": 41160.85493401978
+        },
+        "rsi_extreme": {
+          "trades": 148,
+          "winRate": 52.702702702702695,
+          "pnl": 1348.6208861145424
+        },
+        "mtf_reversion": {
+          "trades": 517,
+          "winRate": 55.12572533849129,
+          "pnl": 18852.25265902792
+        }
+      }
+    },
+    {
+      "name": "All + RSI>75",
+      "winRate": 55.17982799061767,
+      "pnl": 154145.5775930047,
+      "sharpe": 14.036889074313159,
+      "trades": 5116,
+      "byType": {
+        "streak_reversion": {
+          "trades": 3236,
+          "winRate": 55.43881334981459,
+          "pnl": 123423.41571079708
+        },
+        "big_candle": {
+          "trades": 1521,
+          "winRate": 55.161078238001316,
+          "pnl": 37136.6004295628
+        },
+        "rsi_extreme": {
+          "trades": 161,
+          "winRate": 54.6583850931677,
+          "pnl": 2822.9312075369
+        },
+        "mtf_reversion": {
+          "trades": 198,
+          "winRate": 51.515151515151516,
+          "pnl": -9237.3697548924
+        }
+      }
+    },
+    {
+      "name": "Streak + BigCandle",
+      "winRate": 55.258932155760746,
+      "pnl": 146092.5854215593,
+      "sharpe": 14.988745043934728,
+      "trades": 4982,
+      "byType": {
+        "streak_reversion": {
+          "trades": 3370,
+          "winRate": 55.25222551928783,
+          "pnl": 108635.52118570411
+        },
+        "big_candle": {
+          "trades": 1612,
+          "winRate": 55.272952853598014,
+          "pnl": 37457.064235855134
+        }
+      }
+    },
+    {
+      "name": "MTF + Streak",
+      "winRate": 55.44579533941236,
+      "pnl": 59505.45167307699,
+      "sharpe": 18.42910670410834,
+      "trades": 3948,
+      "byType": {
+        "streak_reversion": {
+          "trades": 3416,
+          "winRate": 55.5327868852459,
+          "pnl": 53076.27678828869
+        },
+        "mtf_reversion": {
+          "trades": 532,
+          "winRate": 54.88721804511278,
+          "pnl": 6429.174884788437
+        }
+      }
+    },
+    {
+      "name": "All + streak=4",
+      "winRate": 55.859375,
+      "pnl": 54752.990368759165,
+      "sharpe": 19.143229233110695,
+      "trades": 3584,
+      "byType": {
+        "big_candle": {
+          "trades": 1561,
+          "winRate": 55.60538116591929,
+          "pnl": 20815.37747806212
+        },
+        "rsi_extreme": {
+          "trades": 175,
+          "winRate": 52.57142857142857,
+          "pnl": 676.6021242506263
+        },
+        "streak_reversion": {
+          "trades": 1314,
+          "winRate": 56.77321156773212,
+          "pnl": 25408.508484534654
+        },
+        "mtf_reversion": {
+          "trades": 534,
+          "winRate": 55.430711610486895,
+          "pnl": 7852.502281911696
+        }
+      }
+    },
+    {
+      "name": "Streak only",
+      "winRate": 55.60463832136941,
+      "pnl": 47377.08667645362,
+      "sharpe": 19.621035040643022,
+      "trades": 3622,
+      "byType": {
+        "streak_reversion": {
+          "trades": 3622,
+          "winRate": 55.60463832136941,
+          "pnl": 47377.08667645362
+        }
+      }
+    },
+    {
+      "name": "MTF + BigCandle",
+      "winRate": 55.65912117177098,
+      "pnl": 10443.585700790587,
+      "sharpe": 21.203972291076262,
+      "trades": 2253,
+      "byType": {
+        "big_candle": {
+          "trades": 1693,
+          "winRate": 55.75900767867691,
+          "pnl": 7870.385046478319
+        },
+        "mtf_reversion": {
+          "trades": 560,
+          "winRate": 55.35714285714286,
+          "pnl": 2573.200654312273
+        }
+      }
+    },
+    {
+      "name": "All + conf=70",
+      "winRate": 55.979037636969984,
+      "pnl": 10079.853108073474,
+      "sharpe": 26.097284015306002,
+      "trades": 2099,
+      "byType": {
+        "streak_reversion": {
+          "trades": 1457,
+          "winRate": 56.966369251887436,
+          "pnl": 8000.653335825342
+        },
+        "rsi_extreme": {
+          "trades": 105,
+          "winRate": 47.61904761904761,
+          "pnl": -51.67656461200599
+        },
+        "big_candle": {
+          "trades": 20,
+          "winRate": 50,
+          "pnl": 53.71314680258813
+        },
+        "mtf_reversion": {
+          "trades": 517,
+          "winRate": 55.12572533849129,
+          "pnl": 2077.163190057548
+        }
+      }
+    },
+    {
+      "name": "BigCandle only",
+      "winRate": 55.55555555555556,
+      "pnl": 6151.799729687344,
+      "sharpe": 22.974515017400943,
+      "trades": 1854,
+      "byType": {
+        "big_candle": {
+          "trades": 1854,
+          "winRate": 55.55555555555556,
+          "pnl": 6151.79972968734
+        }
+      }
+    },
+    {
+      "name": "MTF + RSI>65",
+      "winRate": 55.595930232558146,
+      "pnl": 3354.665922820639,
+      "sharpe": 24.345998407621078,
+      "trades": 1376,
+      "byType": {
+        "mtf_reversion": {
+          "trades": 1160,
+          "winRate": 56.55172413793104,
+          "pnl": 3315.546141687793
+        },
+        "rsi_extreme": {
+          "trades": 216,
+          "winRate": 50.46296296296296,
+          "pnl": 39.11978113284396
+        }
+      }
+    },
+    {
+      "name": "All + conf=80",
+      "winRate": 55.69744597249509,
+      "pnl": 2031.7382164061478,
+      "sharpe": 28.099312360360244,
+      "trades": 1018,
+      "byType": {
+        "streak_reversion": {
+          "trades": 624,
+          "winRate": 58.333333333333336,
+          "pnl": 1750.6013770027396
+        },
+        "rsi_extreme": {
+          "trades": 52,
+          "winRate": 42.30769230769231,
+          "pnl": -107.34784822249136
+        },
+        "mtf_reversion": {
+          "trades": 340,
+          "winRate": 53.23529411764706,
+          "pnl": 410.59688052628184
+        },
+        "big_candle": {
+          "trades": 2,
+          "winRate": 0,
+          "pnl": -22.11219290038569
+        }
+      }
+    },
+    {
+      "name": "MTF only",
+      "winRate": 55.35714285714286,
+      "pnl": 771.8400823095546,
+      "sharpe": 26.014271779310928,
+      "trades": 560,
+      "byType": {
+        "mtf_reversion": {
+          "trades": 560,
+          "winRate": 55.35714285714286,
+          "pnl": 771.8400823095546
+        }
+      }
+    },
+    {
+      "name": "RSI extreme only",
+      "winRate": 53.233830845771145,
+      "pnl": 271.13177128887764,
+      "sharpe": 15.800687861486486,
+      "trades": 402,
+      "byType": {
+        "rsi_extreme": {
+          "trades": 402,
+          "winRate": 53.233830845771145,
+          "pnl": 271.13177128887816
+        }
+      }
+    },
+    {
+      "name": "MTF + RSI>75",
+      "winRate": 52.90178571428571,
+      "pnl": 268.21138192824606,
+      "sharpe": 13.890388336830531,
+      "trades": 448,
+      "byType": {
+        "rsi_extreme": {
+          "trades": 235,
+          "winRate": 52.76595744680851,
+          "pnl": 143.88870100482103
+        },
+        "mtf_reversion": {
+          "trades": 213,
+          "winRate": 53.051643192488264,
+          "pnl": 124.3226809234251
+        }
+      }
+    }
+  ],
+  "bestTrainConfig": {
+    "name": "MTF + RSI>65",
+    "winRate": 54.42861134395083,
+    "pnl": 18908.49897865834,
+    "sharpe": 19.338898329436482,
+    "trades": 3579
+  },
+  "bestTestConfig": {
+    "name": "All + conf=80",
+    "winRate": 55.69744597249509,
+    "pnl": 2031.7382164061478,
+    "sharpe": 28.099312360360244,
+    "trades": 1018,
+    "byType": {
+      "streak_reversion": {
+        "trades": 624,
+        "winRate": 58.333333333333336,
+        "pnl": 1750.6013770027396
+      },
+      "rsi_extreme": {
+        "trades": 52,
+        "winRate": 42.30769230769231,
+        "pnl": -107.34784822249136
+      },
+      "mtf_reversion": {
+        "trades": 340,
+        "winRate": 53.23529411764706,
+        "pnl": 410.59688052628184
+      },
+      "big_candle": {
+        "trades": 2,
+        "winRate": 0,
+        "pnl": -22.11219290038569
+      }
+    }
+  },
+  "bestByPnl": {
+    "name": "All + agree required",
+    "winRate": 55.27265817974539,
+    "pnl": 196753.60819440652,
+    "sharpe": 15.04741050635011,
+    "trades": 5263,
+    "byType": {
+      "streak_reversion": {
+        "trades": 3148,
+        "winRate": 55.30495552731893,
+        "pnl": 130356.70829241486
+      },
+      "big_candle": {
+        "trades": 1462,
+        "winRate": 55.335157318741444,
+        "pnl": 41951.917253808984
+      },
+      "rsi_extreme": {
+        "trades": 147,
+        "winRate": 53.06122448979592,
+        "pnl": 1436.3025650257784
+      },
+      "mtf_reversion": {
+        "trades": 506,
+        "winRate": 55.533596837944664,
+        "pnl": 23008.68008315681
+      }
+    }
+  },
+  "configs": [
+    "MTF only",
+    "Streak only",
+    "BigCandle only",
+    "RSI extreme only",
+    "MTF + Streak",
+    "MTF + BigCandle",
+    "Streak + BigCandle",
+    "All combined",
+    "All + agree required",
+    "All + streak=4",
+    "All + RSI>75",
+    "All + conf=70",
+    "All + conf=80",
+    "MTF + RSI>65",
+    "MTF + RSI>75"
+  ]
+}
