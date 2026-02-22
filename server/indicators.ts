@@ -4319,6 +4319,123 @@ export function scoreStrategies(
     }
   }
 
+  // ─── Strat 123: ETH Thursday + RSI7>70 + streak>=1 + BB(20,2.2) ─────────────
+  // Session25: day-of-week Thursday filter → ETH 80.0% WR n=34 tpd=0.18
+  if (candles5m.length >= 22) {
+    const last123 = candles5m[candles5m.length - 1];
+    const dow123 = new Date(last123.closeTime).getUTCDay();
+    if (dow123 === 4) { // Thursday only
+      const bb123 = calculateBollingerBands(candles5m, 20, 2.2);
+      const rsi7_123 = calculateRSI(candles5m, 7);
+      if (bb123 && rsi7_123 !== null) {
+        const isBear123 = last123.close > bb123.upper && rsi7_123 > 70;
+        const isBull123 = last123.close < bb123.lower && rsi7_123 < 30;
+        if (isBear123 || isBull123) {
+          let streak123 = 0;
+          for (let j = candles5m.length - 1; j >= Math.max(0, candles5m.length - 8); j--) {
+            const cj = candles5m[j];
+            if (cj.close > cj.open) { if (streak123 < 0) break; streak123++; }
+            else if (cj.close < cj.open) { if (streak123 > 0) break; streak123--; }
+            else break;
+          }
+          if (Math.abs(streak123) >= 1) {
+            const dev123 = isBear123
+              ? (last123.close - bb123.upper) / bb123.upper * 100
+              : (bb123.lower - last123.close) / bb123.lower * 100;
+            strategies.push({
+              name: 'ETH Thu RSI7+streak+BB22',
+              emoji: '📅🔥',
+              score: Math.round(Math.min(9.2, 7.2 + dev123 * 8 + (Math.abs(streak123) - 1) * 0.3) * 10) / 10,
+              direction: (isBear123 ? 'bearish' : 'bullish') as Direction,
+              signal: `ETH Thu RSI7=${rsi7_123.toFixed(0)}>70 streak=${Math.abs(streak123)} BB(20,2.2) dev=${dev123.toFixed(3)}% (80.0% WR n=34 📅)`,
+              confidence: Math.round(Math.min(88, 72 + dev123 * 7)),
+            });
+          }
+        }
+      }
+    }
+  }
+
+  // ─── Strat 124: ETH GH + UO>75 + RSI7>68 + BB(20,2.2) ──────────────────────
+  // Session30 E2: Ultimate Oscillator >75 at good hours + BB extreme → 83.3% WR n=12
+  if (candles5m.length >= 35) {
+    const s124GoodHours = [10, 11, 12, 21];
+    const last124 = candles5m[candles5m.length - 1];
+    const s124Hour = new Date(last124.closeTime).getUTCHours();
+    if (s124GoodHours.includes(s124Hour)) {
+      const bb124 = calculateBollingerBands(candles5m, 20, 2.2);
+      const rsi7_124 = calculateRSI(candles5m, 7);
+      if (bb124 && rsi7_124 !== null) {
+        const isBear124 = last124.close > bb124.upper && rsi7_124 > 68;
+        const isBull124 = last124.close < bb124.lower && rsi7_124 < 32;
+        if (isBear124 || isBull124) {
+          const n124 = candles5m.length;
+          let bp7 = 0, tr7 = 0, bp14 = 0, tr14 = 0, bp28 = 0, tr28 = 0;
+          for (let k = n124 - 7; k < n124; k++) {
+            const bp = candles5m[k].close - Math.min(candles5m[k].low, candles5m[k - 1].close);
+            const tr = Math.max(candles5m[k].high, candles5m[k - 1].close) - Math.min(candles5m[k].low, candles5m[k - 1].close);
+            bp7 += bp; tr7 += tr;
+          }
+          for (let k = n124 - 14; k < n124; k++) {
+            const bp = candles5m[k].close - Math.min(candles5m[k].low, candles5m[k - 1].close);
+            const tr = Math.max(candles5m[k].high, candles5m[k - 1].close) - Math.min(candles5m[k].low, candles5m[k - 1].close);
+            bp14 += bp; tr14 += tr;
+          }
+          for (let k = n124 - 28; k < n124; k++) {
+            const bp = candles5m[k].close - Math.min(candles5m[k].low, candles5m[k - 1].close);
+            const tr = Math.max(candles5m[k].high, candles5m[k - 1].close) - Math.min(candles5m[k].low, candles5m[k - 1].close);
+            bp28 += bp; tr28 += tr;
+          }
+          if (tr7 > 0 && tr14 > 0 && tr28 > 0) {
+            const uo124 = (4 * (bp7 / tr7) + 2 * (bp14 / tr14) + (bp28 / tr28)) / 7 * 100;
+            if ((isBear124 && uo124 > 75) || (isBull124 && uo124 < 25)) {
+              const dev124 = isBear124
+                ? (last124.close - bb124.upper) / bb124.upper * 100
+                : (bb124.lower - last124.close) / bb124.lower * 100;
+              strategies.push({
+                name: 'ETH GH+UO75+RSI68+BB22',
+                emoji: '🌀🔥',
+                score: Math.round(Math.min(9.4, 7.5 + dev124 * 7) * 10) / 10,
+                direction: (isBear124 ? 'bearish' : 'bullish') as Direction,
+                signal: `ETH GH=${s124Hour}UTC UO=${uo124.toFixed(1)}>75 RSI7=${rsi7_124.toFixed(0)}>68 BB(20,2.2) dev=${dev124.toFixed(3)}% (83.3% WR n=12 🌀)`,
+                confidence: Math.round(Math.min(89, 74 + dev124 * 7)),
+              });
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // ─── Strat 126: BTC h9 + RSI7>70 + BB(20,2.2) ───────────────────────────────
+  // Session33 B3: BTC hour 9 UTC is a NEW good hour (not in original [1,12,13,16,20])
+  // BTC: 77.4% WR n=62 tpd=0.34 σ=5.7% ✅ STABLE (walk-forward validated)
+  if (candles5m.length >= 22) {
+    const last126 = candles5m[candles5m.length - 1];
+    const s126Hour = new Date(last126.closeTime).getUTCHours();
+    if (s126Hour === 9) {
+      const bb126 = calculateBollingerBands(candles5m, 20, 2.2);
+      const rsi7_126 = calculateRSI(candles5m, 7);
+      if (bb126 && rsi7_126 !== null) {
+        const isBear126 = last126.close > bb126.upper && rsi7_126 > 70;
+        const isBull126 = last126.close < bb126.lower && rsi7_126 < 30;
+        if (isBear126 || isBull126) {
+          const dev126 = isBear126
+            ? (last126.close - bb126.upper) / bb126.upper * 100
+            : (bb126.lower - last126.close) / bb126.lower * 100;
+          strategies.push({
+            name: 'BTC h9+RSI7_70+BB22',
+            emoji: '🕘🔥',
+            score: Math.round(Math.min(9.2, 7.2 + dev126 * 6) * 10) / 10,
+            direction: (isBear126 ? 'bearish' : 'bullish') as Direction,
+            signal: `BTC h9 RSI7=${rsi7_126.toFixed(0)}>70 BB(20,2.2) dev=${dev126.toFixed(3)}% (77.4% WR n=62 σ=5.7% 🕘)`,
+            confidence: Math.round(Math.min(86, 71 + dev126 * 7)),
+          });
+        }
+      }
+    }
+  }
+
   strategies.sort((a, b) => b.score - a.score);
 
   const bullishScore = strategies.filter(s => s.direction === 'bullish').reduce((s, st) => s + st.score, 0);
@@ -6351,6 +6468,43 @@ export function scoreSolStrategies(candles5m: Candle[], candles1m: Candle[] = []
               direction: (isBear122sol ? 'bearish' : 'bullish') as Direction,
               signal: `SOL GH=${s122solHour}UTC ADX=${adx122sol.toFixed(1)} RSI7=${rsi7_122sol.toFixed(0)} MFI=${mfi122sol.toFixed(0)} BB%B=${bbPctB122sol.toFixed(2)} (SOL=75.0% n=29 🔥🔥)`,
               confidence: Math.round(Math.min(88, 72 + dev122sol * 6)),
+            });
+          }
+        }
+      }
+    }
+  }
+
+  // ─── SOL Strat 125: SOL Monday + RSI7>70 + streak>=1 + BB(20,2.2) ────────────
+  // Session25: day-of-week Monday filter → SOL 80.0% WR n=20 tpd=0.11
+  if (candles5m.length >= 22) {
+    const last125 = candles5m[candles5m.length - 1];
+    const dow125 = new Date(last125.closeTime).getUTCDay();
+    if (dow125 === 1) { // Monday only
+      const bb125 = calculateBollingerBands(candles5m, 20, 2.2);
+      const rsi7_125 = calculateRSI(candles5m, 7);
+      if (bb125 && rsi7_125 !== null) {
+        const isBear125 = last125.close > bb125.upper && rsi7_125 > 70;
+        const isBull125 = last125.close < bb125.lower && rsi7_125 < 30;
+        if (isBear125 || isBull125) {
+          let streak125 = 0;
+          for (let j = candles5m.length - 1; j >= Math.max(0, candles5m.length - 8); j--) {
+            const cj = candles5m[j];
+            if (cj.close > cj.open) { if (streak125 < 0) break; streak125++; }
+            else if (cj.close < cj.open) { if (streak125 > 0) break; streak125--; }
+            else break;
+          }
+          if (Math.abs(streak125) >= 1) {
+            const dev125 = isBear125
+              ? (last125.close - bb125.upper) / bb125.upper * 100
+              : (bb125.lower - last125.close) / bb125.lower * 100;
+            strategies.push({
+              name: 'SOL Mon RSI7+streak+BB22',
+              emoji: '📅🌊',
+              score: Math.round(Math.min(9.2, 7.2 + dev125 * 8 + (Math.abs(streak125) - 1) * 0.3) * 10) / 10,
+              direction: (isBear125 ? 'bearish' : 'bullish') as Direction,
+              signal: `SOL Mon RSI7=${rsi7_125.toFixed(0)}>70 streak=${Math.abs(streak125)} BB(20,2.2) dev=${dev125.toFixed(3)}% (80.0% WR n=20 📅)`,
+              confidence: Math.round(Math.min(88, 72 + dev125 * 7)),
             });
           }
         }

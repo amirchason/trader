@@ -231,6 +231,12 @@ const TOP_STRATEGIES = [
   { strategyId: 121, nameSubstr: 'GH+ADX20+VWAP_dev0.3%+RSI3_90+BB22',           coins: ['BTC'],        interval: '5m' as const },
   // Session 22: SOL BB%B>1.1 deep overshoot (found in prior compacted session)
   { strategyId: 122, nameSubstr: 'SOL GH+ADX20+RSI7_70+MFI68+BBpctB1.1+BB22',   coins: ['SOL'],        interval: '5m' as const },
+  // Session 25/30: Day-of-week + Ultimate Oscillator (WR≥80%)
+  { strategyId: 123, nameSubstr: 'ETH Thu RSI7',                                 coins: ['ETH'],        interval: '5m' as const },
+  { strategyId: 124, nameSubstr: 'ETH GH+UO75',                                  coins: ['ETH'],        interval: '5m' as const },
+  { strategyId: 125, nameSubstr: 'SOL Mon RSI7',                                 coins: ['SOL'],        interval: '5m' as const },
+  // Session 33: BTC h9 new good hour (77.4% WR n=62 σ=5.7%)
+  { strategyId: 126, nameSubstr: 'BTC h9+RSI7_70+BB22',                         coins: ['BTC'],        interval: '5m' as const },
 ];
 
 const DEFAULT_FUNDING: FundingData = {

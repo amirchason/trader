@@ -161,6 +161,11 @@ const STRAT_STATS: Record<number, { tpd: number; wrNum: number; coinWr?: Record<
   121: { tpd: 0.12, wrNum: 0.722, coinWr: { BTC: 0.722 } },                                        // VWAP_dev>0.3%+RSI3>90+BB22 BTC=72.2% n=22 σ=7.8% 📊
   // Session 22: SOL BB%B>1.1 deep overshoot (from compacted session)
   122: { tpd: 0.16, wrNum: 0.750, coinWr: { SOL: 0.750 } },                                        // SOL RSI7>70+MFI>68+BB%B>1.1+BB22 SOL=75.0% n=29 🔥🔥
+  // Session 25/30: Day-of-week + Ultimate Oscillator (WR≥80%, tpd>0)
+  123: { tpd: 0.18, wrNum: 0.800, coinWr: { ETH: 0.800 } },                                        // ETH Thursday RSI7>70+streak+BB22 → 80.0% WR n=34 📅🔥
+  124: { tpd: 0.07, wrNum: 0.833, coinWr: { ETH: 0.833 } },                                        // ETH GH+UO>75+RSI7>68+BB22 → 83.3% WR n=12 🌀🔥
+  125: { tpd: 0.11, wrNum: 0.800, coinWr: { SOL: 0.800 } },                                        // SOL Monday RSI7>70+streak+BB22 → 80.0% WR n=20 📅🌊
+  126: { tpd: 0.34, wrNum: 0.774, coinWr: { BTC: 0.774 } },                                        // BTC h9 RSI7>70+BB22 → 77.4% WR n=62 σ=5.7% 🕘
 };
 
 // Fallback: parse wr string ("71.1%" or "70-72%") when no explicit STRAT_STATS entry
@@ -1191,6 +1196,47 @@ const STRATEGY_META = [
     badgeColor: 'bg-green-900/40 text-green-300',
     coins: ['SOL'],
     desc: 'SOL-specific BB%B >1.1 (price 10%+ beyond upper band) + RSI7>70 + MFI>68 = deep overshoot in ranging SOL market | SOL=75.0% n=29 tpd=0.16 🔥🔥 (Session 22)',
+  },
+  // ── Session 25/30: Day-of-week + Ultimate Oscillator (WR≥80%) ────────────
+  {
+    strategyId: 123,
+    emoji: '📅🔥',
+    name: 'ETH Thursday + RSI7>70 + streak>=1 + BB(20,2.2)',
+    wr: '80%',
+    badge: 'ETH 80.0% n=34 📅',
+    badgeColor: 'bg-amber-900/40 text-amber-300',
+    coins: ['ETH'],
+    desc: 'Thursday-only filter on ETH RSI7>70 + streak≥1 + outside BB(20,2.2) = day-of-week seasonality boosts mean reversion | ETH=80.0% WR n=34 tpd=0.18 📅🔥 (Session 25 G)',
+  },
+  {
+    strategyId: 124,
+    emoji: '🌀🔥',
+    name: 'ETH GH + UO>75 + RSI7>68 + BB(20,2.2)',
+    wr: '83%',
+    badge: 'ETH 83.3% n=12 🌀',
+    badgeColor: 'bg-purple-900/40 text-purple-300',
+    coins: ['ETH'],
+    desc: 'Ultimate Oscillator(7,14,28) >75 at good hours + RSI7>68 + outside BB(20,2.2) = triple-timeframe momentum exhaustion | ETH=83.3% WR n=12 tpd=0.07 🌀🔥 (Session 30 E2)',
+  },
+  {
+    strategyId: 125,
+    emoji: '📅🌊',
+    name: 'SOL Monday + RSI7>70 + streak>=1 + BB(20,2.2)',
+    wr: '80%',
+    badge: 'SOL 80.0% n=20 📅',
+    badgeColor: 'bg-cyan-900/40 text-cyan-300',
+    coins: ['SOL'],
+    desc: 'Monday-only filter on SOL RSI7>70 + streak≥1 + outside BB(20,2.2) = start-of-week mean reversion boost | SOL=80.0% WR n=20 tpd=0.11 📅🌊 (Session 25 G)',
+  },
+  {
+    strategyId: 126,
+    emoji: '🕘🔥',
+    name: 'BTC h9 + RSI7>70 + BB(20,2.2)',
+    wr: '77.4%',
+    badge: 'BTC 77.4% σ=5.7%',
+    badgeColor: 'bg-orange-900/40 text-orange-300',
+    coins: ['BTC'],
+    desc: 'BTC hour 9 UTC (London open overlap) RSI7>70 + outside BB(20,2.2) = new discovered good hour | BTC=77.4% WR n=62 tpd=0.34 σ=5.7% 🕘🔥 (Session 33 B3)',
   },
   // ── Session 13: 1m Sub-candle + 1h Regime strategies ──────────────────────
   {
