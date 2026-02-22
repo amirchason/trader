@@ -1,4 +1,5 @@
 import { useStore } from '../store';
+import { playTradeOpen, playTradeClose } from '../utils/sound';
 
 export function connectSSE() {
   const store = useStore.getState();
@@ -87,9 +88,46 @@ export function connectSSE() {
 
         case 'paper_update': {
           const { positions, pnl } = payload.data as any;
-          const { setPaperPositions, setPaperPnl } = useStore.getState();
+          const { setPaperPositions, setPaperPnl, paperPositions, soundMuted } = useStore.getState();
+          if (positions && !soundMuted) {
+            const prevOpen = paperPositions.filter((p: any) => p.status === 'OPEN').length;
+            const nextOpen = (positions as any[]).filter((p: any) => p.status === 'OPEN').length;
+            if (nextOpen > prevOpen) playTradeOpen();
+            else if (nextOpen < prevOpen) playTradeClose();
+          }
           if (positions) setPaperPositions(positions);
           if (pnl) setPaperPnl(pnl);
+          break;
+        }
+
+        case 'strategy_config_update': {
+          useStore.getState().setStrategyConfigs(payload.data);
+          break;
+        }
+
+        case 'trade_size_update': {
+          const { type, value } = payload.data as { type: 'fixed' | 'percent'; value: number };
+          useStore.getState().setTradeSizeSettings(type, value);
+          break;
+        }
+
+        case 'eth_candles': {
+          const { candles5m, candles15m } = payload.data as any;
+          useStore.getState().setEthCandles(candles5m, candles15m);
+          break;
+        }
+
+        case 'eth_signals': {
+          useStore.getState().setEthSignals(payload.data);
+          break;
+        }
+
+        case 'sol_signals': {
+          useStore.getState().setSolSignals(payload.data);
+          break;
+        }
+        case 'xrp_signals': {
+          useStore.getState().setXrpSignals(payload.data);
           break;
         }
         }
@@ -129,22 +167,42 @@ export async function fetchDbStatus() {
   return res.json();
 }
 
-export async function triggerDownload(coins: string[], timeframes: string[]) {
+export async function triggerDownload(coins: string[], timeframes: string[], months = 36) {
   const res = await fetch('/api/backtest/download', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ coins, timeframes }),
+    body: JSON.stringify({ coins, timeframes, months }),
   });
   return res.json();
 }
 
-export async function trigger1sDownload(coins: string[]) {
+export async function trigger1sDownload(coins: string[], months = 36) {
   const res = await fetch('/api/backtest/download-1s', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ coins, months }),
+  });
+  return res.json();
+}
+
+export async function triggerDerive10m(coins: string[]) {
+  const res = await fetch('/api/backtest/derive-10m', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ coins }),
   });
   return res.json();
+}
+
+export async function fetchCandles(symbol: string, timeframe: string, limit = 500, endMs?: number) {
+  const params = new URLSearchParams({ symbol, timeframe, limit: String(limit) });
+  if (endMs) params.set('endMs', String(endMs));
+  const res = await fetch(`/api/candles?${params}`);
+  if (!res.ok) throw new Error('Failed to fetch candles');
+  return res.json() as Promise<{ symbol: string; timeframe: string; candles: Array<{
+    symbol: string; timeframe: string; open_time: number;
+    open: number; high: number; low: number; close: number; volume: number;
+  }> }>;
 }
 
 export async function submitBacktestJob(config: object) {
@@ -206,4 +264,50 @@ export async function closePaperTrade(id: string, exitPrice: number) {
 export async function resetPaperTrading() {
   const res = await fetch('/api/paper/reset', { method: 'DELETE' });
   return res.json();
+}
+
+// ─── Strategy Config API helpers ───
+
+export async function fetchStrategyConfigs() {
+  const res = await fetch('/api/strategy/config');
+  if (!res.ok) throw new Error('Failed to fetch strategy configs');
+  return res.json();
+}
+
+export async function setStrategyEnabled(strategyId: number, coin: string, enabled: boolean) {
+  const res = await fetch(`/api/strategy/config/${strategyId}/${coin}`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ enabled }),
+  });
+  return res.json();
+}
+
+export async function fetchTradeSizeSettings() {
+  const res = await fetch('/api/settings/trade-size');
+  if (!res.ok) throw new Error('Failed to fetch trade size settings');
+  return res.json() as Promise<{ type: 'fixed' | 'percent'; value: number }>;
+}
+
+export async function saveTradeSizeSettings(type: 'fixed' | 'percent', value: number) {
+  const res = await fetch('/api/settings/trade-size', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ type, value }),
+  });
+  return res.json();
+}
+
+export async function fetchMinConfidence(): Promise<number> {
+  const res = await fetch('/api/settings/min-confidence');
+  const d = await res.json();
+  return d.minConfidence ?? 65;
+}
+
+export async function saveMinConfidence(value: number): Promise<void> {
+  await fetch('/api/settings/min-confidence', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ value }),
+  });
 }

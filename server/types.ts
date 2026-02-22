@@ -123,7 +123,10 @@ export interface SSEPayload {
   type: 'markets' | 'btc' | 'signals' | 'book' | 'rtds'
       | 'backtest_job_update' | 'backtest_progress' | 'backtest_candle'
       | 'backtest_trade' | 'backtest_complete'
-      | 'paper_update';
+      | 'paper_update' | 'strategy_config_update' | 'trade_size_update' | 'min_confidence_update'
+      | 'eth_candles' | 'eth_signals'
+      | 'sol_signals'
+      | 'xrp_signals';
   data: any;
   timestamp: number;
 }

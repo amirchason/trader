@@ -21,13 +21,18 @@ const CREATE_TABLE = `
     strategy    TEXT,
     confidence  INTEGER,
     created_at  TEXT    NOT NULL,
-    closed_at   TEXT
+    closed_at   TEXT,
+    entry_spot  REAL,
+    interval_m  INTEGER NOT NULL DEFAULT 5
   )
 `;
 
 export function initPaperTradingDb(): void {
   const db = getDb();
   db.exec(CREATE_TABLE);
+  // Migrate existing DBs that don't have the new columns
+  try { db.exec('ALTER TABLE paper_trades ADD COLUMN entry_spot REAL'); } catch { /* already exists */ }
+  try { db.exec('ALTER TABLE paper_trades ADD COLUMN interval_m INTEGER NOT NULL DEFAULT 5'); } catch { /* already exists */ }
 }
 
 // ─────────────────── Types ───────────────────
@@ -48,6 +53,8 @@ export interface PaperTrade {
   confidence: number | null;
   created_at: string;
   closed_at: string | null;
+  entry_spot: number | null;
+  interval_m: number;
 }
 
 export interface OpenTradeParams {
@@ -60,6 +67,8 @@ export interface OpenTradeParams {
   reason?: string;
   strategy?: string;
   confidence?: number;
+  entry_spot?: number;  // Current asset spot price (BTC/ETH/SOL price)
+  interval_m?: number;  // Resolution interval in minutes (5 or 15)
 }
 
 export interface PnlSummary {
@@ -98,17 +107,21 @@ export function openTrade(params: OpenTradeParams): PaperTrade {
     confidence: params.confidence ?? null,
     created_at: new Date().toISOString(),
     closed_at: null,
+    entry_spot: params.entry_spot ?? null,
+    interval_m: params.interval_m ?? 5,
   };
 
   db.prepare(`
     INSERT INTO paper_trades
       (id, market_id, market_q, asset, direction, entry_price, size, status,
-       exit_price, pnl, reason, strategy, confidence, created_at, closed_at)
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+       exit_price, pnl, reason, strategy, confidence, created_at, closed_at,
+       entry_spot, interval_m)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
   `).run(
     trade.id, trade.market_id, trade.market_q, trade.asset, trade.direction,
     trade.entry_price, trade.size, trade.status, null, null,
     trade.reason, trade.strategy, trade.confidence, trade.created_at, null,
+    trade.entry_spot, trade.interval_m,
   );
 
   return trade;
@@ -134,6 +147,46 @@ export function closeTrade(id: string, exitPrice: number): PaperTrade | null {
   `).run(exitPrice, Math.round(pnl * 100) / 100, closedAt, id);
 
   return { ...trade, status: 'CLOSED', exit_price: exitPrice, pnl: Math.round(pnl * 100) / 100, closed_at: closedAt };
+}
+
+// Auto-close trades whose resolution window has passed.
+// currentSpots: { ETH: 2500, BTC: 95000, SOL: 180 }
+// Win/loss determined by comparing current spot price to entry spot.
+export function autoCloseTrades(currentSpots: Record<string, number>): PaperTrade[] {
+  initPaperTradingDb();
+  const db = getDb();
+  const open = db.prepare("SELECT * FROM paper_trades WHERE status = 'OPEN'").all() as PaperTrade[];
+  const closed: PaperTrade[] = [];
+
+  for (const trade of open) {
+    const ageMs = Date.now() - new Date(trade.created_at).getTime();
+    const intervalMs = (trade.interval_m ?? 5) * 60_000;
+    // Add 30s grace: wait for candle to actually close
+    if (ageMs < intervalMs + 30_000) continue;
+
+    const spot = currentSpots[trade.asset];
+    const entrySpot = trade.entry_spot;
+
+    let won: boolean;
+    if (spot && entrySpot && entrySpot > 0) {
+      // Compare current spot to entry spot to determine direction
+      const bullish = spot > entrySpot;
+      won = trade.direction === 'YES' ? bullish : !bullish;
+    } else {
+      // No spot data — use coin-flip (shouldn't happen in practice)
+      won = Math.random() > 0.5;
+    }
+
+    // Binary exit: won = 1.0 (full payout), lost = 0.0
+    const exitPrice = won ? 1.0 : 0.0;
+    const result = closeTrade(trade.id, exitPrice);
+    if (result) {
+      closed.push(result);
+      console.log(`[AutoClose] ${trade.asset} ${trade.strategy} ${trade.direction} → ${won ? 'WIN' : 'LOSS'} (spot ${entrySpot?.toFixed(2)}→${spot?.toFixed(2)})`);
+    }
+  }
+
+  return closed;
 }
 
 export function getOpenPositions(): PaperTrade[] {

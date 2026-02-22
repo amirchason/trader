@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { Activity, BarChart2, Terminal, DollarSign } from 'lucide-react';
+import { Activity, BarChart2, Terminal, DollarSign, Volume2, VolumeX } from 'lucide-react';
+import { useStore } from './store';
 import { PriceBar } from './components/PriceBar';
 import { MarketGrid } from './components/MarketGrid';
 import { CandleChart } from './components/CandleChart';
@@ -13,8 +14,9 @@ import { connectSSE } from './services/api';
 type Tab = 'trading' | 'paper' | 'backtest';
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState<Tab>('trading');
+  const [activeTab, setActiveTab] = useState<Tab>('paper');
   const [consoleOpen, setConsoleOpen] = useState(false);
+  const { soundMuted, setSoundMuted } = useStore();
 
   useEffect(() => {
     const disconnect = connectSSE();
@@ -48,8 +50,24 @@ export default function App() {
           </button>
         ))}
 
-        {/* Agent Console toggle */}
-        <div className="ml-auto">
+        {/* Right-side controls */}
+        <div className="ml-auto flex items-center gap-2">
+          {/* Mute toggle */}
+          <button
+            onClick={() => setSoundMuted(!soundMuted)}
+            className={`flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded border transition-colors ${
+              soundMuted
+                ? 'text-gray-500 border-gray-700 hover:text-gray-300 hover:border-gray-600'
+                : 'text-gray-400 border-gray-700 hover:text-gray-200 hover:border-gray-500'
+            }`}
+            title={soundMuted ? 'Unmute trade sounds' : 'Mute trade sounds'}
+          >
+            {soundMuted
+              ? <VolumeX className="w-3.5 h-3.5" />
+              : <Volume2 className="w-3.5 h-3.5" />}
+          </button>
+
+          {/* Agent Console toggle */}
           <button
             onClick={() => setConsoleOpen(o => !o)}
             className={`flex items-center gap-2 px-3 py-1.5 text-xs font-medium rounded border transition-colors ${

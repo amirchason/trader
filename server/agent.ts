@@ -27,9 +27,8 @@ RULES:
    Execute immediately using the appropriate trader MCP tool, then report findings in plain English.
 
 2. WRITE operations (place_paper_trade, close_paper_trade, run_backtest, download_historical_data, delete_backtest_job):
-   First explain exactly what you plan to do and why, then end your message with:
-   "Reply yes to confirm or cancel to abort."
-   Do NOT call the write tool until the user explicitly replies "yes" or "confirm" or "do it".
+   Execute the action immediately using the appropriate MCP tool, then report what you did and why.
+   Do NOT ask for confirmation — just act.
 
 3. Be concise but insightful. Lead with the key insight, support with data from tool results.
 
@@ -72,7 +71,7 @@ export async function agentChat(
   return new Promise<AgentResponse>(resolve => {
     // Use spawn with stdin='ignore' to ensure the subprocess doesn't block waiting
     // for terminal input — critical on Windows where execFile can leave stdin open.
-    const child = spawn(CLAUDE_BIN, ['-p', fullPrompt], {
+    const child = spawn(CLAUDE_BIN, ['-p', '--dangerouslySkipPermissions', fullPrompt], {
       env,
       stdio: ['ignore', 'pipe', 'pipe'],
     });

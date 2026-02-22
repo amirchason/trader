@@ -57,6 +57,7 @@ export interface StrategyResult {
       downCandles: number;
     };
     lastPrice: number;
+    bb: { upper: number; lower: number; mid: number; pctB: number } | null;
   };
   verdict: {
     direction: 'BULLISH' | 'BEARISH' | 'NEUTRAL';
@@ -163,6 +164,14 @@ export interface PnlSummary {
   losses: number;
 }
 
+export interface StrategyConfig {
+  id: string;
+  strategyId: number;
+  coin: string;
+  enabled: boolean;
+  tradeSize: number;
+}
+
 export interface ToastNotification {
   id: string;
   message: string;
@@ -212,6 +221,34 @@ interface Store {
   clearPlayback: (jobId: string) => void;
   addNotification: (msg: string, type: 'success' | 'error' | 'info') => void;
   dismissNotification: (id: string) => void;
+
+  // Strategy automation state
+  strategyConfigs: StrategyConfig[];
+  setStrategyConfigs: (configs: StrategyConfig[]) => void;
+
+  // Trade size settings
+  tradeSizeType: 'fixed' | 'percent';
+  tradeSizeValue: number;
+  setTradeSizeSettings: (type: 'fixed' | 'percent', value: number) => void;
+
+  // ETH live candles + signals (broadcast every 30s)
+  ethCandles5m: Candle[];
+  ethCandles15m: Candle[];
+  ethSignals: StrategyResult | null;
+  setEthCandles: (c5m: Candle[], c15m: Candle[]) => void;
+  setEthSignals: (s: StrategyResult) => void;
+
+  // SOL signals (broadcast every 60s)
+  solSignals: StrategyResult | null;
+  setSolSignals: (s: StrategyResult) => void;
+
+  // XRP signals (broadcast every 60s)
+  xrpSignals: StrategyResult | null;
+  setXrpSignals: (s: StrategyResult) => void;
+
+  // Sound settings
+  soundMuted: boolean;
+  setSoundMuted: (muted: boolean) => void;
 }
 
 export const useStore = create<Store>((set) => ({
@@ -287,4 +324,24 @@ export const useStore = create<Store>((set) => ({
   dismissNotification: (id) => set((state) => ({
     notifications: state.notifications.filter((n) => n.id !== id),
   })),
+
+  strategyConfigs: [],
+  setStrategyConfigs: (strategyConfigs) => set({ strategyConfigs }),
+
+  tradeSizeType: 'fixed',
+  tradeSizeValue: 50,
+  setTradeSizeSettings: (tradeSizeType, tradeSizeValue) => set({ tradeSizeType, tradeSizeValue }),
+
+  ethCandles5m: [],
+  ethCandles15m: [],
+  ethSignals: null,
+  setEthCandles: (ethCandles5m, ethCandles15m) => set({ ethCandles5m, ethCandles15m }),
+  setEthSignals: (ethSignals) => set({ ethSignals }),
+  solSignals: null,
+  setSolSignals: (solSignals) => set({ solSignals }),
+  xrpSignals: null,
+  setXrpSignals: (xrpSignals) => set({ xrpSignals }),
+
+  soundMuted: false,
+  setSoundMuted: (soundMuted) => set({ soundMuted }),
 }));

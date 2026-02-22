@@ -1,13 +1,15 @@
 import { useEffect, useState } from 'react';
-import { Database, Download, RefreshCw, CheckCircle, Zap } from 'lucide-react';
+import { Database, Download, RefreshCw, CheckCircle, Zap, GitMerge } from 'lucide-react';
 import { useStore } from '../../store';
-import { fetchDbStatus, triggerDownload, trigger1sDownload } from '../../services/api';
+import { fetchDbStatus, triggerDownload, trigger1sDownload, triggerDerive10m } from '../../services/api';
 
 const COINS = ['BTC', 'ETH', 'SOL', 'XRP'];
-// Standard Binance timeframes (bulk ZIP + REST fill)
+// Standard Binance timeframes (bulk ZIP + REST fill, 3 years)
 const STANDARD_TIMEFRAMES = ['1m', '5m', '15m', '30m', '1h', '4h', '12h', '1d'];
-// All timeframes shown in grid (including 1s/10s/30s derived from 1s download)
-const TIMEFRAMES = ['1s', '10s', '30s', '1m', '5m', '15m', '30m', '1h', '4h', '12h', '1d'];
+// All timeframes shown in grid
+// 5s = derived from 1s ZIPs (Binance has no 5s interval)
+// 10m = derived from 5m pairs (Binance has no 10m interval)
+const TIMEFRAMES = ['5s', '1m', '5m', '10m', '15m', '30m', '1h', '4h', '12h', '1d'];
 
 function formatCount(n: number): string {
   if (n >= 1_000_000) return `${(n / 1_000_000).toFixed(1)}M`;
@@ -15,11 +17,16 @@ function formatCount(n: number): string {
   return String(n);
 }
 
+function formatDate(ms: number): string {
+  return new Date(ms).toLocaleDateString('en-US', { month: 'short', year: '2-digit' });
+}
+
 export function DataManager() {
   const dbStatus = useStore((s) => s.dbStatus);
   const setDbStatus = useStore((s) => s.setDbStatus);
   const [loading, setLoading] = useState(false);
-  const [loading1s, setLoading1s] = useState(false);
+  const [loading5s, setLoading5s] = useState(false);
+  const [loading10m, setLoading10m] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   async function refresh() {
@@ -47,25 +54,38 @@ export function DataManager() {
     setLoading(true);
     setError(null);
     try {
-      await triggerDownload(COINS, STANDARD_TIMEFRAMES);
-      startPolling(60_000 * 15); // poll 15 min
-      setTimeout(() => setLoading(false), 60_000 * 15);
+      await triggerDownload(COINS, STANDARD_TIMEFRAMES, 36);
+      startPolling(60_000 * 60); // poll up to 60 min
+      setTimeout(() => setLoading(false), 60_000 * 60);
     } catch (err) {
       setError(String(err));
       setLoading(false);
     }
   }
 
-  async function handleDownload1s() {
-    setLoading1s(true);
+  async function handleDownload5s() {
+    setLoading5s(true);
     setError(null);
     try {
-      await trigger1sDownload(COINS);
-      startPolling(60_000 * 240); // poll up to 4 hours
-      setTimeout(() => setLoading1s(false), 60_000 * 240);
+      await trigger1sDownload(COINS, 36);
+      startPolling(60_000 * 480); // poll up to 8 hours
+      setTimeout(() => setLoading5s(false), 60_000 * 480);
     } catch (err) {
       setError(String(err));
-      setLoading1s(false);
+      setLoading5s(false);
+    }
+  }
+
+  async function handleDerive10m() {
+    setLoading10m(true);
+    setError(null);
+    try {
+      await triggerDerive10m(COINS);
+      startPolling(60_000 * 5); // poll 5 min
+      setTimeout(() => setLoading10m(false), 60_000 * 5);
+    } catch (err) {
+      setError(String(err));
+      setLoading10m(false);
     }
   }
 
@@ -79,12 +99,12 @@ export function DataManager() {
       <div className="flex items-center justify-between mb-3">
         <div className="flex items-center gap-2 text-sm font-medium text-gray-200">
           <Database className="w-4 h-4 text-blue-400" />
-          Historical Data
+          Historical Data (3 years)
           {totalCandles > 0 && (
             <span className="text-xs text-gray-500">({formatCount(totalCandles)} candles stored)</span>
           )}
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 flex-wrap justify-end">
           <button
             onClick={refresh}
             className="p-1.5 text-gray-400 hover:text-white rounded transition-colors"
@@ -93,21 +113,30 @@ export function DataManager() {
             <RefreshCw className="w-3.5 h-3.5" />
           </button>
           <button
-            onClick={handleDownload1s}
-            disabled={loading1s || loading}
-            title="Downloads 6mo of 1s data (~3-4h) and derives 10s/30s automatically"
+            onClick={handleDerive10m}
+            disabled={loading10m || loading || loading5s}
+            title="Derive 10m candles from 5m data (Binance has no 10m interval)"
+            className="flex items-center gap-1.5 px-3 py-1.5 bg-emerald-700 hover:bg-emerald-600 disabled:opacity-50 text-white text-xs rounded font-medium transition-colors"
+          >
+            <GitMerge className="w-3.5 h-3.5" />
+            {loading10m ? 'Deriving...' : 'Derive 10m'}
+          </button>
+          <button
+            onClick={handleDownload5s}
+            disabled={loading5s || loading}
+            title="Downloads 1s ZIPs (3 years per coin, ~8-24h) and aggregates to 5s. 1s raw data is NOT stored."
             className="flex items-center gap-1.5 px-3 py-1.5 bg-purple-700 hover:bg-purple-600 disabled:opacity-50 text-white text-xs rounded font-medium transition-colors"
           >
             <Zap className="w-3.5 h-3.5" />
-            {loading1s ? '1s Downloading...' : 'Download 1s+10s+30s (~4h)'}
+            {loading5s ? '5s Downloading...' : 'Download 5s (3yr, ~8-24h)'}
           </button>
           <button
             onClick={handleDownloadAll}
-            disabled={loading || loading1s}
+            disabled={loading || loading5s}
             className="flex items-center gap-1.5 px-3 py-1.5 bg-blue-600 hover:bg-blue-500 disabled:opacity-50 text-white text-xs rounded font-medium transition-colors"
           >
             <Download className="w-3.5 h-3.5" />
-            {loading ? 'Downloading...' : 'Download All (6mo)'}
+            {loading ? 'Downloading...' : 'Download 1m–1d (3yr)'}
           </button>
         </div>
       </div>
@@ -135,9 +164,16 @@ export function DataManager() {
                   return (
                     <td key={tf} className="text-center py-1.5 px-2">
                       {info ? (
-                        <span className="flex items-center justify-center gap-1 text-emerald-400">
-                          <CheckCircle className="w-3 h-3" />
-                          {formatCount(info.count)}
+                        <span className="flex flex-col items-center gap-0.5 text-emerald-400">
+                          <span className="flex items-center gap-1">
+                            <CheckCircle className="w-3 h-3" />
+                            {formatCount(info.count)}
+                          </span>
+                          {info.earliest > 0 && (
+                            <span className="text-gray-600 text-[10px]">
+                              {formatDate(info.earliest)}
+                            </span>
+                          )}
                         </span>
                       ) : (
                         <span className="text-gray-700">—</span>
@@ -151,14 +187,24 @@ export function DataManager() {
         </table>
       </div>
 
+      <div className="mt-2 text-[10px] text-gray-600 space-y-0.5">
+        <div>5s = derived in-process from 1s ZIPs (Binance has no 5s interval; raw 1s not stored)</div>
+        <div>10m = derived from 5m pairs (click "Derive 10m" after downloading 5m data)</div>
+      </div>
+
       {loading && (
         <div className="mt-3 text-xs text-blue-400 animate-pulse">
-          Downloading 1m–1d data in background — updates every 5s...
+          Downloading 1m–1d data (3 years) in background — updates every 5s...
         </div>
       )}
-      {loading1s && (
+      {loading5s && (
         <div className="mt-3 text-xs text-purple-400 animate-pulse">
-          Downloading 1s data via REST API — this takes ~3-4 hours. 10s and 30s will be auto-derived when done.
+          Downloading 3 years of 1s ZIPs → aggregating to 5s. Estimated 8-24h depending on connection.
+        </div>
+      )}
+      {loading10m && (
+        <div className="mt-3 text-xs text-emerald-400 animate-pulse">
+          Deriving 10m candles from 5m data in background...
         </div>
       )}
     </div>

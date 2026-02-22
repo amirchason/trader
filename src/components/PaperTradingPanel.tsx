@@ -3,6 +3,8 @@ import { TrendingUp, TrendingDown, RefreshCw, Trash2, DollarSign, Activity, Awar
 import { useStore } from '../store';
 import { fetchPaperPositions, fetchPaperPnl, fetchPaperTrades, closePaperTrade, resetPaperTrading } from '../services/api';
 import type { PaperTrade, PnlSummary } from '../store';
+import { StrategyAutomation } from './StrategyAutomation';
+import { StrategyCharts } from './StrategyCharts';
 
 function PnlBadge({ value }: { value: number }) {
   const positive = value >= 0;
@@ -309,6 +311,12 @@ export function PaperTradingPanel() {
           )}
         </div>
       )}
+
+      {/* Strategy Automation */}
+      <StrategyAutomation />
+
+      {/* Strategy Charts */}
+      <StrategyCharts />
     </div>
   );
 }

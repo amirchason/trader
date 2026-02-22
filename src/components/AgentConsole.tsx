@@ -234,7 +234,7 @@ const LINE_COLORS: Record<ConsoleLine['type'], string> = {
   input:   'text-cyan-400',
   output:  'text-gray-300',
   error:   'text-red-400',
-  info:    'text-yellow-300',
+  info:    'text-gray-400',
   success: 'text-green-400',
 };
 
@@ -420,7 +420,7 @@ export function AgentConsole({ onClose }: Props) {
       >
         <Terminal className="w-4 h-4 text-cyan-400 shrink-0" />
         <span className="text-sm font-mono font-medium text-cyan-300 flex-1">Agent Console</span>
-        {busy && <span className="text-xs text-yellow-400 animate-pulse">running…</span>}
+        {busy && <span className="text-xs text-gray-400 animate-pulse">running…</span>}
         <button
           onClick={() => setMinimized(m => !m)}
           className="p-1 hover:bg-gray-700 rounded text-gray-400 hover:text-white transition-colors"
