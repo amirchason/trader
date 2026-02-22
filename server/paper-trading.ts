@@ -135,8 +135,9 @@ export function closeTrade(id: string, exitPrice: number): PaperTrade | null {
   if (!trade || trade.status !== 'OPEN') return null;
 
   // Binary option P&L: direction=YES wins if exitPrice >= 0.5, NO wins if < 0.5
+  // Win payout is always 1.0 per token (entry_price = price you paid for the token, YES or NO)
   const won = trade.direction === 'YES' ? exitPrice >= 0.5 : exitPrice < 0.5;
-  const pnl = won ? trade.size * (exitPrice - trade.entry_price) : -trade.size * trade.entry_price;
+  const pnl = won ? trade.size * (1.0 - trade.entry_price) : -trade.size * trade.entry_price;
 
   const closedAt = new Date().toISOString();
 
@@ -173,8 +174,9 @@ export function autoCloseTrades(currentSpots: Record<string, number>): PaperTrad
       const bullish = spot > entrySpot;
       won = trade.direction === 'YES' ? bullish : !bullish;
     } else {
-      // No spot data — use coin-flip (shouldn't happen in practice)
-      won = Math.random() > 0.5;
+      // No spot data yet — skip this trade, will retry next cycle
+      console.warn(`[AutoClose] Skip ${trade.asset}/${trade.id.slice(0, 8)}: no spot price, retrying next cycle`);
+      continue;
     }
 
     // Binary exit: won = 1.0 (full payout), lost = 0.0

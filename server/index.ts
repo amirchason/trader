@@ -28,6 +28,7 @@ let latestEthCandles5m: Candle[] = [];
 let latestEthCandles15m: Candle[] = [];
 let latestEthSignals: StrategyResult | null = null;
 let latestSolSignals: StrategyResult | null = null;
+let latestSolCandles5m: Candle[] = [];
 let latestXrpSignals: StrategyResult | null = null;
 const rtdsPrices: Record<string, number> = {};
 let downloadRunning = false;
@@ -76,6 +77,9 @@ app.get('/api/stream', (req: Request, res: Response) => {
   }
   if (latestEthSignals) {
     res.write(`data: ${JSON.stringify({ type: 'eth_signals', data: latestEthSignals, timestamp: Date.now() })}\n\n`);
+  }
+  if (latestSolCandles5m.length > 0) {
+    res.write(`data: ${JSON.stringify({ type: 'sol_candles', data: { candles5m: latestSolCandles5m }, timestamp: Date.now() })}\n\n`);
   }
   if (latestSolSignals) {
     res.write(`data: ${JSON.stringify({ type: 'sol_signals', data: latestSolSignals, timestamp: Date.now() })}\n\n`);
@@ -517,9 +521,16 @@ function pollPaperTrading() {
     // Build current spot prices from latest data
     const currentSpots: Record<string, number> = {};
     if (latestBtcData?.price) currentSpots['BTC'] = latestBtcData.price;
-    if (latestEthSignals?.indicators?.lastPrice) currentSpots['ETH'] = latestEthSignals.indicators.lastPrice;
-    if (latestSolSignals?.indicators?.lastPrice) currentSpots['SOL'] = latestSolSignals.indicators.lastPrice;
-    if (latestXrpSignals?.indicators?.lastPrice) currentSpots['XRP'] = latestXrpSignals.indicators.lastPrice;
+    // lastPrice is 0 when scoreStrategies receives empty candles1m (ETH/SOL/XRP fetchers).
+    // Fall back to: last 5m candle close (ETH), then rtdsPrices (Chainlink oracle, always fresh).
+    const ethPrice = (latestEthSignals?.indicators?.lastPrice || 0)
+      || latestEthCandles5m[latestEthCandles5m.length - 1]?.close
+      || rtdsPrices['ETH'];
+    if (ethPrice) currentSpots['ETH'] = ethPrice;
+    const solPrice = (latestSolSignals?.indicators?.lastPrice || 0) || rtdsPrices['SOL'];
+    if (solPrice) currentSpots['SOL'] = solPrice;
+    const xrpPrice = (latestXrpSignals?.indicators?.lastPrice || 0) || rtdsPrices['XRP'];
+    if (xrpPrice) currentSpots['XRP'] = xrpPrice;
 
     // Auto-close any trades whose interval has expired
     const closed = autoCloseTrades(currentSpots);
@@ -556,10 +567,12 @@ async function pollEthData() {
 
 async function pollSolData() {
   try {
-    const { signals: solSignals } = await fetchSolData();
+    const { signals: solSignals, candles5m: solCandles5m } = await fetchSolData();
     latestSolSignals = solSignals;
+    latestSolCandles5m = solCandles5m;
+    broadcast({ type: 'sol_candles', data: { candles5m: solCandles5m }, timestamp: Date.now() });
     broadcast({ type: 'sol_signals', data: solSignals, timestamp: Date.now() });
-    const solSpot = solSignals.indicators.lastPrice || undefined;
+    const solSpot = solSignals.indicators.lastPrice || rtdsPrices['SOL'] || undefined;
     const solAutoTrades = checkAndAutoTrade('SOL', solSignals, latestMarkets, solSpot);
     if (solAutoTrades.length > 0) {
       console.log(`[AutoTrade] SOL: ${solAutoTrades.length} trade(s) placed`);
@@ -575,7 +588,7 @@ async function pollXrpData() {
     const { signals: xrpSignals } = await fetchXrpData();
     latestXrpSignals = xrpSignals;
     broadcast({ type: 'xrp_signals', data: xrpSignals, timestamp: Date.now() });
-    const xrpSpot = xrpSignals.indicators.lastPrice || undefined;
+    const xrpSpot = xrpSignals.indicators.lastPrice || rtdsPrices['XRP'] || undefined;
     const xrpAutoTrades = checkAndAutoTrade('XRP', xrpSignals, latestMarkets, xrpSpot);
     if (xrpAutoTrades.length > 0) {
       console.log(`[AutoTrade] XRP: ${xrpAutoTrades.length} trade(s) placed`);
