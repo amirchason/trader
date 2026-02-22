@@ -23,7 +23,8 @@ const CREATE_TABLE = `
     created_at  TEXT    NOT NULL,
     closed_at   TEXT,
     entry_spot  REAL,
-    interval_m  INTEGER NOT NULL DEFAULT 5
+    interval_m  INTEGER NOT NULL DEFAULT 5,
+    epoch_end   INTEGER
   )
 `;
 
@@ -33,6 +34,7 @@ export function initPaperTradingDb(): void {
   // Migrate existing DBs that don't have the new columns
   try { db.exec('ALTER TABLE paper_trades ADD COLUMN entry_spot REAL'); } catch { /* already exists */ }
   try { db.exec('ALTER TABLE paper_trades ADD COLUMN interval_m INTEGER NOT NULL DEFAULT 5'); } catch { /* already exists */ }
+  try { db.exec('ALTER TABLE paper_trades ADD COLUMN epoch_end INTEGER'); } catch { /* already exists */ }
 }
 
 // ─────────────────── Types ───────────────────
@@ -55,6 +57,7 @@ export interface PaperTrade {
   closed_at: string | null;
   entry_spot: number | null;
   interval_m: number;
+  epoch_end: number | null;  // Unix timestamp: actual market resolution time
 }
 
 export interface OpenTradeParams {
@@ -69,6 +72,7 @@ export interface OpenTradeParams {
   confidence?: number;
   entry_spot?: number;  // Current asset spot price (BTC/ETH/SOL price)
   interval_m?: number;  // Resolution interval in minutes (5 or 15)
+  epoch_end?: number;   // Actual epoch resolution timestamp from the Polymarket market
 }
 
 export interface PnlSummary {
@@ -109,19 +113,20 @@ export function openTrade(params: OpenTradeParams): PaperTrade {
     closed_at: null,
     entry_spot: params.entry_spot ?? null,
     interval_m: params.interval_m ?? 5,
+    epoch_end: params.epoch_end ?? null,
   };
 
   db.prepare(`
     INSERT INTO paper_trades
       (id, market_id, market_q, asset, direction, entry_price, size, status,
        exit_price, pnl, reason, strategy, confidence, created_at, closed_at,
-       entry_spot, interval_m)
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+       entry_spot, interval_m, epoch_end)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
   `).run(
     trade.id, trade.market_id, trade.market_q, trade.asset, trade.direction,
     trade.entry_price, trade.size, trade.status, null, null,
     trade.reason, trade.strategy, trade.confidence, trade.created_at, null,
-    trade.entry_spot, trade.interval_m,
+    trade.entry_spot, trade.interval_m, trade.epoch_end,
   );
 
   return trade;
@@ -153,17 +158,28 @@ export function closeTrade(id: string, exitPrice: number): PaperTrade | null {
 // Auto-close trades whose resolution window has passed.
 // currentSpots: { ETH: 2500, BTC: 95000, SOL: 180 }
 // Win/loss determined by comparing current spot price to entry spot.
+// Uses epoch_end if stored (accurate Polymarket resolution time), otherwise falls back to interval_m.
 export function autoCloseTrades(currentSpots: Record<string, number>): PaperTrade[] {
   initPaperTradingDb();
   const db = getDb();
   const open = db.prepare("SELECT * FROM paper_trades WHERE status = 'OPEN'").all() as PaperTrade[];
   const closed: PaperTrade[] = [];
+  const nowSec = Math.floor(Date.now() / 1000);
+  const nowMs = Date.now();
 
   for (const trade of open) {
-    const ageMs = Date.now() - new Date(trade.created_at).getTime();
-    const intervalMs = (trade.interval_m ?? 5) * 60_000;
-    // Add 30s grace: wait for candle to actually close
-    if (ageMs < intervalMs + 30_000) continue;
+    // Determine if the binary has expired:
+    // - If we have epoch_end (the actual Polymarket resolution timestamp), use it + 30s grace
+    // - Otherwise fall back to created_at + interval_m*60s + 30s (old behavior)
+    let shouldClose: boolean;
+    if (trade.epoch_end && trade.epoch_end > 0) {
+      shouldClose = nowSec >= trade.epoch_end + 30;
+    } else {
+      const ageMs = nowMs - new Date(trade.created_at).getTime();
+      const intervalMs = (trade.interval_m ?? 5) * 60_000;
+      shouldClose = ageMs >= intervalMs + 30_000;
+    }
+    if (!shouldClose) continue;
 
     const spot = currentSpots[trade.asset];
     const entrySpot = trade.entry_spot;
@@ -184,7 +200,8 @@ export function autoCloseTrades(currentSpots: Record<string, number>): PaperTrad
     const result = closeTrade(trade.id, exitPrice);
     if (result) {
       closed.push(result);
-      console.log(`[AutoClose] ${trade.asset} ${trade.strategy} ${trade.direction} → ${won ? 'WIN' : 'LOSS'} (spot ${entrySpot?.toFixed(2)}→${spot?.toFixed(2)})`);
+      const epochInfo = trade.epoch_end ? `epochEnd=${trade.epoch_end}` : `interval=${trade.interval_m}m`;
+      console.log(`[AutoClose] ${trade.asset} ${trade.strategy} ${trade.direction} → ${won ? 'WIN' : 'LOSS'} (spot ${entrySpot?.toFixed(2)}→${spot?.toFixed(2)}, ${epochInfo})`);
     }
   }
 

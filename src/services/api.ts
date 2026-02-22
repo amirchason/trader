@@ -122,6 +122,12 @@ export function connectSSE() {
           break;
         }
 
+        case 'sol_candles': {
+          const { candles5m } = payload.data as any;
+          useStore.getState().setSolCandles(candles5m);
+          break;
+        }
+
         case 'sol_signals': {
           useStore.getState().setSolSignals(payload.data);
           break;

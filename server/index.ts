@@ -350,6 +350,8 @@ app.post('/api/trade/paper', (req: Request, res: Response) => {
     if (!marketId || !direction || !size || !entryPrice) {
       return res.status(400).json({ error: 'marketId, direction, entryPrice, size required' });
     }
+    // Look up the market's actual epochEnd so auto-close fires at the correct time
+    const market = latestMarkets.find(m => m.conditionId === marketId || m.id === marketId);
     const trade = openTrade({
       market_id: marketId,
       market_q: marketQ ?? '',
@@ -360,6 +362,7 @@ app.post('/api/trade/paper', (req: Request, res: Response) => {
       reason,
       strategy,
       confidence,
+      epoch_end: market?.epochEnd ?? undefined,
     });
     res.json(trade);
   } catch (err) {
@@ -481,6 +484,9 @@ async function pollBtcData() {
       btcData.candles1m,
       btcData.funding,
       btcData.orderBook,
+      btcData.candles15m,
+      btcData.candles1h,
+      btcData.candles4h,
     );
     latestSignals = signals;
 
@@ -603,9 +609,9 @@ async function pollXrpData() {
 setInterval(pollMarkets, 10_000);      // Markets every 10s
 setInterval(pollBtcData, 5_000);       // BTC data + signals every 5s
 setInterval(pollPaperTrading, 10_000); // Paper trading every 10s
-setInterval(pollEthData, 30_000);      // ETH signals for auto-trading every 30s
-setInterval(pollSolData, 60_000);      // SOL signals every 60s (15m strategy, low frequency)
-setInterval(pollXrpData, 60_000);      // XRP signals every 60s (15m strategy, low frequency)
+setInterval(pollEthData, 10_000);      // ETH signals for auto-trading every 10s (was 30s)
+setInterval(pollSolData, 15_000);      // SOL signals every 15s (was 60s — HF strategies need faster poll)
+setInterval(pollXrpData, 15_000);      // XRP signals every 15s (was 60s — HF strategies need faster poll)
 
 app.listen(PORT, () => {
   console.log(`[Server] Trader API running on http://localhost:${PORT}`);

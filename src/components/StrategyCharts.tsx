@@ -33,6 +33,14 @@ const CHART_CONFIGS: ChartConfig[] = [
   { strategyId: 14, coin: 'ETH', tf: '15m', bbPeriod: 15, bbMult: 2.2, emoji: '🔄', name: 'Recovery ETH',   wr: '75.9%', nameSubstr: 'Recovery Rally' },
   { strategyId: 14, coin: 'BTC', tf: '15m', bbPeriod: 15, bbMult: 2.2, emoji: '🔄', name: 'Recovery BTC',   wr: '75.8%', nameSubstr: 'Recovery Rally' },
   { strategyId: 12, coin: 'BTC', tf: '15m', bbPeriod: 20, bbMult: 2.0, emoji: '📊', name: 'MFI Exhaustion', wr: '70.4%', nameSubstr: 'MFI' },
+  // HF40 — BB(20,1.8): 40+ trades/day, walk-forward validated
+  { strategyId: 67, coin: 'ETH', tf: '5m',  bbPeriod: 20, bbMult: 1.8, emoji: '⚡🔁', name: 'HF40 ETH',    wr: '73.1%', nameSubstr: 'ALL-H BB18 HF' },
+  { strategyId: 67, coin: 'BTC', tf: '5m',  bbPeriod: 20, bbMult: 1.8, emoji: '⚡🔁', name: 'HF40 BTC',    wr: '73.4%', nameSubstr: 'ALL-H BB18 HF' },
+  { strategyId: 67, coin: 'SOL', tf: '5m',  bbPeriod: 20, bbMult: 1.8, emoji: '⚡🌟', name: 'HF40 SOL',    wr: '71.7%', nameSubstr: 'SOL ALL-H BB18 HF' },
+  // HF80 — BB(20,1.0): 100+ trades/day, 5-fold walk-forward validated
+  { strategyId: 68, coin: 'ETH', tf: '5m',  bbPeriod: 20, bbMult: 1.0, emoji: '🚀',   name: 'HF80 ETH',    wr: '72.2%', nameSubstr: 'ALL-H BB10 UHF80' },
+  { strategyId: 68, coin: 'BTC', tf: '5m',  bbPeriod: 20, bbMult: 1.0, emoji: '🚀',   name: 'HF80 BTC',    wr: '71.7%', nameSubstr: 'ALL-H BB10 UHF80' },
+  { strategyId: 68, coin: 'SOL', tf: '5m',  bbPeriod: 20, bbMult: 1.0, emoji: '🚀🌟', name: 'HF80 SOL',    wr: '70.9%', nameSubstr: 'SOL ALL-H BB10 UHF80' },
 ];
 
 function computeBB(
@@ -273,17 +281,21 @@ function StrategyChart({ config, candles, signals, openPositions, enabled }: Str
 }
 
 export function StrategyCharts() {
-  const { ethCandles5m, ethCandles15m, ethSignals, btcData, signals, strategyConfigs, paperPositions } = useStore();
+  const { ethCandles5m, ethCandles15m, ethSignals, btcData, signals, solCandles5m, solSignals, strategyConfigs, paperPositions } = useStore();
 
   function getCandlesForConfig(cfg: ChartConfig): Candle[] {
     if (cfg.coin === 'ETH' && cfg.tf === '5m') return ethCandles5m;
     if (cfg.coin === 'ETH' && cfg.tf === '15m') return ethCandles15m;
+    if (cfg.coin === 'BTC' && cfg.tf === '5m') return btcData?.candles5m ?? [];
     if (cfg.coin === 'BTC' && cfg.tf === '15m') return btcData?.candles15m ?? [];
+    if (cfg.coin === 'SOL' && cfg.tf === '5m') return solCandles5m;
     return [];
   }
 
   function getSignalsForConfig(cfg: ChartConfig): StrategyResult | null {
-    return cfg.coin === 'ETH' ? ethSignals : signals;
+    if (cfg.coin === 'ETH') return ethSignals;
+    if (cfg.coin === 'SOL') return solSignals;
+    return signals;
   }
 
   function isEnabled(cfg: ChartConfig): boolean {

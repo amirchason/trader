@@ -125,7 +125,7 @@ export interface SSEPayload {
       | 'backtest_trade' | 'backtest_complete'
       | 'paper_update' | 'strategy_config_update' | 'trade_size_update' | 'min_confidence_update'
       | 'eth_candles' | 'eth_signals'
-      | 'sol_signals'
+      | 'sol_candles' | 'sol_signals'
       | 'xrp_signals';
   data: any;
   timestamp: number;

@@ -146,6 +146,7 @@ export interface PaperTrade {
   reason: string | null;
   strategy: string | null;
   confidence: number | null;
+  interval_m: number | null;
   created_at: string;
   closed_at: string | null;
 }
@@ -238,9 +239,11 @@ interface Store {
   setEthCandles: (c5m: Candle[], c15m: Candle[]) => void;
   setEthSignals: (s: StrategyResult) => void;
 
-  // SOL signals (broadcast every 60s)
+  // SOL signals + candles (broadcast every 60s)
   solSignals: StrategyResult | null;
   setSolSignals: (s: StrategyResult) => void;
+  solCandles5m: Candle[];
+  setSolCandles: (c5m: Candle[]) => void;
 
   // XRP signals (broadcast every 60s)
   xrpSignals: StrategyResult | null;
@@ -339,6 +342,8 @@ export const useStore = create<Store>((set) => ({
   setEthSignals: (ethSignals) => set({ ethSignals }),
   solSignals: null,
   setSolSignals: (solSignals) => set({ solSignals }),
+  solCandles5m: [],
+  setSolCandles: (solCandles5m) => set({ solCandles5m }),
   xrpSignals: null,
   setXrpSignals: (xrpSignals) => set({ xrpSignals }),
 
