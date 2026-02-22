@@ -6322,6 +6322,42 @@ export function scoreSolStrategies(candles5m: Candle[], candles1m: Candle[] = []
     }
   }
 
+  // ─── SOL Strat 122: GoodH + ADX<20 + RSI7>70 + MFI>68 + BB%B>1.1 + BB22 ─────
+  // Session22 A discovery: BB%B (percent-B) >1.1 = price 10%+ beyond upper band = deeper overshoot
+  // SOL: 75.0% n=29 tpd=0.16 🔥🔥 (session22_bbpct_squeeze_soleth.js, 5-fold WF)
+  if (candles5m.length >= 25) {
+    const s122solGoodHours = [0, 12, 13, 20];
+    const last122sol = candles5m[candles5m.length - 1];
+    const s122solHour = new Date(last122sol.closeTime).getUTCHours();
+    if (s122solGoodHours.includes(s122solHour)) {
+      const adx122sol = calcADX(candles5m, 14);
+      if (adx122sol < 20) {
+        const rsi7_122sol = calculateRSI(candles5m, 7);
+        const mfi122sol = calculateMFI(candles5m, 14);
+        const bb122sol = calculateBollingerBands(candles5m, 20, 2.2);
+        if (bb122sol && rsi7_122sol !== null && mfi122sol !== null) {
+          const bandWidth122sol = bb122sol.upper - bb122sol.lower;
+          const bbPctB122sol = bandWidth122sol > 0 ? (last122sol.close - bb122sol.lower) / bandWidth122sol : 0.5;
+          const isBear122sol = rsi7_122sol > 70 && mfi122sol > 68 && bbPctB122sol > 1.1;
+          const isBull122sol = rsi7_122sol < 30 && mfi122sol < 32 && bbPctB122sol < -0.1;
+          if (isBear122sol || isBull122sol) {
+            const dev122sol = isBear122sol
+              ? (last122sol.close - bb122sol.upper) / bb122sol.upper * 100
+              : (bb122sol.lower - last122sol.close) / bb122sol.lower * 100;
+            strategies.push({
+              name: 'SOL GH+ADX20+RSI7_70+MFI68+BBpctB1.1+BB22',
+              emoji: '🔥🌊',
+              score: Math.round(Math.min(9.3, 7.3 + dev122sol * 5) * 10) / 10,
+              direction: (isBear122sol ? 'bearish' : 'bullish') as Direction,
+              signal: `SOL GH=${s122solHour}UTC ADX=${adx122sol.toFixed(1)} RSI7=${rsi7_122sol.toFixed(0)} MFI=${mfi122sol.toFixed(0)} BB%B=${bbPctB122sol.toFixed(2)} (SOL=75.0% n=29 🔥🔥)`,
+              confidence: Math.round(Math.min(88, 72 + dev122sol * 6)),
+            });
+          }
+        }
+      }
+    }
+  }
+
   strategies.sort((a, b) => b.score - a.score);
   const bullishScore = strategies.filter(s => s.direction === 'bullish').reduce((s, st) => s + st.score, 0);
   const bearishScore = strategies.filter(s => s.direction === 'bearish').reduce((s, st) => s + st.score, 0);

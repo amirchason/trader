@@ -159,6 +159,8 @@ const STRAT_STATS: Record<number, { tpd: number; wrNum: number; coinWr?: Record<
   120: { tpd: 0.15, wrNum: 0.846, coinWr: { BTC: 0.846 } },                                        // MFI>75+StochK>80+RSI14>68+BB22 BTC=84.6% n=26 🔥💫
   // Session 20: VWAP session-dev (new pattern class), σ=7.8% stable
   121: { tpd: 0.12, wrNum: 0.722, coinWr: { BTC: 0.722 } },                                        // VWAP_dev>0.3%+RSI3>90+BB22 BTC=72.2% n=22 σ=7.8% 📊
+  // Session 22: SOL BB%B>1.1 deep overshoot (from compacted session)
+  122: { tpd: 0.16, wrNum: 0.750, coinWr: { SOL: 0.750 } },                                        // SOL RSI7>70+MFI>68+BB%B>1.1+BB22 SOL=75.0% n=29 🔥🔥
 };
 
 // Fallback: parse wr string ("71.1%" or "70-72%") when no explicit STRAT_STATS entry
@@ -1178,6 +1180,17 @@ const STRATEGY_META = [
     badgeColor: 'bg-teal-900/40 text-teal-300',
     coins: ['BTC'],
     desc: 'Rolling intraday VWAP deviation >0.3% above session VWAP + RSI3>90 at BB22 extreme in ranging BTC | BTC=72.2% n=22 σ=7.8% ✅ STABLE tpd=0.12 (Session 20 E1)',
+  },
+  // ── Session 22: SOL BB%B deep overshoot ───────────────────────────────────
+  {
+    strategyId: 122,
+    emoji: '🔥🌊',
+    name: 'SOL GH + ADX<20 + RSI7>70 + MFI>68 + BB%B>1.1 + BB22',
+    wr: '75%',
+    badge: 'SOL 75.0% n=29 🔥🔥',
+    badgeColor: 'bg-green-900/40 text-green-300',
+    coins: ['SOL'],
+    desc: 'SOL-specific BB%B >1.1 (price 10%+ beyond upper band) + RSI7>70 + MFI>68 = deep overshoot in ranging SOL market | SOL=75.0% n=29 tpd=0.16 🔥🔥 (Session 22)',
   },
   // ── Session 13: 1m Sub-candle + 1h Regime strategies ──────────────────────
   {

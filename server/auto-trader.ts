@@ -229,6 +229,8 @@ const TOP_STRATEGIES = [
   { strategyId: 120, nameSubstr: 'GH+ADX20+MFI75+StochK80+RSI14+BB22',            coins: ['BTC'],        interval: '5m' as const },
   // Session 20: VWAP session-dev + RSI3 (new VWAP pattern, BTC only)
   { strategyId: 121, nameSubstr: 'GH+ADX20+VWAP_dev0.3%+RSI3_90+BB22',           coins: ['BTC'],        interval: '5m' as const },
+  // Session 22: SOL BB%B>1.1 deep overshoot (found in prior compacted session)
+  { strategyId: 122, nameSubstr: 'SOL GH+ADX20+RSI7_70+MFI68+BBpctB1.1+BB22',   coins: ['SOL'],        interval: '5m' as const },
 ];
 
 const DEFAULT_FUNDING: FundingData = {
